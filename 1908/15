@@ -1,0 +1,78 @@
+import java.util.*;
+
+
+public class Practice3 {
+
+    private static void swap(List<Pokecard> list,int i,int j){
+        Pokecard pi = list.get(i);
+        Pokecard pj = list.get(j);
+        list.set(i,pj);
+        list.set(j,pi);
+    }
+    public static void main(String[] args) {
+        List<Pokecard> list = new ArrayList<>(52);
+
+        String [] colors = {"红心","黑桃","方片","梅花"};
+
+        for(int i = 0;i < 4;i ++){
+            for(int j = 1;j <= 13;j ++){
+                Pokecard card = new Pokecard(j,colors[i]);
+                list.add(card);
+            }
+        }
+        //System.out.println(list);
+
+        Random random = new Random(20190821);
+
+        for(int i = 50;i > 0;i --){
+            int j = random.nextInt(i);
+            swap(list,i,j);
+        }
+
+        System.out.println(list);
+
+        //A B C 三人分别获取 5 张牌
+
+        List<Pokecard> A = new ArrayList<>();
+        List<Pokecard> B = new ArrayList<>();
+        List<Pokecard> C = new ArrayList<>();
+
+        for(int i = 0;i < 15;i ++){
+            Pokecard card = list.remove(i);
+            switch (i % 3){
+                case 0:
+                    A.add(card);
+                    break;
+                case 1:
+                    B.add(card);
+                    break;
+                case 2:
+                    C.add(card);
+                    break;
+            }
+        }
+
+        System.out.println(A);
+
+        //判断 A 中是否有[10,"红心"]
+
+        Pokecard heartA = new Pokecard(10,"红心");
+        for(Pokecard card : A){
+            if(card.equals(heartA)){
+                //System.out.println("包含");
+            }
+        }
+
+        //删除A中的[10,"红心"]
+
+        Iterator<Pokecard> it = A.iterator() ;
+        while(it.hasNext()){
+            Pokecard card = it.next();
+            if(card.equals(heartA)){
+                it.remove();
+            }
+        }
+
+        System.out.println(A);
+    }
+}
