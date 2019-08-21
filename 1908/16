@@ -1,0 +1,83 @@
+class Node{
+    int val;
+    Node next = null;
+
+    Node(int val){
+        this.val = val;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Node(%d)",val);
+    }
+}
+public class Practice5 {
+
+
+    //逆置链表
+
+    public static Node reverse(Node head){
+        if(head == null){
+            return null;
+        }
+
+        Node cur = head;
+        Node last = null;
+        Node result = null;
+
+        while (cur != null){
+            //头插
+            Node next = cur.next;
+            cur.next = result;
+            result = cur;
+            cur = next;
+        }
+        return result;
+    }
+
+    public static Node test(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = null;
+        return n1;
+
+    }
+
+    //删除元素
+
+    private static Node removeElements(Node head,int val){
+        if(head == null){
+            return null;
+        }
+
+        Node cur = head;
+        Node prev = head;
+        while (cur != null){
+            if(cur.val == val){
+                prev.next = cur.next;
+            }else{
+                prev = cur;
+            }
+            cur = cur.next;
+        }
+
+        if(head.val == val){
+            head = head.next;
+        }
+        return head;
+    }
+    public static void main(String[] args) {
+//        Node head = reverse(test());
+//        for(Node cur = head;cur != null;cur = cur.next){
+//            System.out.println(cur);
+//        }
+
+        Node head = reverse(removeElements(test(),2));
+        for(Node cur = head;cur != null;cur = cur.next){
+            System.out.println(cur);
+        }
+    }
+}
