@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+public class Practice {
+    class Stack{
+        private int[] array = new int[10];
+        private int top = 0;
+
+        private void ensure(){
+            array = Arrays.copyOf(array,2 * array.length);
+        }
+        public void push(int val){
+            ensure();
+            array[top] = val;
+            top++;
+        }
+
+        public int pop(){
+            return array[--top];
+        }
+
+        public int size(){
+            return top;
+        }
+
+        public boolean isEmpty(){
+            return top == 0;
+        }
+
+
+    }
+}
