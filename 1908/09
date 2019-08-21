@@ -1,0 +1,142 @@
+public class MyLindedList implements List {
+
+
+    private class Node{
+        int val;
+        Node next = null;
+        Node front = null;
+
+        Node(int val){
+            this.val = val;
+        }
+
+        Node(int val,Node front,Node next){
+            this.val = val;
+            this.next = next;
+            this.front = front;
+        }
+
+
+
+    }
+
+    private Node head = null;
+    private Node last = null;
+    int size = 0;
+    @Override
+    public boolean add(int element) {
+        return add(size,element);
+    }
+
+    @Override
+    public boolean add(int index, int element) {
+        if(size == 0){
+            Node newNode = new Node(element,null,null);
+            last = head = newNode;
+            size++;
+        }
+        if(index == 0){
+            Node newNode = new Node(element,null,head);
+            head.front = newNode;
+            head = newNode;
+            size++;
+            return true;
+        }
+        if(index == size){
+            Node newNode = new Node(element,last,null);
+
+            last.next = newNode;
+            last = newNode;
+            return true;
+        }
+
+        if(index < 0 || index > size){
+            return false;
+        }else{
+            Node listLast = getLast(index);
+            Node newNode = new Node(element,listLast.front,listLast);
+            listLast.front.next = newNode;
+            listLast.front = newNode;
+            size++;
+        }
+        return true;
+    }
+
+    private Node getLast(int index) {
+        if(index < size / 2){
+            Node cur = head;
+            for(int i = 0;i < index;i ++){
+                cur = cur.next;
+            }
+            return cur;
+
+        }else{
+            Node cur = last;
+            for(int i = 0;i < index;i ++){
+                cur = cur.front;
+            }
+            return cur;
+        }
+    }
+
+    @Override
+    public int get(int index) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        Node node = getLast(index);
+        return node.val;
+    }
+
+    @Override
+    public int set(int index, int val) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        Node node = getLast(index);
+        int c = node.val;
+        node.val = val;
+        return c;
+    }
+
+    @Override
+    public int remove(int index) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        Node node = getLast(index);
+       if(node.next != null) {
+           node.next.front = node.front;
+       }else{
+           last = node.front;
+       }
+       if(node.front != null) {
+           node.front.next = node.next;
+       }else{
+           head = node.next;
+       }
+       size--;
+        return 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public String toString() {
+        String r = "[";
+        for (Node c = head; c != null; c = c.next) {
+            r += (c.val + ",");
+        }
+        r += "]";
+
+        return r;
+    }
+}
