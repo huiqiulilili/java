@@ -1,0 +1,24 @@
+import java.util.*;
+public class MyQueue {
+
+    Queue<Integer> queue = new LinkedList<>();
+
+
+        public void push(int x){
+            queue.add(x);
+        }
+
+        public int pop(){
+                int size = queue.size();
+                for (int i = 0; i < size - 1; i++) {
+                    int c = queue.remove();
+                    queue.add(c);
+                }
+            return queue.remove();
+        }
+
+    public static void main(String[] args) {
+
+    }
+
+}
