@@ -1,0 +1,92 @@
+import java.util.Arrays;
+
+public class MyArrayList implements List {
+    private int[] array;
+
+    int size = 0;
+
+    //确保空间
+
+    private void ensureCapacity(){
+        //1.如果空间够用，直接返回
+        if(array != null && size < array.length){
+            return;
+        }
+
+        //计算空间
+        int capacity;
+        if(array == null){
+            capacity = 10;
+        }else{
+            capacity = array.length * 2;
+        }
+
+        //申请新空间 - 搬家 - 发朋友圈
+        if(array != null){
+            array = Arrays.copyOf(array,capacity);
+        }else{
+            array = new int[capacity];
+        }
+
+    }
+
+    @Override
+    public boolean add(int element) {
+
+        return add(size,element);
+    }
+
+    @Override
+    public boolean add(int index, int element) {
+        if(index < 0 || index > size){
+            return false;
+        }
+        ensureCapacity();
+        System.arraycopy(array,index,array,index + 1,size - index);
+        size++;
+        array[index] = element;
+        return true;
+    }
+
+    @Override
+    public int get(int index) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        return array[index];
+    }
+
+    @Override
+    public int set(int index, int val) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        return array[index] = val;
+    }
+
+    @Override
+    public int remove(int index) {
+        if(index < 0 || index > size){
+            return -1;
+        }
+        int i = array[index];
+        System.arraycopy(array,index + 1,array,index,size - index - 1);
+        size--;
+        return i;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(Arrays.copyOf(array,size));
+    }
+}
