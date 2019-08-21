@@ -1,0 +1,31 @@
+public class Pokecard {
+    int val;
+    String color;
+
+    Pokecard(int val,String color){
+        this.val = val;
+        this.color = color;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("[%d,%s]",val,color);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
+
+        if(!(obj instanceof Pokecard)){
+            return false;
+        }
+
+        Pokecard p = (Pokecard)obj;
+
+        return this.val == p.val
+                && this.color.equals(p.color);
+    }
+}
