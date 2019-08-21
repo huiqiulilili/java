@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Practice2 {
+    Stack<Integer> stack = new Stack<>();
+    Stack<Integer> min = new Stack<>();
+
+
+//    public void push1(int x){
+//        if(min.isEmpty()){
+//            stack.push(x);
+//            min.push(x);
+//        }else{
+//            if(x <= min.peek()){
+//                min.push(x);
+//                stack.push(x);
+//            }else{
+//                stack.push(x);
+//            }
+//        }
+//    }
+//
+//    public  void pop1(){
+//        if(stack.peek() == min.peek()){
+//            stack.pop();
+//            min.pop();
+//        }
+//    }
+    public void push(int x){
+        stack.push(x);
+        if(min.isEmpty()){
+            min.push(x);
+        }else{
+            if(stack.peek() < min.peek()){
+                min.push(stack.peek());
+            }else{
+                min.push(min.peek());
+            }
+        }
+    }
+
+    public void pop(){
+        stack.pop();
+        min.pop();
+    }
+
+
+}
