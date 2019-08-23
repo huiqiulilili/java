@@ -1,0 +1,70 @@
+//中序
+import java.util.*;
+public class Practice4 {
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+/**
+ * 第一种
+//    public static List<Character> inOrder(Node root){
+//        if(root == null){
+//            return new ArrayList<>();
+//        }
+//        List<Character> list = new ArrayList<>();
+//        List<Character> lp = inOrder(root.left);
+//        List<Character> rp = inOrder(root.right);
+//
+//        list.addAll(lp);
+//        list.add(root.ch);
+//        list.addAll(rp);
+//        return list;
+//    }
+    */
+
+    /**
+     * 第二中
+     * @param args
+     */
+
+    List<Character> list;
+    private void inOrderr(Node root){
+        if(root == null){
+            return;
+        }
+
+        inOrderr(root.left);
+        list.add(root.ch);
+        inOrderr(root.right);
+    }
+    public List<Character> inOrder2(Node root){
+        list = new ArrayList<>();
+
+        inOrderr(root);
+
+        return list;
+    }
+    public static void main(String[] args) {
+       // System.out.println(inOrder(buildTree()));
+        Practice4 p = new Practice4();
+
+        System.out.println(p.inOrder2(buildTree()));
+    }
+}
