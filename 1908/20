@@ -1,0 +1,63 @@
+import java.util.*;
+public class Practice2 {
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+
+//    public static List<Character> preOrder(Node root){
+//
+//        if(root == null){
+//            return new ArrayList<>();
+//        }
+//
+//        List<Character> list = new ArrayList<>();
+//
+//        List<Character> lp =  preOrder(root.left);
+//        List<Character> rp =  preOrder(root.right);
+//
+//        list.add(root.ch);
+//        list.addAll(lp);
+//        list.addAll(rp);
+//        return list;
+//    }
+
+    public static List<Character> preOrder(Node root){
+        if(root == null){
+            return new ArrayList<>();
+        }
+
+        List<Character> list = new ArrayList<>();
+
+        List<Character> lP = preOrder(root.left);
+        List<Character> rP = preOrder(root.right);
+
+        list.add(root.ch);
+        list.addAll(lP);
+        list.addAll(rP);
+        return list;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(preOrder(buildTree()));
+
+    }
+
+}
