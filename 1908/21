@@ -1,0 +1,47 @@
+//前序
+import java.util.*;
+public class Practice3 {
+
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+    private List<Character> list;
+
+    private void preOrder(Node root){
+        if(root == null){
+            return;
+        }
+
+        list.add(root.ch);
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+    public  List<Character> preorderTraversal(Node root){
+        list = new ArrayList<>();
+        preOrder(root);
+        return list;
+    }
+    public static void main(String[] args) {
+        Practice3 p = new Practice3();
+        System.out.println(p.preorderTraversal(buildTree()));
+
+    }
+}
