@@ -1,0 +1,62 @@
+//后序
+import java.util.*;
+public class Practice5 {
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+
+//    public static List<Character> postOrder(Node root){
+//        if(root == null){
+//            return new ArrayList<>();
+//        }
+//
+//        List<Character> list = new ArrayList<>();
+//
+//        List<Character> lp = postOrder(root.left);
+//        List<Character> rp = postOrder(root.right);
+//
+//        list.addAll(lp);
+//        list.addAll(rp);
+//        list.add(root.ch);
+//        return list;
+//    }
+    List<Character> list;
+    private void postOrderr(Node root){
+        if(root == null){
+            return;
+        }
+
+        postOrderr(root.left);
+        postOrderr(root.right);
+        list.add(root.ch);
+    }
+    public List<Character> postOrder2(Node root){
+        list = new ArrayList<>();
+
+        postOrderr(root);
+        return list;
+    }
+    public static void main(String[] args) {
+        //System.out.println(postOrder(buildTree()));
+        Practice5 p = new Practice5();
+        System.out.println(p.postOrder2(buildTree()));
+    }
+}
