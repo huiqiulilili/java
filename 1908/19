@@ -1,0 +1,48 @@
+public class Practice {
+
+    public static Node test(){
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        a.left = b;a.right = c;
+        c.left = null;c.right = null;
+        b.left = null;b.right = null;
+        return a;
+    }
+    public static void preOrderTraversal(Node root){
+        if(root == null){
+            return;
+        }
+
+        System.out.println(root.ch);
+        preOrderTraversal(root.left);
+        preOrderTraversal(root.right);
+    }
+
+    public static void inOrderTraversal(Node root){
+        if(root == null){
+            return;
+        }
+        inOrderTraversal(root.left);
+        System.out.println(root.ch);
+        inOrderTraversal(root.right);
+    }
+    public  static void posOrderTraversal(Node root){
+        if(root == null){
+            return;
+        }
+
+        posOrderTraversal(root.left);
+        posOrderTraversal(root.right);
+        System.out.println(root.ch);
+    }
+
+    public static void main(String[] args) {
+        preOrderTraversal(test());
+        System.out.println("==================");
+        inOrderTraversal(test());
+        System.out.println("===============");
+        posOrderTraversal(test());
+    }
+
+}
