@@ -1,0 +1,376 @@
+import java.util.*;
+
+public class Practice2 {
+
+    public static TreeNode buildTree() {
+        TreeNode a = new TreeNode('A');
+        TreeNode b = new TreeNode('B');
+        TreeNode c = new TreeNode('C');
+        TreeNode d = new TreeNode('D');
+        TreeNode e = new TreeNode('E');
+        TreeNode f = new TreeNode('F');
+        TreeNode g = new TreeNode('G');
+        TreeNode h = new TreeNode('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+    //层序遍历
+//    public static void levelOrder1(TreeNode root){
+//        if(root == null){
+//            return;
+//        }
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        queue.add(root);
+//        while(!queue.isEmpty()){
+//           TreeNode front =  queue.poll();
+//            System.out.println(front.val);
+//            if(front.left != null){
+//                queue.add(front.left);
+//            }
+//            if(front.right != null){
+//                queue.add(front.right);
+//            }
+//        }
+//    }
+
+//    public static class Elements{
+//        int level;
+//        TreeNode node;
+//    }
+//    public static List<List<Character>> levelOrder(TreeNode root){
+//        List<List<Character>> retlist = new ArrayList<>();
+//        if(root == null){
+//            return retlist;
+//        }
+//        Queue<Elements> queue = new LinkedList<>();
+//        Elements e = new Elements();
+//        e.node = root;
+//        e.level = 0;
+//        queue.add(e);
+//        while(!queue.isEmpty()){
+//            Elements front = queue.poll();
+//            if(front.level == queue.size()){
+//                retlist.add(new ArrayList<>());
+//            }
+//            retlist.get(front.level).add(front.node.val);
+//            if(front.node.left != null){
+//                Elements l = new Elements();
+//                l.node = front.node.left;
+//                l.level = front.level + 1;
+//            }
+//            if(front.node.right != null){
+//                Elements l = new Elements();
+//                l.node = front.node.right;
+//                l.level = front.level + 1;
+//            }
+//        }
+//        return retlist;
+//    }
+
+    //判断是否是完全二叉树
+//    public static boolean isCompleteTree(TreeNode root){
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        queue.add(root);
+//        while(true){
+//            TreeNode front = queue.poll();
+//            if(front == null){
+//                break;
+//            }
+//            queue.add(front.left);
+//            queue.add(front.right);
+//        }
+//        //判断剩下元素是否为空
+//        while(!queue.isEmpty()){
+//            TreeNode node = queue.poll();
+//            if(node != null){
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    //非递归前序遍历
+//    public static void preorderNoR(TreeNode root){
+//        Stack<TreeNode> stack = new Stack<>();
+//
+//        TreeNode cur = root;
+//        while(!stack.isEmpty() || cur != null){
+//            while(cur != null){
+//                System.out.println(cur.val);
+//                stack.add(cur);
+//                cur = cur.left;
+//            }
+//            TreeNode top = stack.pop();
+//            cur = top.right;
+//        }
+//    }
+
+    //非递归中序
+//    public static void inorderNoR(TreeNode root){
+//        Stack<TreeNode> stack = new Stack<>();
+//        TreeNode cur = root;
+//        while(!stack.isEmpty() || cur != null){
+//            while(cur != null){
+//                stack.add(cur);
+//                cur = cur.left;
+//            }
+//            TreeNode top = stack.pop();
+//            System.out.println(top.val);
+//            cur = top.right;
+//        }
+//    }
+
+    //非递归后序
+//    public static void postOrderNoR(TreeNode root){
+//        if(root == null){
+//            return;
+//        }
+//        Stack<TreeNode> stack = new Stack<>();
+//        TreeNode cur = root;
+//        TreeNode last = null;
+//
+//        while(!stack.isEmpty() || cur != null){
+//            while(cur != null){
+//                stack.push(cur);
+//                cur = cur.left;
+//            }
+//            TreeNode top = stack.peek();
+//            if(top.right == null || top.right == last){
+//                stack.pop();
+//                System.out.println(top.val);
+//                last = top;
+//            }else{
+//                cur = top.right;
+//            }
+//        }
+//    }
+
+//    public static void postOrderNoR2(TreeNode root){
+//        if(root == null){
+//            return;
+//        }
+//
+//        postOrderNoR2(root.left);
+//        postOrderNoR2(root.right);
+//        System.out.println(root.val);
+//    }
+
+//    //递归前序遍历二叉树
+//    public static void perOrder(TreeNode root){
+//        if(root == null){
+//            return;
+//        }
+//        System.out.println(root.val);
+//        perOrder(root.left);
+//        perOrder(root.right);
+//    }
+
+
+//    public static List<Character> perOrder1(TreeNode root){
+//        if(root == null){
+//            return new ArrayList<>();
+//        }
+//     List<Character> list = new ArrayList<>();
+//     List<Character> left = perOrder1(root.left);
+//     List<Character> right = perOrder1(root.right);
+//     list.add(root.val);
+//     list.addAll(left);
+//     list.addAll(right);
+//     return list;
+//    }
+
+//   static List<Character> list;
+//    public static void perOrder2(TreeNode root){
+//        list = new ArrayList<>();
+//        if(root == null){
+//            return;
+//        }
+//        perOrderr(root);
+//    }
+//
+//    private static void perOrderr(TreeNode root) {
+//
+//        if(root == null){
+//            return;
+//        }
+//        list.add(root.val);
+//        perOrderr(root.left);
+//        perOrderr(root.right);
+//    }
+
+    //前序 + 中序
+//    public static TreeNode perinOrder(List<Character> perOrder,List<Character> inOrder){
+//        if(inOrder.size() == 0){
+//            return null;
+//        }
+//        char rootValue = perOrder.get(0);
+//        int leftCount = inOrder.indexOf(rootValue);
+//
+//        List<Character> leftp = perOrder.subList(1,leftCount + 1);
+//        List<Character> lefti = inOrder.subList(0,leftCount);
+//        TreeNode left = perinOrder(leftp,lefti);
+//
+//        List<Character> rightp = perOrder.subList(1 +leftCount, perOrder.size());
+//        List<Character> righti = inOrder.subList(1 + leftCount,inOrder.size());
+//
+//        TreeNode right = perinOrder(rightp,righti);
+//        TreeNode root = new TreeNode(rootValue);
+//
+//        root.left = left;
+//        root.right = right;
+//        return root;
+//    }
+
+//    public static TreeNode perinOrder2(char[] perOrder,char[] inOrder){
+//        if(inOrder.length == 0){
+//            return null;
+//        }
+//        char rootValue = perOrder[0];
+//        int leftCount = -1;
+//        for(int i = 0; i < inOrder.length;i ++){
+//            if(inOrder[i] == rootValue){
+//                leftCount = i;
+//            }
+//        }
+//
+//        char[] leftp = Arrays.copyOfRange(perOrder,1,1 + leftCount);
+//        char[] lefti = Arrays.copyOfRange(inOrder,0,leftCount);
+//        TreeNode left = perinOrder2(leftp,lefti);
+//
+//        char[] rightp = Arrays.copyOfRange(perOrder,1 + leftCount,perOrder.length);
+//        char[] righti = Arrays.copyOfRange(inOrder,1 + leftCount,inOrder.length);
+//        TreeNode right = perinOrder2(rightp,righti);
+//
+//        TreeNode root = new TreeNode(rootValue);
+//        root.left = left;
+//        root.right = right;
+//        return root;
+//    }
+
+    //只知道前序怎么求树
+    public static class ReturnValue{
+        TreeNode root;
+        int used;
+    }
+//    public static ReturnValue buildTreePreorder(List<Character> perOrder){
+//        if(perOrder.size() == 0){
+//            ReturnValue rv = new ReturnValue();
+//            rv.root = null;
+//            rv.used = 0;
+//            return rv;
+//        }
+//        char rootValue = perOrder.get(0);
+//        if(rootValue == '#'){
+//            ReturnValue rv = new ReturnValue();
+//            rv.root = null;
+//            rv.used = 1;
+//            return rv;
+//        }
+//        List<Character> left = perOrder.subList(1,perOrder.size());
+//        ReturnValue leftt = buildTreePreorder(left);
+//
+//        List<Character> right = perOrder.subList(1 + leftt.used,perOrder.size());
+//        ReturnValue rightt = buildTreePreorder(right);
+//
+//        TreeNode root = new TreeNode(rootValue);
+//        ReturnValue rv = new ReturnValue();
+//        rv.used = 1 + rightt.used + leftt.used;
+//        rv.root = root;
+//        return rv;
+//    }
+
+//    public static ReturnValue perinOrder(char[] perOrder){
+//        if(perOrder.length == 0){
+//            ReturnValue rv = new ReturnValue();
+//            rv.root = null;
+//            rv.used = 0;
+//            return rv;
+//        }
+//        char rootValue = perOrder[0];
+//
+//        if(rootValue == '#'){
+//            ReturnValue rv = new ReturnValue();
+//            rv.root = null;
+//            rv.used = 1;
+//            return rv;
+//        }
+//        char[] left = Arrays.copyOfRange(perOrder,1,perOrder.length);
+//        ReturnValue leftRV = perinOrder(left);
+//
+//        char[] right = Arrays.copyOfRange(perOrder,1 + leftRV.used,perOrder.length);
+//        ReturnValue rightRV = perinOrder(right);
+//
+//        TreeNode root = new TreeNode(rootValue);
+//        ReturnValue rv = new ReturnValue();
+//        rv.used = 1 + leftRV.used + rightRV.used;
+//        rv.root = root;
+//        return rv;
+//    }
+    public static class Element{
+        TreeNode node;
+        int level;
+}
+    public static List<List<Character>> levelOrder(TreeNode root){
+        List<List<Character>> list = new ArrayList<>();
+        if(root == null){
+            return list;
+        }
+        Queue<Element> queue = new LinkedList<>();
+        Element e = new Element();
+        e.level = 0;
+        e.node = root;
+        queue.add(e);
+        while(!queue.isEmpty()){
+            Element front = queue.poll();
+            if(front.level == list.size()){
+                list.add(new ArrayList<>());
+            }
+            list.get(front.level).add(front.node.val);
+
+            if(front.node.left != null){
+                Element l = new Element();
+                l.node = front.node.left;
+                l.level = 1 + front.level;
+                queue.add(l);
+            }
+            if(front.node.right != null){
+                Element r = new Element();
+                r.node = front.node.right;
+                r.level = 1 + front.level;
+                queue.add(r);
+            }
+        }
+        return list;
+
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+//        postOrderNoR(buildTree());
+//        perOrder(buildTree());
+//        System.out.println(perOrder1(buildTree()));
+//        perOrder2(buildTree());
+//        System.out.println(list);
+//        List<Character> preorder = Arrays.asList('A', 'B', 'D', 'E', 'G', 'C', 'F', 'H');
+//        List<Character> inorder = Arrays.asList('D', 'B', 'G', 'E', 'A', 'C', 'F', 'H');
+//        TreeNode root = perinOrder(preorder, inorder);
+
+
+        System.out.println( levelOrder(buildTree()));
+
+
+
+    }
+}
