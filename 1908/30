@@ -1,0 +1,89 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
+
+public class Practice {
+//    public static void mergesort(int[] array,int low,int hight){
+//
+//        int mid = (hight + low) / 2;
+//        mergesort(array,low,mid);
+//        mergesort(array,mid,hight);
+//        merge(array,low,mid,hight);
+//    }
+//
+//    private static void merge(int[] array, int low, int mid, int hight) {
+//        int length = hight - low;
+//        int[] newArray = new int[length];
+//        int ilow = low;
+//        int iright = mid;
+//        int inewArray = 0;
+//        while (ilow < mid && iright < hight){
+//            if(array[ilow] <= array[iright]){
+//                array[inewArray++] = array[ilow++];
+//            }else{
+//                array[inewArray++] = array[iright++];
+//
+//            }
+//        }
+//        while(ilow < mid){
+//            array[inewArray++] = array[ilow++];
+//        }
+//        while(iright < hight){
+//            array[inewArray++] = array[iright++];
+//        }
+//        for (int i = 0; i < length; i++) {
+//            array[low + i] = newArray[i];
+//        }
+//    }
+
+    public static void mergesort(Person[] array, int low, int hight,Comparator<Person> comparator){
+        int hight1 = hight - low;
+        if(hight1 <= 1){
+            return;
+        }
+        int mid = (hight + low) / 2;
+        mergesort(array,low,mid,comparator);
+        mergesort(array,mid,hight,comparator);
+        merge(array,low,mid,hight,comparator);
+    }
+
+    private static void merge(Person[] array, int low, int mid, int hight,Comparator<Person> comparator) {
+ //  PersonRankComparetor comparetor = new PersonRankComparetor();
+        int length = hight - low;
+        Person[] newArray = new Person[length];
+        int ilow = low;
+        int iright = mid;
+        int inewArray = 0;
+
+        while (ilow < mid && iright < hight){
+            int r = comparator.compare(array[ilow],array[iright]);
+            if(r <= 0){
+                newArray[inewArray++] = array[ilow++];
+            }else{
+                newArray[inewArray++] = array[iright++];
+            }
+        }
+        while(ilow < mid){
+            newArray[inewArray++] = array[ilow++];
+        }
+        while(iright < hight){
+            newArray[inewArray++] = array[iright++];
+        }
+        for (int i = 0; i < length; i++) {
+            array[low + i] = newArray[i];
+        }
+    }
+    public static void main(String[] args) {
+        Person[] people = new Person[20];
+        Random random = new Random(20190902);
+        for(int i = 0;i < people.length;i ++){
+           people[i] =  new Person();
+           people[i].rank = random.nextInt(100);
+           people[i].age = random.nextInt(100);
+        }
+        System.out.println(Arrays.toString(people));
+        mergesort(people,0,people.length,new PersonRankComparetor());
+        System.out.println(Arrays.toString(people));
+
+    }
+}
