@@ -1,0 +1,10 @@
+public class Person {
+    String name;
+    int age;
+    int rank;
+
+    @Override
+    public String toString() {
+        return String.format("Person{%d}",rank);
+    }
+}
