@@ -1,0 +1,109 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Practice2 {
+    //插入排序
+    public static void sort(int[] array){
+        //有序区间：[0,i]
+        //无序区间：[i + 1,array.length)
+        for(int i = 0;i < array.length - 1;i ++){
+            int right = array[i + 1];
+            int j;
+            for(j = i;j >= 0 && array[j] > right;j --){
+                array[j + 1] = array[j];
+            }
+            array[j + 1] = right;
+        }
+    }
+    //希尔排序
+    public static void shellSort(int[] array){
+        int gap = array.length;
+        while(gap > 1) {
+            gap = gap / 3 + 1;
+            insertShellSort(array, gap);
+        }
+    }
+
+    private static void insertShellSort(int[] array, int gap) {
+        for(int i = 0;i < array.length - gap;i ++){
+            int right = array[i + gap];
+            int j;
+            for(j = i; j >= 0 && array[j] > right;j -= gap){
+                array[j + gap] = array[j];
+            }
+            array[j + gap] = right;
+        }
+    }
+    //选择排序
+    //有序序列：[array.length - i,array.length)
+    //无序序列：[0,array.length - i)
+    public static void selectSort(int[] array){
+        for(int i = 0; i < array.length - 1;i ++){
+            int max = 0;
+            for(int j = 1;j < array.length - i;j ++){
+                if(array[j] >= array[max]){
+                    max = j;
+                }
+            }
+            swap(array,max,array.length - i - 1);
+        }
+    }
+
+    //堆排序
+    public static void heapSort(int[] array){
+        //建立小堆
+        creatHeap(array,array.length);
+        for(int i = 0;i < array.length - 1;i ++){
+            swap(array,0,array.length - i - 1);
+            heapity(array,array.length - i - 1,0);
+        }
+    }
+
+    private static void creatHeap(int[] array, int size) {
+        int parent = (size - 2) / 2;
+        for(int i = parent;i >= 0;i --){
+            heapity(array,size,i);
+        }
+    }
+
+    private static void heapity(int[] array, int size, int index) {
+        while(true) {
+            int left = 2 * index + 1;
+            if (left >= size) {
+                return;
+            }
+            int max = left;
+            if (left + 1 < size && array[left + 1] > array[left]) {
+                max = left + 1;
+            }
+            if (array[max] > array[index]) {
+                swap(array, max, index);
+            }
+            index = max;
+        }
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        int t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    }
+
+    public static void main(String[] args) {
+        int[] array = new int[10];
+        Random random = new Random(20190903);
+        for(int i = 0;i < array.length;i ++){
+            array[i] = random.nextInt(100);
+        }
+        System.out.println(Arrays.toString(array));
+//        sort(array);
+//        System.out.println(Arrays.toString(array));
+//        shellSort(array);
+//        System.out.println(Arrays.toString(array));
+//         selectSort(array);
+//        System.out.println(Arrays.toString(array));
+        heapSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+}
