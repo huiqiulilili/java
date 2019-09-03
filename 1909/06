@@ -1,0 +1,28 @@
+import java.util.List;
+
+public class MyArray<E>{
+    private E[] array;
+    private int size;
+    @SuppressWarnings("unchecked")
+    public MyArray(){
+        array = (E[])new Object[10];
+        int size;
+    }
+
+    public static void print(MyArray<Object> list) {
+    }
+
+    public static void main1(String[] args) {
+        MyArray<Object> objectList = null;
+        MyArray<Integer> integerList = null;
+
+        print(objectList);
+//        print(integerList);
+    }
+
+    public static void printList(List<?> list) {
+        for (Object o : list) {
+            System.out.println(o);
+        }
+    }
+}
