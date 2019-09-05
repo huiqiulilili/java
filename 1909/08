@@ -1,0 +1,28 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Practice6 {
+    //坏键盘打字
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String expected = scanner.nextLine();
+        String actual = scanner.nextLine();
+        Set<Character> set = new HashSet<>();
+        char[] a = actual.toUpperCase().toCharArray();
+        for(char c : a){
+            set.add(c);
+        }
+        char[] b = expected.toUpperCase().toCharArray();
+        Set<Character> e = new HashSet<>();
+        for(char c : b){
+            if(!set.contains(c)){
+                if(!e.contains(c)){
+                    System.out.println(c);
+                    e.add(c);
+                }
+            }
+        }
+
+    }
+}
