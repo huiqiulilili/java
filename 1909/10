@@ -1,0 +1,25 @@
+import java.util.*;
+public class Practice3 {
+    //只出现一次的数字
+    public static int map(int[] nums){
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i = 0; i < nums.length;i ++){
+            int r = map.getOrDefault(nums[i],0);
+            map.put(nums[i],r + 1);
+        }
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            int i = entry.getKey();
+            int j = entry.getValue();
+            if(j == 1){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1,2,3,4,5,4,3,2,1,5,7};
+        System.out.println(map(nums));
+    }
+}
+
