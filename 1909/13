@@ -1,0 +1,85 @@
+import java.util.*;
+public class Practice {
+    public static class stringImp implements Comparator<String>{
+
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.compareTo(o2);
+        }
+    }
+    public static List<String> topKFrequent(String[] words, int k) {
+        Map<String,Integer> mapCount = new HashMap<>();
+        //计算每个字符串出现的次数
+        for(String s : words){
+            int r = mapCount.getOrDefault(s,0 );
+            mapCount.put(s,r + 1);
+        }
+        //将Map的类型进行转换
+        Map<Integer,List<String>> countMap = new HashMap<>();
+        for(Map.Entry<String,Integer> e : mapCount.entrySet()){
+            String i = e.getKey();
+            int j = e.getValue();
+            List<String> wordList = countMap.get(j);
+            if(wordList == null){
+               wordList =  new ArrayList<>();
+               countMap.put(j,wordList);
+            }
+            wordList.add(i);
+        }
+        //得到含有次数的数组
+        Set<Integer> set = countMap.keySet();
+        int[] array = new int[countMap.size()];
+        int count = 0;
+        for(int s : set){
+            array[count++] = s;
+        }
+        Arrays.sort(array);
+        //得到次序
+        List<String> result = new ArrayList<>();
+        Comparator<String> comparator = new stringImp();
+        int c = 0;
+        for(int i = array.length - 1; i >= 0;i --){
+            if(c >= k){
+                break;
+            }
+            List<String> l = countMap.get(array[i]);
+            l.sort(comparator);
+            if(l.size() <= k - c){
+                result.addAll(l);
+                c += l.size();
+            }else{
+                result.addAll(l.subList(0,k - c));
+                break;
+            }
+        }
+//        List<String> result = new ArrayList<>();
+//        int j = 0;  // 已经录取人数
+//        int index = array.length - 1;  // 当前选择的分数，因为是从小到大排列，所以反着来
+//        // 为了排序 String List 用的
+//        Comparator<String> comparator = new stringImp();
+//        while (j < k) {
+//            int c = array[index--];    // 得到最大分
+//            // 获取当前考 c 分的人数
+//            List<String> wordList = countMap.get(c);
+//            wordList.sort(comparator);  // 人按字母顺序排序
+//            if (wordList.size() <= k - j) {
+//                // 如果当前分数的人数 <= 还差的人数
+//                result.addAll(wordList);
+//                j += wordList.size();
+//            } else {
+//                // 否则，只选前 k -j  个
+//                result.addAll(wordList.subList(0, k - j));
+//                j = k;
+//            }
+//        }
+        return result;
+    }
+    public static void main(String[] args) {
+        String[] words = {
+                "i", "love", "leetcode",
+                "i", "love", "coding"
+        };
+        List<String> r = new Practice().topKFrequent(words, 3);
+        System.out.println(r);
+    }
+}
