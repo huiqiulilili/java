@@ -1,0 +1,98 @@
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
+public class SortTree {
+    class Node{
+        int key;
+        int val;
+        Node left = null;
+        Node right = null;
+        Node(){
+
+        }
+    }
+    private Node root = null;
+    public int get(int key){
+        Node cur = root;
+        while(cur != null) {
+            if (key == cur.key) {
+                return cur.val;
+            }
+            if (cur.key < key) {
+                cur = cur.left;
+            }else{
+                cur = cur.right;
+            }
+        }
+        return -1;
+    }
+
+    public int put(int key,int value){
+        Node cur = root;
+        Node parent = root;
+        if(root == null){
+            Node node = new Node();
+            node.val = value;
+            node.key = key;
+            return -1;
+        }
+        while(cur !=null){
+            if(cur.key < key){
+                parent = cur;
+                cur = cur.left;
+            }else{
+                parent = cur;
+                cur = cur.right;
+            }
+        }
+        Node node = new Node();
+        node.key = key;
+        node.val = value;
+        if(parent.key < key){
+            parent.right = node;
+        }else{
+            parent.left = node;
+        }
+        return -1;
+    }
+
+    public int getOrDefault(int key,int defaultValue){
+        Node cur = root;
+        while(cur != null){
+            if(cur.key == key){
+                int v =  cur.val;
+                return v;
+            }
+            if(cur.key < key){
+                cur = cur.right;
+            }else{
+                cur = cur.left;
+            }
+        }
+        return defaultValue;
+    }
+
+    public Set<Integer> keySet(){
+        Set<Integer> set = new HashSet<>();
+        if(root == null){
+            return set;
+        }
+        Node cur = root;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Node node = queue.poll();
+            set.add(node.key);
+            if(node.left != null){
+                queue.add(node.left);
+            }
+            if(node.right != null){
+                queue.add(node.right);
+            }
+        }
+        return set;
+    }
+
+}
