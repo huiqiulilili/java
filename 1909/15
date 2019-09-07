@@ -1,0 +1,67 @@
+import java.util.*;
+
+public class Practice2 {
+    public static class StringImp implements Comparator<String>{
+
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.compareTo(o2);
+        }
+    }
+    public static List<String> list(String[] nums,int k){
+        Map<String,Integer> mapCount = new HashMap<>();
+        //首先统计每个单词出现的次数
+        for(String s : nums){
+            int r = mapCount.getOrDefault(s,0);
+            mapCount.put(s,r + 1);
+        }
+        //然后得到次数对应的单词是什么
+        Map<Integer,List<String>> countMap = new HashMap<>();
+        for(Map.Entry<String,Integer> e : mapCount.entrySet()){
+            String i = e.getKey();
+            int j = e.getValue();
+            List<String> list = countMap.get(j);
+            if(list == null){
+                list = new ArrayList<>();
+                countMap.put(j,list);
+            }
+            list.add(i);
+        }
+
+        //得到次数顺序的数组
+        Set<Integer> set = countMap.keySet();
+        int[] array = new int[set.size()];
+        int count = 0;
+        for(int i : set){
+            array[count++] = i;
+        }
+        Arrays.sort(array);
+        //取出元素
+        List<String> result = new ArrayList<>();
+        int j = 0;
+        for(int i = array.length - 1;i >= 0;i --){
+            if(j >= k){
+                break;
+            }
+            Comparator<String> comparator = new StringImp();
+            List<String> l = countMap.get(array[i]);
+            l.sort(comparator);
+            if(l.size() <= k - j){
+                result.addAll(l);
+                j += array[i];
+            }else{
+                result.addAll(l.subList(0,k - j));
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String[] strings = {
+                "i" ,"love","java","and","i","am","clever"
+        };
+        List<String> list = list(strings,2);
+        System.out.println(list);
+    }
+}
