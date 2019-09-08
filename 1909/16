@@ -1,0 +1,79 @@
+public class Practice2 {
+
+    static class Node{
+        int val;
+        Node random;
+        Node next;
+        Node(){
+
+        }
+        Node(int val){
+            this.val = val;
+        }
+    }
+    public static void print(Node head){
+        if(head == null){
+            return;
+        }
+        Node cur;
+        for(cur = head;cur != null; cur = cur.next){
+            System.out.printf("Node(%d)--->",cur.val);
+        }
+        System.out.printf("null");
+    }
+    public static Node test(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = null;
+        n1.random = null;
+        n2.random = n1;
+        n3.random = n3;
+        n4.random = n3;
+        return n1;
+    }
+    //复制链表
+    public static Node copyRandomList(Node head) {
+        Node cur = head;
+        while(cur != null){
+            Node node = new Node(cur.val);
+            node.next = cur.next;
+            cur.next = node;
+            cur = cur.next.next;
+        }
+        //复制random
+        cur = head;
+        while(cur != null){
+            if(cur.random != null) {
+                cur.next.random = cur.random.next;
+            }else{
+                cur.next.random = null;
+            }
+            cur = cur.next.next;
+        }
+        //将两个链表分开
+        Node result = head.next;
+        cur = head;
+        Node last = result;
+        while(cur != null) {
+            cur.next = last.next;
+            if(cur.next != null) {
+                last.next = cur.next.next;
+            }else{
+                last.next = null;
+            }
+            cur = cur.next;
+            last = last.next;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        print(copyRandomList(test()));
+
+    }
+}
