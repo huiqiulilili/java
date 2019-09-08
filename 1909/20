@@ -1,0 +1,38 @@
+import java.util.*;
+import java.util.Scanner;
+
+
+public class Practice5 {
+
+    /**
+     * 坏键盘打字
+     * @param expected   期待输入的字符
+     * @param actual     实际输入的字符
+     * @return           坏的字符
+     */
+    private static void  keyBoard(String expected,String actual){
+        char[] a = actual.toUpperCase().toCharArray();
+        Set<Character> result = new HashSet<>();
+        Set<Character>  set =  new HashSet<>();
+        for(char c : a){
+            set.add(c);
+        }
+        char[] b = expected.toUpperCase().toCharArray();
+        for(char d : b){
+            if(set.contains(d)){
+                continue;
+            }else{
+                if(!result.contains(d)) {
+                    System.out.println(d);
+                    result.add(d);
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String expected = scanner.nextLine();
+        String actual = scanner.nextLine();
+        keyBoard(expected,actual);
+    }
+}
