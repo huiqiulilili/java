@@ -1,0 +1,35 @@
+import java.util.*;
+public class Practice4 {
+    //J 宝石   S 石头
+    public static int numJewelsInStones(String J, String S) {
+        char[] array = J.toCharArray();
+        int count = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        for(char c : array){
+            map.put(c,0);
+        }
+        char[] array2 = S.toCharArray();
+        for(char c : array2){
+            int i = map.getOrDefault(c,0);
+            if(map.containsKey(c)){
+                count++;
+                map.put(c,i + 1);
+            }else{
+                continue;
+            }
+        }
+//        for(Map.Entry<Character,Integer> e : map.entrySet()){
+//            int i  = e.getValue();
+//            count = count + i;
+//        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String J = "Ilovechain";
+        String S = "Iamstudent";
+
+        System.out.println(numJewelsInStones(J,S));
+    }
+
+}
