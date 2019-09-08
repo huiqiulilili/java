@@ -1,0 +1,73 @@
+import java.util.*;
+public class Practice3 {
+    //定义节点
+    static class Node{
+        int val;
+        Node random;
+        Node next;
+        Node(){
+
+        }
+        Node(int val){
+            this.val = val;
+        }
+    }
+    //打印链表的方法
+    public static void print(Node head){
+        if(head == null){
+            return;
+        }
+        Node cur;
+        for(cur = head;cur != null; cur = cur.next){
+            System.out.printf("Node(%d)--->",cur.val);
+        }
+        System.out.printf("null");
+    }
+    //创建一个链表
+    public static Node test(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = null;
+        n1.random = null;
+        n2.random = n1;
+        n3.random = n3;
+        n4.random = n3;
+        return n1;
+    }
+    //复制链表
+    public static Node copyRandomList(Node head) {
+        Node cur = head;
+        Node result = null;
+        Node last = null;
+        Map<Node ,Node> map = new HashMap<>();
+        while(cur != null){
+            Node node  = new Node(cur.val);
+            map.put(cur,node);
+            if(result == null){
+                result = node;
+            }else{
+                last.next = node;
+            }
+            last = node;
+            cur = cur.next;
+        }
+        //复制random指针
+        cur = head;
+        last = result;
+        while(cur != null){
+            last.random = map.get(cur.random);
+            cur = cur.next;
+            last = last.next;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        print(copyRandomList(test()));
+    }
+}
