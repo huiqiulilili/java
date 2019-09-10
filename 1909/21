@@ -1,0 +1,56 @@
+
+public class DataTypeTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		byte a = -128;
+		byte b = 127;
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+		System.out.println("字节数据类型能表示的最大数据是" + Byte.MAX_VALUE);
+		System.out.println("字节数据类型能表示的小数据是" + Byte.MIN_VALUE );
+		System.out.println("================");
+		System.out.println("int数据类型能表示的最大数据是" + Integer.MAX_VALUE);
+		System.out.println("int数据类型能表示的小数据是" + Integer.MIN_VALUE );
+		System.out.println("================");
+		System.out.println("short数据类型能表示的最大数据是" + Short.MAX_VALUE);
+		System.out.println("short数据类型能表示的小数据是" + Short.MIN_VALUE );
+		System.out.println("================");
+		System.out.println("long数据类型能表示的最大数据是" + Long.MAX_VALUE);
+		System.out.println("long数据类型能表示的小数据是" + Long.MIN_VALUE );
+		System.out.println("================");
+		
+		
+		long c = 123456789123456L;
+		int d = 0x12;//0x 是十六进制
+		int e = 012;//0 是八进制
+		int f = 0xff;
+		System.out.println("d = " + d);
+		System.out.println("e = " + e);
+		System.out.println("================");
+		float g = 9.12f;
+		
+		char h = 'A';
+		char t = '哈';
+		int j = h + 1;
+		char i = (char) j; 
+		System.out.println("j = " + j);
+		System.out.println("i = " + i);
+		System.out.println("================");
+		System.out.println("t = " + t);
+		System.out.println("================");
+		
+		System.out.println("\"good\"");
+		System.out.print("\"");
+		System.out.print("Today is rain");
+		System.out.println("\"");
+		System.out.println("\\");
+		System.out.println("================");
+		System.out.println("\u000f");
+		System.out.println("================");
+		System.out.println("\'");
+		System.out.print("hahahahah");
+		System.out.println("\r");
+		System.out.print("================");
+	}
+}
