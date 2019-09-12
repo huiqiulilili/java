@@ -1,0 +1,100 @@
+/**
+ * 浮点数怎么在计算机中保存
+ *ASCII编码
+ */
+
+public class DataTypeTest {
+	public static void main(String[] args){
+		//System.out.println("haha");
+		//浮点数不能用于作比较运算
+//		float a = 0.1f;
+//		double b = (1.0 / 10);
+//		if(a == b){
+//			System.out.println("a等于b");
+//		}else{
+//			System.out.println("a不等于b");
+//		}
+		
+		
+		/*//字符
+		char a = 'I',b = 'G';
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println((char)(a + 1));
+		System.out.println(a + 2);
+		*/
+		
+		
+		/**
+		boolean a,b;
+		a = true;
+		b = false;
+		System.out.println("a = " +  a);
+		System.out.println("b = " +  b);
+		*/
+		
+		
+//		int i = 10;
+//		int d = 4;
+//		System.out.println((float)i / 4);
+//		
+		//强制类型转换
+//		int b1 = 7;
+//		int b2 = 2;
+//		double b3  = (float)b1 / b2;
+//		System.out.println(b3);
+		
+		//自动类型转换：
+		//byte + byte = int
+//		byte a = 1;
+//		byte b = 1;
+//		byte c = (byte)(a + b);
+//		System.out.println(c);
+		
+//		int i , j;
+//		i = 1;
+//		j = 2;
+//		int k = i +++ j;
+//		System.out.println("i = " + i);
+//		System.out.println("j = " + j);
+//		System.out.println("k = " + k);
+		
+		/*
+		//关系运算符
+		//与&& 和 &
+		//&& 短路与
+		
+		boolean a,b,c,d;
+		a = false;
+		b = false;
+		c = true;
+		d = a & (b= !b) & (c = !c);
+		System.out.println("a = " + a);//f f
+		System.out.println("b = " + b);//f t
+		System.out.println("c = " + c);//t f
+		System.out.println("d = " + d);//f f
+		*/
+		
+		//位运算	& 	^	|
+		//左移 << * 2
+		//右移 >> / 2
+//		int a,b,c,d;
+//		a = 3;
+//		b = 5;
+//		c = a & b;
+//		d = a ^ b;
+//		System.out.println("c = " + c);
+//		System.out.println("d = " + d);
+//		System.out.println("a的二进制表示 " + Integer.toBinaryString(a) );
+//		System.out.println("b的二进制表示 " + Integer.toBinaryString(b) );
+//		System.out.println("c的二进制表示 " + Integer.toBinaryString(c) );
+		//赋值运算 
+		//三目运算符	表达式结果?真 :假 
+		//instanceof 运算符
+		
+		
+		System.out.println("陕西科技大学"  instanceof String );
+	}
+}
+
+
