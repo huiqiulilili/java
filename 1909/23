@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Demo {
+    public static List<List<Integer>> count(int[] nums){
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        int i = 0;
+
+        while(i < nums.length - 2){
+            int j = i + 1;
+            int k = nums.length - 1;
+            while(j < k && nums[i] + nums[j] + nums[k] < 0){
+                j++;
+            }
+            if(j >= k){
+                break;
+            }
+            if(j < k && nums[i] + nums[j] + nums[k] == 0){
+                List<Integer> e = new ArrayList<>();
+                e.add(nums[i]);
+                e.add(nums[j]);
+                e.add(nums[k]);
+                result.add(e);
+                while(j < k && nums[j] == nums[j + 1]){
+                    j++;
+                }
+                j++;
+            }
+            if(j < k && nums[i] + nums[j] + nums[k] > 0){
+                if(j <= k){
+                    break;
+                }
+                if(j < k && nums[i] + nums[j] + nums[k] == 0){
+                    List<Integer> e = new ArrayList<>();
+                    e.add(nums[i]);
+                    e.add(nums[j]);
+                    e.add(nums[k]);
+                    result.add(e);
+                    while(j < k && nums[k] == nums[k - 1]){
+                        k--;
+                    }
+                    k--;
+                }
+
+            }
+            while(i < nums.length - 2 && nums[i] == nums[i + 1]){
+                i++;
+            }
+            i++;
+        }
+        return result;
+
+    }
+}
