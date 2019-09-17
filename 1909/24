@@ -1,0 +1,65 @@
+/**
+ * 输出流/输入流
+ * 作业：
+ * System.in.read() he Scanner 两种方式
+ * 找最大值，最小值，平均值
+ * System.out.
+ * 
+ * @author huiqiuli
+ *
+ */
+//import java.io.IOException;
+import java.util.Scanner;
+public class Practice {
+
+	public static void main(String[] args)/*throws java.io.IOException*/ {
+//		int i = 1;
+//		int j = ++i + (++ i) + (++ i);
+//		System.out.println("i = " + i);   //4
+//		System.out.println("j = " + j);  //2 + 3 + 4
+//		int i = 1;
+//		int j = i ++ + (++i);
+//		System.out.println("i = " + i);   //3
+//		System.out.println("j = " + j);  //1 + 3
+//		System.out.println("=================");
+//		
+		
+		
+		
+		
+//		Object o = "an examle";
+//		char[] c = {'a','b','c','d','e'};
+//		byte[] b = {'f','g','h','i','j'};
+//		System.out.println(2346.99D);  
+//		System.out.println(o);
+//		System.out.println(c);
+//		System.out.write(b,0,b.length);
+//		System.out.println();
+//		System.out.write(b[0]);
+//		System.out.flush();  
+//		System.out.println("============ ");  
+//		
+		
+//		int c;
+
+		
+//		char i = 0;
+//		System.out.println("请输入：");
+//		while(true){
+//			try{
+//				i = (char)System.in.read();
+//			}
+//			catch(IOException e){}
+//			System.out.println(i);
+//		}
+		
+		Scanner sc = new Scanner(System.in);
+//		int score = sc.nextInt();
+		String score = sc.nextLine();
+		System.out.println("您输入的数据是：" + score);
+		score = sc.nextLine();
+		System.out.println("Game Over");
+		
+	}
+
+}
