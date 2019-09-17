@@ -1,0 +1,122 @@
+public class BinarySearchTree {
+    public static class Node{
+        int key;
+        int value;
+        Node left;
+        Node right;
+    }
+
+    private Node root = null;
+
+    /**
+     * 查找
+     * @param
+     * @return 找到返回key对应的value，没找到返回-1；
+     */
+    public int get(int key){
+        Node cur = root;
+        while(cur != null){
+            if(cur.key == key){
+                return cur.value;
+            }else if(cur.key < key){
+                cur = cur.right;
+            }else{
+                cur = cur.left;
+            }
+        }
+        return -1;
+    }
+
+    public int put(int key,int value){
+        if(root == null){
+            root.key = key;
+            root.value = value;
+            return -1;
+        }
+        Node cur = root;
+        Node parent = null;
+        while(cur != null){
+            if(key == cur.key){
+                int oldValue = cur.value;
+                cur.value = value;
+                return oldValue;
+            }else if(key < cur.key){
+                parent = cur;
+                cur = cur.left;
+            }else{
+                parent = cur;
+                cur = cur.right;
+            }
+        }
+        Node node = new Node();
+        node.key = key;
+        node.value = value;
+        if(parent.key < key){
+            parent.right = node;
+        }else{
+            parent.left = node;
+        }
+        return -1;
+    }
+
+    /**
+     * 删除key
+     * @param key
+     * @return
+     */
+    public int remove(int key){
+        if(root == null){
+            return -1;
+        }
+        Node cur = root;
+        Node parent = null;
+        while(cur != null){
+            if(key == cur.key){
+                int oldValue = cur.value;
+                delete(parent,cur);
+                return oldValue;
+            }else if(key < cur.key){
+                parent = cur;
+                cur = cur.left;
+            }else{
+                parent = cur;
+                cur = cur.right;
+            }
+        }
+        return -1;
+    }
+
+    private void delete(Node parent, Node cur) {
+        if(cur.left == null) {
+            if (cur == root) {
+                root = cur.right;
+            } else if(cur == parent.left){
+                parent.left = cur.right;
+            }else{
+                parent.right = cur.right;
+            }
+        }else if(cur.right == null){
+            if (cur == root) {
+                root = cur.left;
+            } else if(cur == parent.left){
+                parent.left = cur.left;
+            }else{
+                parent.right = cur.left;
+            }
+        }else{
+            Node goat = cur.left;
+            Node goatParent = cur;
+            while(goat.right != null){
+                goatParent = goat;
+                goat = goat.right;
+            }
+            cur.key = goat.key;
+            cur.value = goat.value;
+            if(goat == goatParent.left){
+                goatParent.left = goat.left;
+            }else{
+                goatParent.right = goat.left;
+            }
+        }
+    }
+}
