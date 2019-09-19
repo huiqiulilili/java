@@ -1,0 +1,80 @@
+/**
+ * flash
+ * 作业：
+ * 	每次操作给用户提示（上次作业）
+ * @author huiqiuli
+ *
+ */
+import  javax.swing.JOptionPane;
+import java.util.*;
+public class Practice19 {
+	public static void main(String[] args){
+		//System.in.read()
+		//Scanner
+//		Scanner sc = new Scanner(System.in);
+//		double a = sc.nextFloat();
+//		double b = sc.nextFloat();
+//		double c = sc.nextFloat();
+//		double max = a;
+//		double min = a;
+//		if(b > max){
+//			max = b;
+//		}
+//		if(c > max){
+//			max = c;
+//		}
+//		System.out.println("最大值为" + max);
+//		if(b < min){
+//			min = b;
+//		}
+//		if(c < min){
+//			min = c;
+//		}
+//		System.out.println("最大值为" + min);
+		
+		
+		int len = args.length;
+		if(len == 3){
+			int c = 0;
+			int a = Integer.parseInt(args[0]);
+			int b = Integer.parseInt(args[2]);
+			String Op = args[1] ;
+			if(Op.equals("-")){
+				c = a - b;
+			}
+			if(Op.equals("+")){
+				c = a + b;
+			}
+			if(Op.equals("/")){
+				c = a / b;
+			}
+			if(Op.equals("*")){
+				c = a * b;
+			}
+			System.out.println("c = " + c);
+		}
+
+		
+		
+//		int i = JOptionPane.showConfirmDialog(null, "这是我的消息","确定消息",JOptionPane.YES_NO_OPTION);
+//		System.out.println("您的选择是" + i);
+		
+//		JOptionPane.showMessageDialog(null, "欢迎来到Java");
+		
+////		String str = JOptionPane.showInputDialog(null,"请输入数据");
+//		System.out.println(str);
+//		int a,b,c;
+//		String str = null;
+//		str = JOptionPane.showInputDialog(null,"请输入数据1：");
+//		a = Integer.parseInt(str);
+//		str = JOptionPane.showInputDialog(null,"请输入数据2：");
+//		b = Integer.parseInt(str);
+//		str = JOptionPane.showInputDialog(null,"请输入数据3：");
+//		c = Integer.parseInt(str);
+
+
+		
+		
+	}
+
+}
