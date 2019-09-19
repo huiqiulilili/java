@@ -1,0 +1,37 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Practice {
+    public static void main(String[] args) throws IOException {
+        int a = 0;
+        a = System.in.read();
+        //回车
+        int c = 0;
+        c = System.in.read();
+
+        int b = 0;
+        b = System.in.read();
+        //回车
+        int e = 0;
+        e = System.in.read();
+        int d = 0;
+        d = System.in.read();
+        int max = Math.max(Math.max(a,b),d);
+        int min = Math.min(Math.min(a,b),d);
+        System.out.println("最大值为" + (char)max);
+        System.out.println("最小值为" + (char)min);
+        System.out.println("平均值为" + (double)((a + b + d) - 48 * 3) / 3);
+    }
+//public static void main(String[] args) {
+//    Scanner scanner = new Scanner(System.in);
+//    double  a = scanner.nextFloat();
+//    double b = scanner.nextFloat();
+//    double c = scanner.nextFloat();
+//
+//    double max = Math.max(a,Math.max(b,c));
+//    double min = Math.min(a,Math.min(b,c));
+//    System.out.println("最大的数为：" + max);
+//    System.out.println("最小的数为" + min);
+//    System.out.println("平均数为" + (a + b + c) / 3);
+//}
+}
