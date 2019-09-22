@@ -1,0 +1,20 @@
+public class Practice2 {
+    public static void main(String[] args) {
+        String s = "haha";
+        String c = "haha";
+//        System.out.println(s.equals(c));
+//        System.out.println(s == c);
+//        String x = new String("haha");
+//        System.out.println(s.equals(x));
+//        System.out.println(s == x);
+//        String d = new String("haha").intern();
+//        System.out.println(s == d);
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i < 10;i ++){
+            sb.append(i);
+        }
+        System.out.println(sb.toString());
+    }
+
+}
