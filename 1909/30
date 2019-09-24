@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class ExceptionDemo {
+    public static void main(String[] args) {
+//        int[] array = new int[1];
+//        try {
+//            System.out.println(array[1]);
+//        }catch (Exception e){
+//            throw new ArrayIndexOutOfBoundsException("下标越界");
+//        }
+
+
+//        int[] arr = {1,2,3};
+//        try{
+//            System.out.println("before");
+//            System.out.println(arr[100]);
+//            System.out.println("after");
+//        }catch (ArrayIndexOutOfBoundsException e){
+//            e.printStackTrace();
+//        }
+//        System.out.println("after try catch");
+
+//        int[] arr = {1, 2, 3};
+//        try {System.out.println("before");
+//            arr = null; System.out.println(arr[100]);
+//            System.out.println("after");
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("after try catch");
+
+
+//        int[] arr = {1,2,3};
+//        try{
+//            System.out.println("before");
+//            arr = null;
+//            System.out.println(arr[100]);
+//            System.out.println("after");
+//        }catch (ArrayIndexOutOfBoundsException e){
+//            System.out.println( "这是个数组下表越界异常");
+//            e.printStackTrace();
+//        }catch (NullPointerException e){
+//            System.out.println("这是个空指针异常");
+//            e.printStackTrace();
+//        }
+//        System.out.println("after try catch");
+
+
+            try (Scanner sc = new Scanner(System.in)) {
+                int num = sc.nextInt();
+                System.out.println("num = " + num);
+            } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+}
