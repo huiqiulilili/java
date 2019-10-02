@@ -1,0 +1,127 @@
+import java.util.Scanner;
+
+class Person{
+    String name;
+    int age;
+    int grade;
+    String num;
+    String gender;
+}
+public class StudentSystem {
+    public static void main(String[] args) {
+        System.out.println("欢迎使用学生管理系统");
+        Person person[] = new Person[10];
+        int dataIndex = 0;
+        while(true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("请选择操作");
+            System.out.println("0:退出系统");
+            System.out.println("1:输入学生信息");
+            System.out.println("2:查询学生信息");
+            System.out.println("3:修改学生信息");
+            System.out.println("4:删除学生信息");
+            int opIndex = scanner.nextInt();
+            switch (opIndex) {
+                //退出系统
+                case 0:
+                    System.exit(0);
+                    System.out.println("系统已经退出");
+                    //输入学生信息
+                case 1:
+                    Scanner scan = new Scanner(System.in);
+                    Person student = new Person();
+
+                    System.out.println("请输入学生学号");
+                    student.num = scan.next();
+
+                    System.out.println("请输入学生姓名");
+                    student.name = scan.next();
+
+                    System.out.println("请输入学生性别");
+                    student.gender = scan.next();
+
+                    System.out.println("请输入学生年龄");
+                    student.age = scan.nextByte();
+
+                    System.out.println("请输入学生成绩");
+                    student.grade = scan.nextByte();
+
+                    person[dataIndex++] = student;
+                    break;
+                case 2:
+                    System.out.println("请输入要查询学生的姓名");
+                    Scanner scanner2 = new Scanner(System.in);
+                    String nam = scanner2.next();
+
+                    int numb = -1;
+                    int i = 0;
+                    for (; i < dataIndex; i++) {
+                        if (person[i].name.equals(nam)) {
+                            numb = i;
+                        }
+                    }
+                    if (numb >= 0) {
+                        System.out.println("该学生的学号为" + person[numb].num);
+                        System.out.println("该学生的性别为" + person[numb].gender);
+                        System.out.println("该学生的年龄为" + person[numb].age);
+                        System.out.println("该学生的成绩为" + person[numb].grade);
+                    } else {
+                        System.out.println("该学生不存在");
+                    }
+                    break;
+                case 3:
+                    System.out.println("请输入要修改学生的姓名");
+                    Scanner scanner3 = new Scanner(System.in);
+                    String nam3 = scanner3.next();
+                    int numc = -1;
+                    i = 0;
+                    for (; i < dataIndex; i++) {
+                        if (person[i].name.equals(nam3)) {
+                            numc = i;
+                        }
+                    }
+                    if (numc >= 0) {
+                        System.out.printf("请输入学生的学号");
+                        person[numc].num = scanner3.next();
+
+                        System.out.println("请输入学生的姓名");
+                        person[numc].name = scanner3.next();
+
+                        System.out.println("请输入学生的性别");
+                        person[numc].gender = scanner3.next();
+
+                        System.out.println("请输入学生的年龄");
+                        person[numc].age = scanner3.nextByte();
+
+                        System.out.println("请输入学生的成绩");
+                        person[numc].grade = scanner3.nextByte();
+                    } else {
+                        System.out.println("该学生不存在");
+                    }
+                    break;
+                case 4:
+                    System.out.println("请输入要删除学生的姓名");
+                    Scanner scanner4 = new Scanner(System.in);
+                    String nam4 = scanner4.next();
+                    i = 0;
+                    int numd = -1;
+                    for (; i < dataIndex;i++) {
+                        if (person[i].name.equals(nam4)) {
+                            numd = i;
+                        }
+                    }
+                    if (numd >= 0) {
+                        for (i = numd; i < dataIndex; i++) {
+                            person[numd] = person[numd + 1];
+                        }
+                        dataIndex--;
+                        System.out.println("删除成功");
+                    } else {
+                        System.out.println("该学生不存在");
+                    }
+                    break;
+            }
+        }
+
+    }
+}
