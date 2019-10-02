@@ -1,0 +1,51 @@
+import java.util.*;
+import javax.swing.JOptionPane;
+
+public class Play {
+    public static void main(String[] args) {
+        int life = 0;
+        while(true) {
+            //获取系统的数字
+            Random random = new Random();
+            int number = random.nextInt(100);
+            System.out.println(number);
+
+            int i = JOptionPane.showConfirmDialog(null, "是否进行下一轮猜数字游戏");
+            if (i == 0) {
+                JOptionPane.showMessageDialog(null, "开始游戏");
+            }else{
+                break;
+            }
+            //游戏开始，请玩家输入数字
+            while (true) {
+                int playNumber = Integer.parseInt(JOptionPane.showInputDialog(null, "您猜的数字是(1-100)"));
+                if (playNumber == number) {
+                    JOptionPane.showMessageDialog(null, "哇，你可真是个天才，恭喜您，闯关成功，生命值加1");
+                    life++;
+                    break;
+                } else {
+                    if (playNumber > number) {
+                        JOptionPane.showMessageDialog(null, "哭哭，猜大了");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "哭哭，猜小了");
+
+                    }
+                    int j = JOptionPane.showConfirmDialog(null, "少年别放弃，您是否还想继续猜数字，退出生命值会减1哦");
+                    if (j == 0) {
+                        continue;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "游戏结束");
+                        life--;
+                        break;
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(null,"您现在的生命值为"+life);
+            if(life>=10){
+                JOptionPane.showMessageDialog(null,"少年你太厉害了，游戏已经全部结束了，您已经成为宇宙第一聪明忍者了");
+                break;
+            }
+        }
+    }
+
+}
