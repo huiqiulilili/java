@@ -1,0 +1,69 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.SimpleFormatter;
+
+public class StringBuliderDemo {
+    public static void main(String[] args) throws ParseException {
+//        StringBuilder bu1 = new StringBuilder("abc");
+//        System.out.println(bu1);
+//        StringBuilder bu = new StringBuilder();
+//        bu.append("a").append("b").append("c");
+//        System.out.println(bu);
+
+//        StringBuilder bu = new StringBuilder();
+//        StringBuilder bu2 = bu.append("中国加油");
+////        System.out.println(bu == bu2);
+//        String s =  bu.toString();
+//        System.out.printf(s);
+
+
+
+//        Date date = new Date();
+//        System.out.println(date);
+//        Date date = new Date(0L);
+//        System.out.println(date);
+
+//        Date date = new Date();
+//        long time = date.getTime();
+//        System.out.println(date);
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+//        Date date = new Date();
+//        String format = sdf.format(date);
+//        System.out.println(format);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+//        Date date = sdf.parse("2019年10月03日 10时36分20秒");
+//        System.out.println(date);
+//        Calendar calendar = Calendar.getInstance();
+//        System.out.println(calendar);
+
+
+//        Calendar c = Calendar.getInstance();
+//        int year = c.get(Calendar.YEAR);
+//        System.out.println(year);
+//        int month = c.get(Calendar.MONTH);
+//        System.out.println(month);
+////        int day = c.get(Calendar.DATE);
+//        int day = c.get(Calendar.DAY_OF_MONTH);
+//        System.out.println(day);
+
+
+//        Calendar c = Calendar.getInstance();
+//        //设置年
+//        c.set(Calendar.YEAR,9999);
+//        int year = c.get(Calendar.YEAR);
+//        System.out.println(year);
+
+        //增加年
+//        Calendar c = Calendar.getInstance();
+//        c.add(Calendar.YEAR,1);
+//        int year = c.get(Calendar.YEAR);
+//        System.out.println(year);
+
+
+
+
+    }
+}
