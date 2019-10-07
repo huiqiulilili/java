@@ -1,0 +1,40 @@
+public class MyStack {
+    private int[] array = new int[10];
+    private int top = 0;
+    public void ensureCapacity(){
+        if(top < array.length){
+            return;
+        }else{
+            int capacity = array.length * 2;
+            System.arraycopy(array,0,array,0,capacity);
+        }
+    }
+    public int push(int element){
+        array[top++] = element;
+        return element;
+    }
+    public int pop(){
+        return array[--top];
+    }
+    public int peek(){
+        return array[top - 1];
+    }
+
+    public int search(int element){
+        for(int i = 0;i < top;i ++){
+            if(array[i] == element){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public boolean isEmpty(){
+        return top == 0;
+    }
+
+    public int size(){
+        return top;
+    }
+
+}
