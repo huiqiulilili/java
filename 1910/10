@@ -1,0 +1,61 @@
+/**
+ * 循环链表：
+ * front 指向第一个元素
+ * rear 指向最后一个元素的下一个元素
+ * index = (index + 1) % 容量   index 的下一个元素
+ * index = (index - 1 + 容量) % 容量   index 的上一个元素
+ */
+public class MyCircularQueue {
+    private int[] array;
+    private int front = 0;
+    private int rear = 0;
+    private int size = 0;
+    MyCircularQueue(int k){
+        array = new int[k];
+    }
+
+    //插入一个元素，并且更新rear
+    public boolean enQueue(int value){
+        if (array.length == size) {
+            return false;
+        }
+        array[rear] = value;
+        rear = (rear + 1) % array.length;
+        size++;
+        return true;
+    }
+
+
+
+    //删除一个元素，并且更新front
+    public boolean deQueue(){
+        if(size == 0){
+            return false;
+        }
+        front = (front + 1) % array.length;
+        size--;
+        return true;
+    }
+
+    public int Front(){
+        if(size == 0){
+            return -1;
+        }
+        return array[front];
+    }
+    //返回尾部元素
+    public int rear(){
+        if(size == 0){
+            return -1;
+        }
+        int index = (rear - 1 + array.length) % array.length;
+        return array[index];
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
+    }
+    public boolean isFull(){
+        return size == array.length;
+    }
+}
