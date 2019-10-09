@@ -1,0 +1,133 @@
+public class CountDemo {
+    private static Node bulidTree(){
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+
+
+    /*static int count = 0;
+    public static int count(Node root){
+        if(root == null){
+            return -1;
+        }
+        count++;
+        count(root.left);
+        count(root.right);
+        return count;
+    }*/
+
+    public static int count2(Node root){
+        if(root == null){
+            return 0;
+        }
+
+        int left = count2(root.left);
+        int right = count2(root.right);
+        int count = left + right + 1;
+        return count;
+    }
+
+
+    /*static int leftCount = 0;
+    public static int leftCount(Node root){
+        if(root == null){
+            return 0;
+        }
+        if(root.left == null && root.right == null){
+            leftCount++;
+        }
+        leftCount(root.left);
+        leftCount(root.right);
+        return leftCount;
+    }*/
+
+    public static int leftCount(Node root){
+        if(root == null){
+            return 0;
+        }
+        if(root.left == null && root.right == null){
+            return 1;
+        }
+        int left = leftCount(root.left);
+        int right = leftCount(root.right);
+        return left + right;
+    }
+
+    //计算树的高度
+    public static int calcHifgt(Node root){
+        if(root == null){
+            return 0;
+        }
+
+        int left = calcHifgt(root.left);
+        int right = calcHifgt(root.right);
+        return (Math.max(left,right) + 1);
+    }
+    //k层的节点数
+    static int count = 0;
+    public static int level(Node root,int k){
+        if(root == null){
+            return 0;
+        }
+        if(k == 1){
+            return 1;
+        }
+        int left = level(root.left,k - 1);
+        int right = level(root.right,k - 1);
+        int count = left + right;
+        return count;
+    }
+
+    public static Node search(Node root,char val){
+        if(root == null){
+            return null;
+        }
+        if(root.value == val){
+            return root;
+        }
+
+        Node left = search(root.left,val);
+        if(left != null){
+            return left;
+        }
+        Node right = search(root.right,val);
+        if(left != null){
+            return right;
+        }
+        return null;
+    }
+
+    public static boolean isMirror(Node p,Node q){
+        if(p == null && q == null){
+            return true;
+        }
+
+        if(q == null || p == null){
+            return false;
+        }
+
+        return p.value == q.value
+                && isMirror(q.left,p.right)
+                && isMirror(q.right,p.left);
+    }
+    public static void main(String[] args) {
+        System.out.println(search (bulidTree(),'D'));
+    }
+}
