@@ -1,0 +1,139 @@
+import java.util.*;
+
+/**
+ * 五种排序法：冒泡排序，选择排序，归并排序，插入排序，交换排序
+ * n*n的矩阵，以及运算
+ * 
+ * 数组：
+ * @author huiqiuli
+ *
+ */
+public class practice10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*//数组的声明
+		int a[];
+		int[] a1;*/
+		
+		//静态初始化
+//		int[] a = {1,2,3};
+		
+		
+		//动态初始化
+//		int[] b = new int[10];
+		
+//		System.out.println(Arrays.toString(a));
+		
+//		int i = 0;
+//		for(;i < a.length; i++){
+//			System.out.print(a[i] + "\t");
+//		}
+		
+//		System.out.println(Arrays.toString(b));
+//		boolean[] c = new boolean[10];
+//		System.out.println(Arrays.toString(c));
+//		byte[] d = new byte[10];
+//		System.out.println(Arrays.toString(d));
+//		String[] e = new String[10];
+//		System.out.println(Arrays.toString(e));
+//		int[] a = {5,4,3,2,7};
+//		a = Arrays.copyOfRange(a,0,3);
+		//数组排序	使用Arrays.parallelSort()方法;
+//		Arrays.parallelSort(a);
+//		a = Arrays.copyOf(a, 3);
+//		System.out.println(Arrays.toString(a));
+		
+		
+		//二维数组声明
+//		int[][] a;
+		//静态初始化
+//		int[][] a = {{1,5},{2,6},{3,7},{4,8}};
+//		for(int i = 0;i < 3;i ++){
+//			for(int j = 0;j < 2;j ++){
+//				System.out.println(a[i][j]);
+//			}
+//		}
+		
+		
+		//动态初始化
+//		int[][] b = new int[3][4];
+//		for(int i = 0;i < 3;i ++){
+//			for(int j = 0; j < 4;j ++){
+//				System.out.println(b[i][j]);
+//			}
+//		}
+		
+//		
+//		int[][] b = new int[3][4];
+//		Random r = new Random(20191010);
+//		for(int i = 0;i < 3;i ++){
+//			for(int j = 0;j < 4;j ++){
+//				int a = r.nextInt(50);
+//				b[i][j] = a;
+//				System.out.println(b[i][j]);
+//			}
+//		}
+		
+/*		int[][] a = {{1,5},{2,6},{3,7},{4,8}};
+		for(int i = 0 ;i < a.length;i ++){
+			for(int j = 0;j < a[i].length;j ++){
+				System.out.print(a[i][j] + "\t");
+			}
+			System.out.println();
+		}
+*/
+		
+
+//		System.out.println((Math.random()));
+		double[] a = CreatDate(10,20,10);
+		System.out.println((arrayToString(a)));
+	}
+
+	static double[] CreatDate(int n){
+		double[] a = new double[n];
+		for(int i = 0;i < a.length;i ++){
+			a[i] = Math.random();
+		}
+		return a;
+	}
+	
+	static String arrayToString(double[] a){
+		String str = "";
+		for(int i = 0;i < a.length;i ++){
+			str += a[i] + "\t"; 
+		}
+		return str;
+	}
+	
+	
+	static double[][] CreatDate(int n,int m){
+		double[][] a = new double[n][m];
+		for(int i = 0;i < a.length;i ++){
+			for(int j = 0;j < a[i].length;j ++){
+				a[i][j] = Math.random();
+			}
+		}
+		return a;
+	}
+	
+	static String arrayToString(double[][] a){
+		String str = "";
+		for(int i = 0;i < a.length;i ++){
+			for(int j = 0;j < a[i].length;j ++){
+				str +=  a[i][j] + "\t"; 
+			}
+		}
+		return str;
+	}
+	
+	static double[] CreatDate(int low,int high,int n){
+		double[] a = new double[n];
+		for(int i = 0;i < a.length;i ++){
+			a[i] = (int)(Math.random() * low + (high - low));
+		}
+		return a;
+	}
+	
+	
+}
