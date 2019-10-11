@@ -1,0 +1,11 @@
+public class StringBuilderDemo {
+    public static void main(String[] args) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("I");
+        stringBuilder.append("am");
+        stringBuilder.append("superman");
+        String s = "I" + "am" + "superman";
+        System.out.println(stringBuilder.toString());
+        System.out.println(stringBuilder);
+    }
+}
