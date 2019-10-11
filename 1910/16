@@ -1,0 +1,90 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tree {
+    //构建的树
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+
+    /*public static List<Character> perOrder(Node root){
+        List<Character> list = new ArrayList<>();
+        if(root == null){
+            return new ArrayList<>();
+        }
+        List<Character> left = new ArrayList();
+        left = perOrder(root.left);
+        List<Character> right = new ArrayList<>();
+        right = perOrder(root.right);
+        list.add(root.value);
+        list.addAll(left);
+        list.addAll(right);
+        return list;
+    }*/
+
+    /*static List<Character> list;
+    public static List<Character> perOrder(Node root){
+        if(root == null){
+            return new ArrayList<>();
+        }
+        list = new ArrayList<>();
+        perOrder1(root);
+        return list;
+    }
+
+    private static void perOrder1(Node root) {
+        if(root == null){
+            return;
+        }
+        list.add(root.value);
+        perOrder1(root.left);
+        perOrder1(root.right);
+    }*/
+
+    //根+左子树+右子树
+    /*static int high = 0;
+    public static int treeCount(Node root){
+        if(root == null){
+            return 0;
+        }
+        int left = treeCount(root.left);
+        int right = treeCount(root.right);
+        int high = Math.max(left,right) + 1;
+        return high;
+    }*/
+
+    public static int treeCount(Node root){
+        int count = 0;
+        if(root == null){
+            return 0;
+        }
+        count++;
+        int left = treeCount(root.left);
+        int right = treeCount(root.right);
+        count = Math.max(left,right) + 1;
+        return count;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(treeCount(buildTree()));
+    }
+}
