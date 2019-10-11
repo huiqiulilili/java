@@ -1,0 +1,175 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tree {
+    //构建的树
+    public static Node buildTree() {
+        Node a = new Node('A');
+        Node b = new Node('B');
+        Node c = new Node('C');
+        Node d = new Node('D');
+        Node e = new Node('E');
+        Node f = new Node('F');
+        Node g = new Node('G');
+        Node h = new Node('H');
+
+        a.left = b; a.right = c;
+        b.left = d; b.right = e;
+        c.left = f; c.right = g;
+        d.left = null; d.right = null;
+        e.left = null; e.right = h;
+        f.left = null; f.right = null;
+        g.left = null; g.right = null;
+        h.left = null; h.right = null;
+
+        return a;
+    }
+
+    /*public static List<Character> perOrder(Node root){
+        List<Character> list = new ArrayList<>();
+        if(root == null){
+            return new ArrayList<>();
+        }
+        List<Character> left = new ArrayList();
+        left = perOrder(root.left);
+        List<Character> right = new ArrayList<>();
+        right = perOrder(root.right);
+        list.add(root.value);
+        list.addAll(left);
+        list.addAll(right);
+        return list;
+    }*/
+
+    /*static List<Character> list;
+    public static List<Character> perOrder(Node root){
+        if(root == null){
+            return new ArrayList<>();
+        }
+        list = new ArrayList<>();
+        perOrder1(root);
+        return list;
+    }
+
+    private static void perOrder1(Node root) {
+        if(root == null){
+            return;
+        }
+        list.add(root.value);
+        perOrder1(root.left);
+        perOrder1(root.right);
+    }*/
+
+    //根+左子树+右子树
+    /*static int count = 0;
+    public static void treeCount(Node root) {
+        if(root == null){
+            return;
+        }
+        count++;
+        treeCount(root.left);
+        treeCount(root.right);
+    }*/
+
+    /*public static int treeCount(Node root){
+        int count = 0;
+        if(root == null){
+            return 0;
+        }
+        count++;
+        int left = treeCount(root.left);
+        int right = treeCount(root.right);
+        count = left + right + 1;
+        return count;
+    }*/
+
+
+    /*public static int treeLeafCount(Node root){
+        int leftCount = 0;
+        if(root == null){
+            return 0;
+        }
+        if(root.left == null && root.right == null){
+            return 1;
+        }
+        int left = treeLeafCount(root.left);
+        int right = treeLeafCount(root.right);
+        return left + right;
+    }*/
+
+    /*static int leafCount = 0;
+    public static void treeLeafCount(Node root){
+        if(root == null){
+            return;
+        }
+        if(root.left == null && root.right == null){
+            leafCount++;
+        }
+        treeLeafCount(root.left);
+        treeLeafCount(root.right);
+    }*/
+
+    /*public static int high(Node root){
+        if(root == null){
+            return 0;
+        }
+        int high = 0;
+        int left = high(root.left);
+        int right = high(root.right);
+        return ((Math.max(left,right) + 1));
+    }*/
+
+    /*public static int kCount(Node root,int k){
+        int count = 0;
+        if(root == null){
+            return 0;
+        }
+
+        if(k == 1){
+            return 1;
+        }
+
+        int left = kCount(root.left,k - 1);
+        int right = kCount(root.right,k - 1);
+        count = left + right;
+        return count;
+    }*/
+
+    /*public static Node search(Node root,char val){
+        if(root == null){
+            return null;
+        }
+        if(root.value == val){
+            return root;
+        }
+        Node left = search(root.left,val);
+        if(left != null){
+            return left;
+        }
+        Node right = search(root.right,val);
+        if(right != null){
+            return right;
+        }
+        return null;
+    }*/
+
+    public boolean isMirror(Node p,Node q){
+        if(p == null && q == null){
+            return true;
+        }
+
+        if (p == null || q == null) {
+            return false;
+        }
+
+        return p.value == q.value
+                && isMirror(q.left,p.left)
+                && isMirror(q.left,p.right);
+    }
+    public static void main(String[] args) throws Exception {
+//        treeCount(buildTree());
+//        System.out.println(count);
+//        treeLeafCount(buildTree());
+//        System.out.println(leafCount);
+//        System.out.println(search (buildTree(),'C'));
+    }
+}
