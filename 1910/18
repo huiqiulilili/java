@@ -1,0 +1,31 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Solution {
+    //前序 + 中序
+    public static Node bulidTree(List<Character> preOrder,List<Character> inOrder){
+        if(preOrder.size() == 0){
+            return null;
+        }
+
+        char rootValue = preOrder.get(0);
+        int leftCount = inOrder.indexOf(rootValue);
+        Node root = new Node(rootValue);
+        List<Character> leftPerOrder = preOrder.subList(1,1 + leftCount);
+        List<Character> leftInOrder = inOrder.subList(0,leftCount);
+        Node left = bulidTree(leftPerOrder,leftInOrder);
+        List<Character> rightPerOrder = preOrder.subList(1 + leftCount,preOrder.size());
+        List<Character> rightInorer = inOrder.subList(leftCount + 1,inOrder.size());
+        Node righ = bulidTree(rightPerOrder,rightInorer);
+        root.left = left;
+        root.right = righ;
+        return righ;
+    }
+
+    public static void main(String[] args) {
+        List<Character> perOrder = Arrays.asList('A', 'B', 'D', 'E', 'G', 'C', 'F', 'H');
+        List<Character> inOrder = Arrays.asList('D', 'B', 'G', 'E', 'A', 'C', 'F', 'H');
+        Node root = bulidTree(perOrder,inOrder);
+        System.out.println("成功");
+     }
+}
