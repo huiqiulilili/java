@@ -1,0 +1,57 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    /*public static void main(String[] args) throws Exception {
+        System.out.println("求a*x*x + b*x + c = 0的解");
+        System.out.println("请输入三个数字（a,b,c）");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入a的值");
+        double a = scanner.nextDouble();
+        System.out.println("a = " + a);
+        System.out.println("请输入b的值");
+        double b = scanner.nextDouble();
+        System.out.println("b = " + b);
+        System.out.println("请输入c的值");
+        double c = scanner.nextDouble();
+        System.out.println("c = " + c);
+        double m = b*b-4*a*c;
+        double x,x1,x2;
+        if(a == 0){
+            System.out.println("此方程为一元一次方程");
+            x = -((c) / b);
+            System.out.println("此方程的解 x = " + x);
+        }else{
+            if(m < 0){
+                throw new Exception("无解");
+            }else if( m== 0){
+                x = -b/(2*a);
+                System.out.println("此方程为一元二次方程解 x = " + x);
+            }else{
+                x1 = (-b + Math.sqrt(m)) / (2 * a);
+                x2 = (-b - Math.sqrt(m)) / (2 * a);
+                System.out.println("此方程为一元二次方程解x1 = " + x1 + "x2 = " + x2);
+            }
+        }
+    }*/
+
+
+    public static void main(String[] args) {
+        Random random = new Random(20191013);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入矩阵的行数");
+        int line = scanner.nextInt();
+        int[][] array = new int[line][line];
+        for(int i = 0;i < line; i++){
+            for(int j = 0;j < line;j ++){
+                array[i][j] = random.nextInt(100);
+            }
+        }
+        for(int i = 0;i < line; i++){
+            for(int j = 0;j < line;j ++){
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
