@@ -1,0 +1,152 @@
+/**
+ * 
+ */
+package charpter2;
+
+import java.util.*;
+
+public class Practice17 {
+	/*public static void main(String[] args) {
+        Random random = new Random(20191016);
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] array1 = new int[n];
+        int[] array2 = new int[n];
+        for(int i = 0;i < n;i ++){
+            array1[i] = random.nextInt(100);
+            array2[i] = random.nextInt(100);
+        }	        
+        //内积
+        int sum = 0;
+        for(int i = 0;i < n;i ++){
+            sum += array1[i] * array2[i];
+        }
+        System.out.println(sum);
+    }*/
+
+	public static int[][] arrayBring1(){
+		Scanner s = new Scanner(System.in);
+		Random r = new Random(20191017);
+		System.out.println("请输入数组的行数");
+		int n1 = s.nextInt();
+		s.nextLine();
+		System.out.println("请输入数组的列数");
+		int m1 = s.nextInt();
+		s.nextLine();
+		int[][] result = new int[n1][m1];
+		for(int i = 0;i < n1;i ++){
+			for(int j = 0;j < m1;j ++){
+				result[i][j] = r.nextInt(100);
+			}
+		}
+		return result;
+	}
+	public static int[][] arrayBring2(){
+		Scanner s = new Scanner(System.in);
+		Random r = new Random(20191017);
+		System.out.println("请输入数组的行数");
+		int n1 = s.nextInt();
+		s.nextLine();
+		System.out.println("请输入数组的列数");
+		int m1 = s.nextInt();
+		s.nextLine();
+		int[][] result = new int[n1][m1];
+		for(int i = 0;i < n1;i ++){
+			for(int j = 0;j < m1;j ++){
+				result[i][j] = r.nextInt(100);
+			}
+		}
+		return result;
+	}
+	public static int[][] arrayBring3(){
+		Scanner s = new Scanner(System.in);
+		Random r = new Random(20191017);
+		System.out.println("请输入数组的行数");
+		int n1 = s.nextInt();
+		s.nextLine();
+		System.out.println("请输入数组的列数");
+		int m1 = s.nextInt();
+		s.nextLine();
+		int[][] result = new int[n1][m1];
+		for(int i = 0;i < n1;i ++){
+			for(int j = 0;j < m1;j ++){
+				result[i][j] = r.nextInt(100);
+			}
+		}
+		return result;
+	}
+	//打印功能
+	public static void printArray(int[][] array){
+		for(int i = 0;i < array.length;i ++){
+			for(int j = 0;j < array[0].length;j ++){
+				System.out.print(array[i][j] + "\t");
+			}
+			System.out.println();
+		}
+	}
+	//加法功能
+	public static int[][] add(int[][] array1,int[][] array3){
+		int[][] result = new int[array3.length][array3[0].length];
+		for(int i = 0;i < array1.length;i ++){
+			for(int j = 0;j < array1[0].length;j ++){
+				result[i][j] = array1[i][j] + array3[i][j];
+			}
+		}
+		return result;
+	}
+	
+	//减法功能
+	public static int[][] sub(int[][] array1,int[][] array2){
+		int[][] result = new int[array2.length][array2[0].length];
+		for(int i = 0;i < array1.length;i ++){
+			for(int j = 0;j < array1[0].length;j ++){
+				result[i][j] = array1[i][j] - array2[i][j];
+			}
+		}
+		return result;
+	}
+	//乘法功能
+	public static int[][] mul(int[][] array1,int[][] array2) throws Exception{
+		if(array1.length != array2[0].length){
+			throw new Exception("第一个数组的列数和第二个数组的行数不相同");
+		}
+		int[][] result = new int[array1.length][array2[0].length];
+		for(int i = 0;i < array1.length;i ++){
+			for(int j = 0;j < array2[0].length;j ++){
+				for(int k = 0;k < array2.length;k ++){
+					result[i][j] += array1[i][k] * array2[k][j];
+				}
+			}
+		}
+		return result;
+	}
+		
+	
+	public static void main(String[] args) throws Exception {
+		
+		int[][] array1 = arrayBring1();
+		int[][] array2 = arrayBring2();
+		int[][] array3 = arrayBring3();
+		int[][] result = new int[array1.length][array2[0].length];
+		int[][] result1 = new int[array3.length][array3[0].length];
+		
+	
+		//实现加法功能
+		System.out.println("矩阵相加的结果为：");
+		result1 = add(array1,array2);
+		printArray(result1);
+		
+		
+		//减法
+		System.out.println("矩阵相减的结果为：");
+		result1 = sub(array1,array2);
+		printArray(result1);
+		
+		//实现矩阵相乘功能
+		System.out.println("矩阵相乘的结果为：");
+		result = mul(array1,array2);
+		printArray(result1);
+		
+	}
+
+}
