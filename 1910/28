@@ -1,0 +1,86 @@
+import java.util.Arrays;
+//打印数组
+//Arrays.toString();
+//复制
+//System.arraycopy();
+//Arrays.copyOf();
+//数组排序
+//Arrays.sort();
+public class Practice {
+        /*public static int[][] add(int[][] a,int[][]b){
+            int[][] c = new int[a.length][a[0].length];
+            for(int i = 0;i < a.length;i ++){
+                for(int j = 0;j < a[i].length;j ++){
+                    c[i][j] = a[i][j] + b[i][j];
+                }
+            }
+            return c;
+        }
+
+        public static void main(String[] args) {
+            int[][] a = {{1,2},{1,2}};
+            int[][] b = {{1,2},{1,2}};
+            int[][] c = add(a,b);
+            for(int i = 0;i < a.length;i ++){
+                for(int j = 0;j < a[i].length;j ++){
+                    System.out.print(c[i][j]+" ");
+                }
+                System.out.println();
+            }
+
+        }*/
+
+    public static int[] CreatData(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (int) (Math.random() * 10);
+        }
+        return a;
+    }
+
+    public static void Array01Copy(int[] a, int[] b) throws Exception {
+        if (b.length < a.length) {
+            throw new Exception("a的长度大于b的长度");
+        }
+        for (int i = 0; i < a.length; i++) {
+            b[i] = a[i];
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+         /*   int[] a = CreatData(10);
+            int[] b = new int[10];
+//            Array01Copy(a,b);
+//            for(int i = 0;i < b.length;i ++){
+//                System.out.print(b[i] + " ");
+//            }
+            System.out.println("原数组a:");
+            System.out.println(Array2str(a));
+            System.arraycopy(a,3,b,0,2);
+            System.out.println("拷贝后b的元素：");
+//            System.out.println(Arrays.toString(b));
+            System.out.println(Array2str(b));
+        }
+        public static String Array2str(int[] a){
+            String s = "";
+            for(int i  = 0;i < a.length;i ++){
+                s += a[i] + "\t";
+            }
+            return s;
+        }*/
+
+         /*int[] a = {1,2,3,4,5};
+         int[] b = new int[5];
+         b = Arrays.copyOf(a,5);
+        System.out.println(Arrays.toString(b));*/
+        /*String s = "hello";
+        System.out.println(s);*/
+
+
+       /* int[] a = {7,6,4,34,43,1};
+        Arrays.sort(a);
+        System.out.println(Arrays.toString(a));*/
+
+
+    }
+}
