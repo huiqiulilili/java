@@ -1,0 +1,39 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.*;
+
+public class Practice {
+    public static void main(String[] args) {
+        /*Set<String> set = new HashSet<>();
+        set.add("1");
+        set.add("2");
+        set.add("3");
+        System.out.println(set);*/
+
+        /*Set<String> set = new TreeSet<>();
+        set.add("1");
+        set.add("2");
+        set.add("3");
+        System.out.println(set);*/
+        /*Map<String,String> map = new HashMap<>();
+        map.put("1","1");
+        map.put("2","2");
+        map.put("3","3");
+        System.out.println(map);*/
+       /* Map<String,String> map = new TreeMap<>();
+        map.put("1","1");
+        map.put("2","2");
+        map.put("3","3");
+        System.out.println(map);*/
+
+       Set<Person> set = new HashSet<>();
+       Person p1 = new Person(18,"zhangsan ");
+       Person p2 = new Person(19,"李四");
+       Person p3 = new Person(20,"wangwu");
+       set.add(p1);
+       set.add(p2);
+       set.add(p3);
+        System.out.println(set);
+
+    }
+}
