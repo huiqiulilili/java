@@ -1,0 +1,80 @@
+/**
+ * 方法重写（override）方法重载（overload）
+ * 重写（override），也叫方法覆盖：方法名称相同，参数列表相同，返回值类型相同
+ * 		子类抛出的异常	小于或等于	父类抛出的异常
+ * 		返回值类型   小于 父类的
+ * 		子类访问权限   大于等于	   父类的访问权限
+ * 		父类与子类之间
+ * 重载（overload）：方法名称相同，参数列表不同，返回值类型不能小于原来的方法的返回值
+ * 		一个类中
+ * 
+ * ----------------------
+ * 一个文件中只能有一个被public修饰的类
+ * ----------------------
+ */
+package charpter2;
+class Complex{
+	double real;
+	double img;
+	Complex(){
+		real = 0;
+		img = 0;
+	}
+	Complex(double n1,double n2){
+		real = n1;
+		img = n2;
+	}
+	String ToString(){
+		return real + "+" + img + "i";
+	}
+	
+	Complex add(Complex b){
+		Complex c = new Complex();
+		c.real = this.real + b.real;
+		c.img = this.img + b.img;
+		return c;
+	}
+}
+
+class Student{
+	String name;
+	Long num;
+	boolean gender;
+	
+	int[] student(String math,String phy,String lan){
+		int[] array = new int[3]; 
+		array[0] = (int)(Math.random() * 100);
+		array[1] = (int)(Math.random() * 100);
+		array[2] = (int)(Math.random() * 100);
+		return array;
+	}
+	
+	void printScore(int[] a){
+		for(int i = 0; i < a.length;i ++){
+			System.out.print(a[i] + "\t");
+		}
+	} 
+	void printInfo(){
+		System.out.print("姓名 = " + name + "\t 性别 = " + gender);
+	}
+	
+}
+
+public class Practice22 {
+	public static void main(String[] args) {
+		/*Student t1 = new Student();
+		Student t2 = new Student();
+		Student t3 = new Student();
+		t1.name = "张三";
+		t1.gender = false;
+		t1.printInfo();*/
+		Complex a = new Complex(2,3);
+		Complex b = new Complex(4,5);
+		Complex result =  a.add(b);
+		System.out.println("复数a = " + a.ToString());
+
+		System.out.println("复数b = " + b.ToString());
+
+		System.out.println("复数result = " + result.ToString());
+	}
+}
