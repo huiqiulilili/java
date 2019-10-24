@@ -1,0 +1,100 @@
+/*面向对象语言的三大特性：
+ *1.封装   2. 继承	3.多态
+ *抽象：
+ */
+package charpter2;
+
+import java.util.Scanner;
+
+abstract class graphics{
+	abstract void area();
+}
+
+class Circle extends graphics{
+	void area(){
+		System.out.println("⚪形面积");
+	}
+}
+class Rect extends graphics{
+	void area(){
+		System.out.println("矩形面积");
+	}
+}
+
+class Stu extends Person{
+	String schoolName;
+	Long stuNum;
+	String major;
+	Stu(String name,int age,String schoolName,String major){
+		//默认调用父类的构造方法
+		this.name = name;
+		this.schoolName = schoolName;
+		this.age = age;
+		this.major = major;
+	}
+	Stu(){
+		//默认调用
+		System.out.println("子类的构造方法");
+	}
+	void study(){
+		System.out.println("我要努力学习");
+	}
+	void exam(){
+		System.out.println("我要考试了");
+	}
+	void rest(){
+		System.out.println("我要继续学习");
+	}
+
+}
+class Person{
+	String name;
+	int age;
+	String hight;
+	Person(){
+		System.out.println("父类默认的构造方法");
+	}
+	void eat(){
+		System.out.println("我要吃大餐");
+	}
+	void rest(){
+		System.out.println("我要休息");
+	}
+}
+
+public class Practice24 {
+
+	public static void main(String[] args) {
+		/*Stu a;
+	    a = new Stu();
+	    a.age = 19;
+	    a.name = "李四";
+	    a.schoolName = "SUST";
+	    a.eat();
+	    a.rest();
+	    a.study();
+	    a.exam();*/
+		/*Stu s = new Stu("王五",18,"SUST","EIE");
+		System.out.println("学生姓名：" + s.name);
+		s.rest();*/
+		
+		
+//		Person p = new Stu("王五",18,"SUST","EIE");
+//		p.rest();
+		
+		
+		Circle c = new Circle();
+		c.area();
+		Rect d = new Rect();
+		d.area();
+		
+		
+		
+		/*System.out.print("请输入你想测试的年份 ：");
+		Scanner s = new Scanner(System.in);
+		int year = s.nextInt();
+		if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+			System.out.println(year + "年是闰年");
+		}*/
+	}
+}
