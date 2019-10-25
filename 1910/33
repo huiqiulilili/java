@@ -1,0 +1,35 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Select {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        try {
+             connection = DBUtil.getConnection();
+            String sql = "select id,sn,name,qq_mail,classes_id from student where qq_mail like ? and classes_id = ?";
+            System.out.println(sql);
+             ps = connection.prepareStatement(sql);
+            ps.setString(1,"%qq.com");
+            ps.setInt(2,1);
+             resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                Integer sn = resultSet.getInt("sn");
+                String name = resultSet.getString("name");
+                String qqmail = resultSet.getString("qq_mail");
+                Integer classesId = resultSet.getInt("classes_id");
+                System.out.println(String.format("id=%s,sn=%s,qq_mail=%s,name=%s,classes=%s",id,sn,name,qqmail,classesId));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //finaly里面始终会执行，如果放在try中可能执行不到
+            DBUtil.close(connection,ps,resultSet);
+        }
+    }
+}
