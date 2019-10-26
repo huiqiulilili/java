@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class Practice02 {
+    /**
+     * 两个复数之和
+     */
+    public static void complexAdd(int real1,int imaginary1,int real2,int imaginary2){
+        int rael = real1 + real2;
+        int imaginary = imaginary1 + imaginary2;
+        System.out.println("两个复数之和为" + rael + "+" + imaginary + "j");
+    }
+
+    /*
+    两个复数之差
+     */
+    public static void complexSub(int real1,int imaginary1,int real2,int imaginary2){
+        int rael = real1 - real2;
+        int imaginary = imaginary1 - imaginary2;
+        System.out.println("两个复数之差为" + rael + "(" + imaginary + ")j");
+    }
+
+    /*
+    两个复数的乘积
+     */
+    public static void complexMul(int real1,int imaginary1,int real2,int imaginary2){
+        int rael = real1 * real2  + imaginary1 * imaginary2 * (-1);
+        int imaginary = real1 * imaginary2 + real2 * imaginary1 ;
+        System.out.println("两个复数之积为" + rael + "+(" + imaginary + ")j");
+    }
+
+    /*
+    两个复数的除1/2
+     */
+    public static void complexDivision(int real1,int imaginary1,int real2,int imaginary2){
+        double common = real2 * real2 + imaginary2 * imaginary2 * (-1.0);
+        double rael = (real1 * real2  + imaginary1 * imaginary2 * (-1) * (-1)) / common;
+        double imaginary = (real1 * imaginary1 + real2 * imaginary2 * (-1)) / common;
+        System.out.println("两个复数之积为" + rael + "+(" + imaginary + ")j");
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入第一个数的实部");
+        int real1 = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("请输入第一个数的虚部");
+        int imaginary1 = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("请输入第二个数的实部");
+        int real2 = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("请输入第一个数的虚部");
+        int imaginary2 = scanner.nextInt();
+        scanner.nextLine();
+        //两个复数之和
+        complexAdd(real1,imaginary1,real2,imaginary2);
+        //两个复数之差
+        complexSub(real1,imaginary1,real2,imaginary2);
+        //两个复数之积
+        complexMul(real1,imaginary1,real2,imaginary2);
+
+        //两个复数相除
+        complexDivision(real1,imaginary1,real2,imaginary2);
+    }
+}
