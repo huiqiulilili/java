@@ -1,0 +1,94 @@
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import javax.sql.DataSource;
+import java.sql.*;
+
+public class DBUtil {
+    private static final String URL = "jdbc:mysql://localhost:3306/test";
+    private static final String URSE_NAME = "root";
+    private static final String PASSWORD = "";
+
+    private static DataSource DATASOURCE = new MysqlDataSource();
+    static {
+        ((MysqlDataSource) DATASOURCE).setUrl(URL);
+        ((MysqlDataSource) DATASOURCE).setUser(URSE_NAME);
+        ((MysqlDataSource) DATASOURCE).setPassword(PASSWORD);
+    }
+    public static Connection getConnection(){
+        try {
+            return DATASOURCE.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("数据库连接失败");
+        }
+    }
+
+    public static void close(Connection connection,Statement statement,ResultSet resultSet){
+        try {
+            if(resultSet != null){
+                resultSet.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+            if(connection != null){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    /*public static void main(String[] args) {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            //1.加载驱动
+            Class.forName("com.mysql.jdbc.Driver");
+            //2.建立连接
+            connection = DriverManager.getConnection(URL,URSE_NAME,PASSWORD);
+            //3.获取执行对象Statement
+            statement = connection.createStatement();
+            String insert = "insert into student(sn,name,qq_mail,classes_id) values (234,'赵丽','zhaoli.@qq.com',1)";
+            System.out.println(insert);
+            int num =  statement.executeUpdate(insert);
+            if(num > 0){
+                System.out.println("插入成功");
+            }else{
+                throw new RuntimeException("插入失败");
+            }
+            *//*String sql = "select * from student";
+            //4.执行sql语句
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                Integer sn = resultSet.getInt("sn");
+                String name = resultSet.getString("name");
+                String qqMail = resultSet.getString("qq_mail");
+                Integer classes = resultSet.getInt("classes_id");
+                System.out.println(String.format("id=%s,sn=%s,name=%s,qqMail=%s,classes=%s",id,sn,name,qqMail,classes));
+            }*//*
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+
+                if(statement != null){
+                    statement.close();
+                }
+                if(connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+}
