@@ -1,0 +1,27 @@
+public class Practice03 extends X {
+    Y y = new Y();
+    Practice03(){
+        super();
+        System.out.println("Z");
+    }
+
+    public static void main(String[] args) {
+        new Practice03();
+    }
+}
+
+class X{
+    Y b = new Y();
+    X(){
+        System.out.println("X");
+    }
+}
+
+class Y{
+    Y(){
+        System.out.println("Y");
+    }
+}
+
+
+
