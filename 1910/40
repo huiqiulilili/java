@@ -1,0 +1,63 @@
+class Animal{
+    String name;
+    int age;
+
+    public Animal() {
+    }
+
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public static void play(){
+        System.out.println("我要玩");
+    }
+    public static void eat(){
+        System.out.println("我想吃饭啦");
+    }
+    public static void sleep(){
+        System.out.println("我想睡觉了");
+    }
+}
+
+class Cat extends Animal{
+
+    public Cat(String name, int age) {
+        super(name, age);
+    }
+
+    public static void eat(){
+        System.out.println("我要吃鱼");
+    }
+
+    public static void play(){
+        System.out.println("我要玩绒球");
+    }
+
+}
+
+class Dog extends Animal{
+    public Dog(String name, int age) {
+        super(name, age);
+    }
+
+    public static void eat(){
+        System.out.println("我要吃狗罐头");
+    }
+}
+public class Practice04 {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Dog",12);
+        dog.eat();
+        dog.sleep();
+        dog.play();
+
+        System.out.println("-------------------------");
+
+        Cat cat = new Cat("Cat",18);
+        cat.eat();
+        cat.sleep();
+        cat.play();
+    }
+}
