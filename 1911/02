@@ -1,0 +1,63 @@
+/*
+多态：
+   1.在多态中成员函数的特点：
+        在编译时期，看的是引用所在的类是否有此方法，有编译通过，没有，编译失败
+        在运行时期看的是new 的对象类中的方法
+     总结：成员函数在多态调用时，编译看左边，运行看右边。
+   2.在多态中成员变量的特点：
+        无论是编译期间，还是运行期间，都参考左边（引用所属类）
+   3.在多态中，静态成员函数和变量的特点：
+            无论编译还是运行，都参考左边
+
+ */
+class Fu{
+    int num = 5;
+    static int num1 = 15;
+    void method1(){
+        System.out.println("Fu method_1");
+    }
+
+    void method2(){
+        System.out.println("Fu method_2");
+    }
+    static void method4(){
+        System.out.println("Fu method_4");
+    }
+}
+class Zi extends Fu{
+    int num = 8;
+    static int num1 = 18;
+    void method1(){
+        System.out.println("Zi method_1");
+    }
+
+    void method3(){
+        System.out.println("Zi method_3");
+    }
+
+    static void method4(){
+        System.out.println("Zi method_4");
+    }
+}
+public class Practice06 {
+    public static void main(String[] args) {
+       /* Zi zi = new Zi();
+        zi.method1();
+        zi.method2();
+        zi.method3();*/
+//       Fu f = new Zi();
+//        System.out.println(f.num);
+//        Zi zi = new Zi();
+//        System.out.println(zi.num);
+
+//       f.method1();
+//       f.method2();
+       //f.method3();错误的 f 中没有method3()
+        Fu fu = new Zi();
+        System.out.println(fu.num1);
+//        fu.method4();
+        Zi zi = new Zi();
+//        zi.method4();
+        System.out.println(zi.num1);
+    }
+}
