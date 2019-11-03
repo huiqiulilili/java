@@ -1,0 +1,21 @@
+
+
+import java.util.Date;
+
+public class Practice08 {
+    public static void main(String[] args) {
+       /* Date d1 = new Date();
+        System.out.println("当前时间为：");
+        System.out.println(d1);
+        Date d2 = new Date(5000);
+        System.out.println(d2);*/
+       Date now = new Date();
+        System.out.println("当前时间为"+now);
+        System.out.println("当前时间为"+now.toString());
+        Date now1 = new Date();
+        System.out.println("当前时间为"+now.getTime());
+        Date zero = new Date(0);
+        System.out.println("当前时间为"+zero);
+        System.out.println("current" + System.currentTimeMillis());
+    }
+}
