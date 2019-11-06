@@ -1,0 +1,48 @@
+package lesson1;
+/**
+ * javaMain是java层面的主线程，和main方法中自行创建的线程是同级的
+ *
+ * 线程是由操作系统进行调度管理，所以是无序的
+ *
+ * start、run 启动线程
+ * start 方法启动   调用了库
+ * run方法启动一个main中的普通的方法
+ * run方法只是执行任务的部分代码，不会真是启动线程
+ */
+public class CreateThread {
+    public static void main(String[] args) {
+        //1.继承Tread
+        MyThread myThread = new MyThread();
+        myThread.run();
+        //实现runnable接口
+//        MyRunner runner = new MyRunner();
+//        Thread t2 = new Thread(runner);
+//        t2.start();
+//        while (true){
+//        }
+    }
+}
+
+//1.Thread
+class MyThread extends Thread{
+    @Override
+    public void run() {
+        System.out.println("in thread");
+        while (true){
+
+        }
+    }
+}
+//2.Runnable
+class MyRunner implements Runnable{
+
+    @Override
+    public void run() {
+        System.out.println("in runnable");
+        while (true){
+
+        }
+    }
+}
+
+
