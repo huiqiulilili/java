@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Practice11 {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
+        int result = 0;
+        Scanner scanner = new Scanner(System.in);
+        //请输入有多少行
+        int num = scanner.nextInt();
+        for(int i = 0;i < num;i ++) {
+            result = 0;
+            list.add(scanner.nextInt());
+            int r1 = list.get(i);
+            int r2 = r1;
+            while (true) {
+                r1 = r1 / 3;
+                r2 = r2 % 3;
+                result += r1;
+                if (r1 + r2 == 2) {
+                    result++;
+                    resultList.add(result);
+                    break;
+                } else if (r1 + r2 < 2) {
+                    resultList.add(result);
+                    break;
+                }
+                r1 = r1 + r2;
+                r2 = r1;
+            }
+        }
+        for(int i = 0; i < num;i ++ ){
+            System.out.println(resultList.get(i));
+        }
+    }
+}
