@@ -1,0 +1,33 @@
+import java.util.Stack;
+public class Practice14 {
+    public static boolean chkParenthesis(String A, int n) {
+        // write code here
+        char[] array = A.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != ')' && array[i] != '(') {
+                return false;
+            }
+            if (array[i] == '(') {
+                stack.push(array[i]);
+            }
+            if (array[i] == ')') {
+                char ch = stack.pop();
+                if (ch != '(') {
+                    return false;
+                }
+            }
+        }
+            if (!stack.isEmpty()) {
+                return false;
+            }
+            return true;
+        }
+
+
+    public static void main(String[] args) {
+
+        System.out.println(chkParenthesis("(((())))",8));
+    }
+}
+
