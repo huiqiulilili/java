@@ -1,0 +1,23 @@
+
+
+public class Practice25 {
+    public static void main(String[] args) {
+        B2 b2 = new B2();
+        b2.a = -200;
+        b2.print();
+
+
+
+    }
+
+}
+class A2{
+    protected int a = 100;
+}
+class B2 extends A2{
+    void print(){
+        a = a + 100;
+        System.out.println(a);
+    }
+}
+
