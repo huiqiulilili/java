@@ -1,0 +1,102 @@
+package lesson2;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.nio.Buffer;
+
+public class Practice1 {
+    public static void main(String[] args) throws InterruptedException {
+        /*Frame frame = new Frame();
+        Thread.sleep(3000);
+        frame.setTitle("学生管理系统");
+        frame.setSize(400,300);
+        frame.setLocation(200,300);
+        //设置课件窗口
+        frame.setVisible(true);*/
+
+        /*Frame f = new Frame("大神");
+        f.setBounds(400,300,200,300);
+        //调用方法setVisible可以显示窗口
+        f.setVisible(true);*/
+
+        /*Frame f = new Frame("窗口");
+        f.setVisible(true);
+        f.setBounds(400,500,300,400);
+        f.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+*/
+
+        /*UserDao u = new UserDaoImpl();
+        u.add();*/
+
+        /*UserDao u = new UserDaoImpl2();
+        u.add();*/
+
+        /*Frame f = new Frame("窗口");
+        f.setBounds(200,300,400,300);
+        f.setVisible(true);
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });*/
+
+
+        Frame f = new Frame("窗口");
+        f.setBounds(200,300,400,300);
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        
+        f.setLayout(new FlowLayout());
+        Button b = new Button("按钮");
+        //添加按钮
+        f.add(b);
+        //
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("你再点试试");
+            }
+        });
+        f.setVisible(true);
+    }
+}
