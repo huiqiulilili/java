@@ -1,0 +1,33 @@
+package lesson2;
+
+public class Practice3 extends Thread{
+    private boolean flag;
+    public Practice3(boolean flag){
+        this.flag = flag;
+    }
+
+    @Override
+    public void run() {
+        if(flag){
+            synchronized (MyThread.objA){
+                System.out.println("if objA");
+                synchronized (MyThread.objB){
+                    System.out.println("if objB");
+                }
+            }
+        }else{
+            synchronized (MyThread.objB){
+                System.out.println("if objB");
+                synchronized (MyThread.objA){
+                    System.out.println("if objA");
+                }
+            }
+        }
+    }
+}
+
+class MyThread {
+    public static final Object objA = new Object();
+    public static final Object objB = new Object();
+
+}
