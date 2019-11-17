@@ -1,0 +1,68 @@
+package lesson4;
+
+public class SyschronizedTest {
+
+    /*public synchronized static void method1(){//获取静态锁，锁定类对象
+        System.out.println(Thread.currentThread().getName());
+        while (true){
+
+        }
+    }
+
+    public synchronized static void method2(){
+        System.out.println(Thread.currentThread().getName());
+        while (true){
+
+        }
+    }*/
+
+    /*public static void main(String[] args) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                method1();
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                method1();
+            }
+        }).start();
+    }*/
+
+    public static void main(String[] args) {
+        MyObject myObject = new MyObject();
+        MyObject myObject2 = new MyObject();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                myObject.method1();
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+               myObject2.method2();
+            }
+        }).start();
+    }
+}
+
+class MyObject{
+    public synchronized  void method1(){
+        System.out.println(Thread.currentThread().getName());
+        while (true){
+
+        }
+    }
+
+    public synchronized  void method2(){
+        System.out.println(Thread.currentThread().getName());
+        while (true){
+
+        }
+    }
+}
