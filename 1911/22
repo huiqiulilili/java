@@ -1,0 +1,63 @@
+package lesson4;
+/**
+ * 多线程：1.安全 2.效率
+ * volatile 读   不能保证原子性 从主内存读取数据
+ * syschronized 写
+ *
+ *volatile关键字的作用：保证共享变量有序性和可见性
+ * 对于有序性来说，具体指  禁止指令重排序。（CPU和JVM都有重排序）
+ * 用volatile经常用来保证共享数据的 读取操作
+ * 对于写操作，如果是指令原子性的，可以使用volatile
+ *
+ *
+ * 单例：
+ */
+
+public class Sington {
+
+    /*//饿汉式   :类加载时，对象及存在了
+    private static final Sington SINGTON = new Sington();
+    private Sington(){
+        //nothing to do
+    }
+    public static Sington getInstance(){
+        return SINGTON;
+    }*/
+
+    //懒汉式：
+    /*private volatile static  Sington SINGTON = null;
+    public static Sington getInstance(){
+        if (SINGTON == null) {//多个线程可以同时进入这行代码，进行判断，都为null
+            SINGTON = new Sington();
+        }
+        return SINGTON;
+    }*/
+
+    private volatile static  Sington SINGTON = null;
+    public static Sington getInstance4(){
+        if (SINGTON == null) {//多个线程可以同时进入这行代码，进行判断，都为null
+            synchronized (Sington.class) {
+                //分三步执行：
+                //1.分配内存空间
+                //2.执行初始化
+                //3.把对象付给引用
+                //可能排序为132执行
+                if(SINGTON == null) {
+                    SINGTON = new Sington();
+                }
+            }
+        }
+        return SINGTON;
+    }
+
+    public static void main(String[] args) {
+        for(int i = 0;i < 10;i ++){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Sington.getInstance4();
+                }
+            }).start();
+        }
+    }
+}
