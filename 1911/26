@@ -1,0 +1,34 @@
+package lesson2;
+
+public class Practice13 {
+    public static void main(String[] args) throws InterruptedException {
+       /* Thread thread =  new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        thread.interrupt();*/
+
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0;i < 10;i ++) {
+                    boolean b = Thread.currentThread().interrupted();//改回去了
+                   // boolean b = Thread.currentThread().isInterrupted();
+                    System.out.println(b);
+                }
+            }
+        });
+        thread2.start();//标志位false
+//        Thread.sleep(1000);
+        thread2.interrupt();//修改标志位为true
+    }
+
+
+}
