@@ -1,0 +1,23 @@
+package lesson2;
+
+public class Practice12 {
+
+    private  static boolean My;
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!My) {
+                    System.out.println("Hello");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+//        Thread.sleep(5000);
+        My = true;
+    }
+}
