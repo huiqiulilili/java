@@ -1,0 +1,23 @@
+package lesson2;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Practice10 {
+    public static void main(String[] args) throws InterruptedException {
+       /* ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.submit(new MyRunnable());
+        pool.submit(new MyRunnable());
+        pool.shutdown();*/
+
+       Thread thread = new Thread(new Runnable() {
+           @Override
+           public void run() {
+               System.out.println("1");
+           }
+       });
+       thread.start();
+       thread.join();//线程阻塞，让thread 线程加入Java Main线程中，thread执行完了，就返回回来到就绪状态
+        System.out.println("2");
+    }
+}
