@@ -1,0 +1,29 @@
+package lesson5;
+
+/**
+ * 基本数据类型都放在常量池
+ * Integer(-128-----127) 在常量池           超范围就在对堆面了
+ * int 都在常量池
+ *
+ */
+public class StringMemory {
+    public static void main(String[] args) {
+        /*String s1 = "hello";
+        String s2 = "hel";
+        String s3 = "lo";
+        String s4 = s2+s3;
+        System.out.println(s1 == s4.intern());
+        System.out.println(s1 == s4);*/
+        /*int i = 128;
+        int j = 128;
+        System.out.println(i == j);
+        Integer k = 128;
+        System.out.println(i == k);
+        Integer m = 128;
+        System.out.println(k == m);
+        */
+        Integer a = 10;
+        Integer b = 10;
+        System.out.println(a==b);//true
+    }
+}
