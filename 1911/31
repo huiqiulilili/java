@@ -1,0 +1,70 @@
+package lesson5;
+
+/**
+ *              等待队列、                           同步队列
+ * 阻塞方法：4个
+ *          thread.join()                           syschronized(Object)
+ *          Thread.sleep()                          所有在同步队列中，由某个对象锁定的线程中，在满足一定的条件（指的是获取到锁的线程退出同步区域，或者是调用wait（）释放锁），所有满足条件的线程都会出队列来竞争这把锁
+ *          object.wait()                           syschronized使用，在某些情况下，比如非常多的线程，执行时间非常短的代码，这种时候会不停的让很多线程进出队列，及竞争锁，这种情况对资源的消耗是比较大的
+ *          以上的阻塞方法对系统及CPU资源的消耗             以后做多线程优化的一种前提条件
+ *          可以说是忽略不计
+ */
+public class Notify {
+    private static volatile int COUNT;
+    public static void main(String[] args) {
+        for(int i = 0;i < 3;i ++) {//生产者
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        for(int j = 0;j < 3;j ++){
+                            synchronized (Notify.class){
+                                while (COUNT+3 > 100){
+                                    Notify.class.wait();
+                                }
+                                produce();
+                                System.out.println(Thread.currentThread().getName() + "生产，当前库存总量为" + COUNT);
+                                Thread.sleep(500);
+                                Notify.class.notifyAll();
+                            }
+                            Thread.sleep(500);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
+
+        for(int i = 0;i < 10;i ++) {//消费者
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        while (true){
+                            synchronized (Notify.class){
+                                while (COUNT == 0){
+                                    Notify.class.wait();
+                                }
+                                consume();
+                                System.out.println(Thread.currentThread().getName() + "消费，当前库存总量为" + COUNT);
+                                Thread.sleep(500);
+                                Notify.class.notifyAll();
+                            }
+                            Thread.sleep(500);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
+    }
+    public synchronized static void produce(){
+        COUNT += 3;
+    }
+
+    public synchronized static void consume(){
+        COUNT --;
+    }
+}
