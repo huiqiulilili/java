@@ -1,0 +1,55 @@
+package lesson3;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * 验证尼科彻斯定理，即：任何一个整数m的立方都可以写成m个连续奇数之和。
+ * 当所给数m为奇数时，那么这m个连续的奇数中的第一个数为：mm-2(m/2)
+ * 当所给数m为偶数时，那么这m个连续的奇数中的第一个数为：mm-2(m/2)+1
+ */
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        while (s.hasNext()) {
+            int num = s.nextInt();
+            String result = fuction(num);
+            System.out.println(result);
+        }
+    }
+
+    private static String fuction(int num) {
+        List<Integer> list = new ArrayList<>();
+        String result = "";
+        int start = 0;
+        int end = 0;
+        if(num % 2 == 0){//偶数
+            for(int i = 0;i < num;i ++) {
+                if(start == 0) {
+                    start = num * num - 2 * (num / 2) + 1;
+                }
+                list.add(start);
+                start += 2;
+            }
+        }
+        if(num % 2 == 1){//奇数
+            for(int i = 0;i < num;i ++) {
+                if(start == 0) {
+                    start = num * num - 2 * (num / 2);
+                }
+                list.add(start);
+                start += 2;
+            }
+        }
+        System.out.println(list);
+        for(int i =0;i < list.size();i ++){
+            if(i != list.size() - 1) {
+                result += list.get(i) + "+";
+            }else{
+                result += list.get(i);
+            }
+        }
+        return result;
+    }
+}
