@@ -1,0 +1,21 @@
+package lesson6;
+
+/**
+ * switch关键字：
+ * 如果没有break，就会一直接下执行，就是default也会接下去执行,break后面的代码也会执行
+ * 如果有break修饰，就会终止
+ */
+public class Switch {
+    public static void main(String[] args) {
+        int i = 0;
+        switch (i){
+            case 0 : i++;
+            case 1 : i++;
+            case 2 : i++;
+            case 3 : i++;
+            default:
+                System.out.println("哈哈");break;
+        }
+        System.out.println(i);
+    }
+}
