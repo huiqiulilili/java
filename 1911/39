@@ -1,0 +1,33 @@
+package lesson3;
+
+import java.util.Scanner;
+
+public class Delete {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()){
+            String a = scanner.nextLine();
+            String b = scanner.nextLine();
+            delete(a,b);
+        }
+
+    }
+
+    /**
+     * 利用到了String.contains()方法
+     *          String.valueOf()方法
+     *
+     *
+     * @param a
+     * @param b
+     */
+    private static void delete(String a, String b) {
+
+        char[] array = a.toCharArray();
+        for(int i = 0;i < array.length;i ++){
+            if(!b.contains(String.valueOf(array[i]))){
+                System.out.print(array[i]);
+            }
+        }
+    }
+}
