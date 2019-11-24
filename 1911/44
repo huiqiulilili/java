@@ -1,0 +1,29 @@
+package lesson3;
+
+import java.util.Scanner;
+
+public class Score {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        while(s.hasNext()){
+            int n = s.nextInt();
+            s.nextLine();
+            String score = s.nextLine();
+            int ding = s.nextInt();
+            int count = function(n,score,ding);
+            System.out.println(count);
+        }
+    }
+
+    private static int function(int n, String score, int ding) {
+        int result = 0;
+        String[] s = score.split(" ");
+        for(int i = 0;i < n;i ++){
+            int studentScore = Integer.parseInt(s[i]);
+            if(ding == studentScore){
+                result++;
+            }
+        }
+        return result;
+    }
+}
