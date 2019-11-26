@@ -1,0 +1,80 @@
+package lesson3;
+
+import javafx.scene.transform.MatrixType;
+
+import java.util.regex.Matcher;
+
+public class 矩阵 {
+    //矩阵相加
+    public static void add(int[][] array1,int[][] array2) throws Exception {
+        if(array1.length == array2.length && array1[0].length == array2[0].length){
+            for(int i = 0; i< array1.length;i ++){
+                for(int j = 0;j < array1[0].length;j++){
+                    System.out.print(array1[i][j] + array2[i][j]+"\t");
+                }
+                System.out.println();
+            }
+        }else{
+            throw new Exception("无法计算");
+        }
+    }
+
+    //矩阵相减
+    public static void sub(int[][] array1,int[][] array2) throws Exception {
+        if(array1.length == array2.length && array1[0].length == array2[0].length){
+            for(int i = 0; i< array1.length;i ++){
+                for(int j = 0;j < array1[0].length;j++){
+                    System.out.print(array1[i][j] - array2[i][j]+"\t");
+                }
+                System.out.println();
+            }
+        }else{
+            throw new Exception("无法计算");
+        }
+    }
+    //矩阵相乘
+    public static void mul(int[][] array1,int[][] array2) throws Exception {
+        int a = 0;
+        if (array1.length == array2[0].length && array2.length == array1[0].length) {
+            for (int i = 0; i < array1[0].length; i++) {
+                for (int k = 0; k < array2.length; k++) {
+                    for (int j = 0; j < array2.length; j++) {
+                         a += array1[i][j] * array2[j][k];
+                    }
+                    System.out.print(a+"\t");
+                }
+                System.out.println();
+            }
+        }else{
+            throw new Exception("无法计算");
+        }
+    }
+    //矩阵相除
+    public static void div(int[][] array1,int[][] array2) throws Exception {
+        int[][] a = reverse(array2);
+        mul(array1,a);
+    }
+
+    private static int[][] reverse(int[][] array2) {
+        int[][] result = new int[array2.length][array2[0].length];
+        for(int i = 0; i< array2.length;i++){
+            for(int j = 0;j < array2[0].length;j ++){
+                result[j][i] = array2[i][j];
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) throws Exception {
+        int[][] array1 = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][] array2 = {{11,22,33},{44,55,66},{77,88,99}};
+        System.out.println("两个矩阵相加为：");
+        add(array1,array2);
+        System.out.println("两个矩阵相减为：");
+        sub(array1,array2);
+        System.out.println("两个矩阵相乘为：");
+        mul(array1,array2);
+        System.out.println("两个矩阵相除为：");
+        mul(array1,array2);
+    }
+}
