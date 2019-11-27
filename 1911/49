@@ -1,0 +1,28 @@
+package lesson3;
+
+public class Nine {
+    //第一种
+    public static void nine1(){
+        for(int i = 1;i < 10;i ++){
+            for(int j = 1;j < 10;j ++){
+                System.out.print(j + "*" + i + "=" + i * j + "\t");
+            }
+            System.out.println();
+        }
+    }
+    //第二种
+    public static void nine2(){
+        int n = 1;
+        while (n <= 9){
+            for(int i = 1;i <= 9;i ++){
+                System.out.print(i + "*" + n + "=" + n * i + "\t");
+            }
+            System.out.println();
+            n++;
+        }
+    }
+    public static void main(String[] args) {
+        nine1();//第一种
+        //nine2();//第二种
+    }
+}
