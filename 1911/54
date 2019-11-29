@@ -1,0 +1,31 @@
+package lesson4;
+
+import java.util.*;
+
+public class Gift {
+    public static int getValue(int[] gifts, int n) {
+        // write code here
+        int number = 0;
+        int result = 0;
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i = 0;i < n;i ++){
+            int mo = map.getOrDefault(gifts[i],0);
+            map.put(gifts[i],mo + 1);
+        }
+
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            int size = entry.getValue();
+            if(size > number && size > n/2){
+                number = size;
+                result = entry.getKey();
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1,2,3,3,3};
+        int n = 5;
+        System.out.println(getValue(a,n));
+    }
+}
