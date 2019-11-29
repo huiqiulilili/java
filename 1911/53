@@ -1,0 +1,50 @@
+package lesson4;
+
+import java.util.*;
+
+class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+public class Partition {
+    public ListNode partition(ListNode pHead, int x) {
+        // write code here
+        ListNode p1 = pHead;//小
+        ListNode p1f = p1;
+        ListNode p2 = pHead;//大
+        ListNode p2f = p2;
+        if(pHead == null){
+            return null;
+        }
+        for(ListNode cur = pHead;cur != null;cur = cur.next){
+            if(cur.val < x){
+                if(p1 == null){
+                    p1 = cur;
+                }else{
+                    p1f.next = cur;
+                }
+                p1f =  cur;
+            }else{
+                if(p2 == null){
+                    p2 = cur;
+                }else{
+                    p2f.next = cur;
+                }
+                p2f =  cur;
+            }
+        }
+        if(p1 == null){
+            return p2;
+        }else{
+            p1f.next = p2;
+            if(p2f != null){
+                p2f.next = null;
+            }
+        }
+        return p1;
+    }
+}
