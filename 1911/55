@@ -1,0 +1,42 @@
+package lesson4;
+
+import java.util.Scanner;
+
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()){
+            String str = scanner.nextLine();
+            String result = function(str);
+            System.out.println(result);
+        }
+    }
+
+    private static String function(String str) {
+        char[] array = str.toCharArray();
+        for(int i = 0;i < str.length();i ++){
+            if(array[i] <= 'Z' && (array[i] >= 'A')){
+                if(array[i] == 'A'){
+                    array[i] = 'V';
+                }else if(array[i] == 'B'){
+                    array[i] = 'W';
+                }else if(array[i] == 'C'){
+                    array[i] = 'X';
+                }else if(array[i] == 'D'){
+                    array[i] = 'Y';
+                }else if(array[i] == 'E'){
+                    array[i] = 'Z';
+                }else{
+                    array[i] = (char)(array[i] - 5);
+                }
+            }else{
+                continue;
+            }
+        }
+        String result = "";
+        for(int i = 0;i < array.length;i ++){
+            result += array[i];
+        }
+        return result;
+    }
+}
