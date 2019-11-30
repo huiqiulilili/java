@@ -1,0 +1,9 @@
+public Class{
+  public static void main(){
+    int i = 5;
+    int j = 10;
+    System.out.println("两数之和为："i+j);
+  
+  }
+
+}
