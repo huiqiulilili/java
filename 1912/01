@@ -1,0 +1,63 @@
+package lesson4;
+
+import java.util.Random;
+
+public class MyBlockingQueue<E> {
+    private Object[] elements;
+
+    private int addIndex;
+
+    private int takeIndex;
+
+    private int size;
+
+    MyBlockingQueue(int capacity){
+        elements = new Object[capacity];
+    }
+
+    /**
+     * 删除元素
+     */
+    public synchronized E poll() throws InterruptedException {
+        E element = (E)elements[takeIndex];
+        while (size == 0){
+            wait();
+        }
+        takeIndex = (takeIndex + 1)%elements.length;
+        size--;
+        notifyAll();
+        return element;
+    }
+
+    /**
+     * 添加元素
+     * @param element
+     */
+    public synchronized void offer(E element) throws InterruptedException {
+        while (size == elements.length){
+            wait();
+        }
+        elements[addIndex] = element;
+        addIndex = (addIndex+1)%elements.length;
+        size++;
+        notifyAll();
+    }
+
+    public static void main(String[] args) {
+        MyBlockingQueue queue = new MyBlockingQueue(10);
+        for (int i = 0;i < 10;i ++){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for(int j = 0;j < 10000;j++){
+                        try {
+                            queue.offer(new Random().nextInt(100)+1);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
+        }
+    }
+}
