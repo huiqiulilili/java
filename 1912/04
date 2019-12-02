@@ -1,0 +1,96 @@
+package lesson4;
+
+import java.util.concurrent.PriorityBlockingQueue;
+
+public class TimerTest2 {
+    public static void main(String[] args) {
+        MyTimer2 timer2 = new MyTimer2();
+        timer2.schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("我来也");
+            }
+        },0,1000);
+        timer2.schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("我去");
+            }
+        },0,1000);
+    }
+
+}
+
+class MyTimer2 {
+    private static final PriorityBlockingQueue<Timer2Task> QUEUE = new PriorityBlockingQueue<>();
+    public void schedule(Runnable task,long delay,long period){
+        QUEUE.offer(new Timer2Task(task,delay,period));
+        synchronized (QUEUE){
+            QUEUE.notify();
+        }
+    }
+
+
+    public MyTimer2(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (true){
+                        Timer2Task task =   QUEUE.take();
+                        long current = System.currentTimeMillis();
+                        if(task.getNext() > current){
+                            QUEUE.offer(task);
+                            synchronized (QUEUE) {
+                                QUEUE.wait(task.getNext() - current);
+                            }
+                        }else{
+                            task.getTask().run();
+                            if(task.getPeriod() > 0){
+                                task.setNext(task.getNext() + task.getPeriod());
+                                QUEUE.offer(task);
+                            }else {
+                                break;
+                            }
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+}
+
+class Timer2Task implements Comparable<Timer2Task>{
+    private Runnable task;
+    private long next;
+    private long period;
+
+    public Timer2Task(Runnable task, long delay, long period) {
+        this.task = task;
+        this.next = System.currentTimeMillis() + delay;
+        this.period = period;
+    }
+
+    @Override
+    public int compareTo(Timer2Task o) {
+        return Long.compare(next,o.next);
+    }
+
+    public void setNext(long next) {
+        this.next = next;
+    }
+
+    public Runnable getTask() {
+        return task;
+    }
+
+    public long getNext() {
+        return next;
+    }
+
+    public long getPeriod() {
+        return period;
+    }
+}
