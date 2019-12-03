@@ -1,0 +1,58 @@
+package lesson4;
+
+
+import java.util.Arrays;
+
+public class SortDemo {
+    /**
+     * 快速排序
+     * 最坏情况：O(N ^2)
+     * 大部分情况下都比较高O(logN)
+     * @param array
+     */
+    public static void quickSort(int[] array){
+        //[0,array.length - 1]
+        quickSortHelper(array,0,array.length - 1);
+    }
+
+    private static void quickSortHelper(int[] array, int left, int right) {
+        if(left >= right){
+            return;
+        }
+        //选取基准值下标，大于基准值放到一边，小于基准值放到一边，
+        int index = partition(array,left,right);
+        quickSortHelper(array,0,index - 1);
+        quickSortHelper(array,index + 1,right);
+    }
+
+    //选取右边最后一个数为基准值
+    private static int partition(int[] array, int left, int right) {
+        int baseIndex = right;
+        int baseValue = array[baseIndex];
+        while (left < right){
+            //循环结束后，left指向的位置一定比基准值大
+            while(left < right && array[left] <= baseValue){
+                left++;
+            }
+            while (left < right && array[right] >= baseValue){
+                right --;
+            }
+            //交换left right 位置的元素
+            swap(array,left,right);
+        }
+        swap(array,left,baseIndex);
+        return left;
+    }
+
+    private static void swap(int[] array, int left, int right) {
+        int t = array[left];
+        array[left] = array[right];
+        array[right] = t;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {4,3,2,1};
+        quickSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+}
