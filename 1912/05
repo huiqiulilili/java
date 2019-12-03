@@ -1,0 +1,40 @@
+package lesson4;
+
+import java.util.Arrays;
+
+/*
+ * 插入排序的核心操作：拿到当前元素，把当前元素插到前方有序顺序表的合适位置
+
+ * bound = 0
+ * 时间复杂度：O(N^2)
+ * 空间复杂度：1
+ * 插入排序两个重要特点：
+ * 1.如果当前序列很短那么插入排序很高效
+ * 2.如果当前这个序列基本有序，那么插入排序效率也很高
+ * [0,bound)        已排序区间
+ * [bound ,size)    待排序区间
+ */
+public class Sort {
+    public static void insertSort(int[] array){
+        for(int bound  = 1;bound < array.length;bound ++){
+            int tmp = array[bound];
+            int cur = bound - 1;
+            //注意边界条件为cur >= 0;
+            for(;cur >= 0;cur --){
+                //保证的稳定性
+                if(array[cur] > tmp){
+                    array[cur + 1] = array[cur];
+                }else{
+                    break;
+                }
+            }
+            array[cur + 1] = tmp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {7,6,5,3,2};
+        insertSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+}
