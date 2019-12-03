@@ -1,0 +1,49 @@
+package lesson4;
+
+import java.util.Arrays;
+
+public class SortDemo2 {
+    public static void quickSort(int[] array){
+        quickSortHelper(array,0,array.length - 1);
+    }
+
+    private static void quickSortHelper(int[] array, int left, int right) {
+        if(left >= right){
+            return;
+        }
+        int index = partion(array,left,right);
+        quickSortHelper(array,0,index - 1);
+        quickSortHelper(array,index + 1,right);
+    }
+
+    //选取左边第一个数为基准值
+    private static int partion(int[] array, int left, int right) {
+        int indexJi = left;
+        int p = array[left];
+
+        while(left < right){
+            while (left < right && array[right] >= p){
+                right--;
+            }
+            while(left < right && array[left] <= p){
+                left++;
+            }
+
+            swap(array,left,right);
+        }
+        swap(array,left,indexJi);
+        return left;
+    }
+
+    private static void swap(int[] array, int left, int right) {
+        int y = array[left];
+        array[left]  = array[right];
+        array[right] = y;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {6,5,4,3,2,1};
+        quickSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+}
