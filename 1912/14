@@ -1,0 +1,100 @@
+package lesson8;
+
+import org.junit.Test;
+
+import java.io.*;
+
+public class FileInputString {
+    @Test
+    public void test1(){
+        File f = new File("src/lesson8/test1.txt");
+        System.out.println(f.exists());
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            //字节流读取文件
+            byte[] bytes = new byte[1024];
+            int len = 0;
+            while ((len = fis.read(bytes)) != -1){
+                String s = new String(bytes, 0, len);
+                System.out.println(s);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test2(){
+        File f = new File("src/lesson8/test1.txt");
+        System.out.println(f.exists());
+        try {
+            FileReader fr  = new FileReader(f);
+            char[] chars = new char[1024];
+            int len = 0;
+            while ((len = fr.read(chars)) != -1){
+                String s = new String(chars, 0, len);
+                System.out.println(s);
+            }
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test3(){
+        File f = new File("src/lesson8/test1.txt");
+        System.out.println(f.exists());
+        try {
+            FileInputStream fis= new FileInputStream(f);
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String s;
+            while ((s = br.readLine()) != null){
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test4(){
+        File f = new File("src/lesson8/test1.txt");
+        System.out.println(f.exists());
+        try {
+            FileInputStream fis= new FileInputStream(f);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            byte[] bytes = new byte[1024];
+            int len = 0;
+            while ((len = bis.read(bytes)) != -1){
+                String s = new String(bytes, 0, len);
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test5(){
+        File f = new File("src/lesson8/test1.txt");
+        System.out.println(f.exists());
+        try {
+            FileInputStream fis= new FileInputStream(f);
+            FileWriter fw = new FileWriter(f);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("1 = 123");
+            bw.write("唐诗");
+            bw.newLine();//代表换行
+            bw.write("宋词");
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
