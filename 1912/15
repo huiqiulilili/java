@@ -1,0 +1,93 @@
+package exam;
+
+
+import java.util.Arrays;
+
+public class ArrayDemo {
+    //设计函数实现有序数值型一维数组在指定位置插入数据元素的功能。
+    private static int[] sort(int[] array, int num) {
+        //计算出数组长度
+        int length = array.length;
+        array = Arrays.copyOf(array, length + 1);
+        int i = length - 1;
+        for (; i >= 0; i--) {
+            if (array[i] > num) {
+                array[i + 1] = array[i];
+            } else {
+                break;
+            }
+        }
+        array[i + 1] = num;
+        return array;
+    }
+
+    private static int[] sort2(int[] array, int num) {
+        //计算出数组长度
+        int length = array.length;
+        int[] result = new int[length + 1];
+        int i = 0;
+        for (; i < result.length; i++) {
+            if (array[i] < num) {
+                result[i] = array[i];
+            } else {
+                result[i] = num;
+                for (int j = i + 1; j <= array.length; j++) {
+                    result[j] = array[j - 1];
+                }
+                break;
+            }
+
+        }
+        return result;
+    }
+
+
+    //17.设计函数实现有序数值型一维数组删除指定位置数据元素的功能
+    private static int[] delect(int[] array,int index){
+        for(int i = index;i < array.length - 1;i ++){
+            array[i] = array[i+1];
+        }
+        array = Arrays.copyOf(array,array.length - 1);
+        return array;
+    }
+
+    //18.设计函数实现2个数组的合并功能。
+    public static int[] 合并数组(int[] a,int[] b){
+        int[] result = new int[a.length + b.length];
+        System.arraycopy(a,0,result,0,a.length);
+        System.arraycopy(b,0,result,a.length,b.length);
+        return result;
+    }
+    //设计函数实现两个有序数值型数组的合并功能，要求合并之后继续保持有序
+    public static int[] 合并有序数组(int[] a,int[] b){
+        int[] result = new int[a.length+b.length];
+        System.arraycopy(a,0,result,0,a.length);
+        System.arraycopy(b,0,result,a.length,b.length);
+        for(int i = 0;i < result.length;i ++){
+            for(int j = i + 1; j < result.length;j ++){
+                if(result[i] > result[j]){
+                    swap(result,i,j);
+                }
+            }
+        }
+        return result;
+    }
+
+    private static void swap(int[] result, int i, int j) {
+        int t = result[i];
+        result[i] = result[j];
+        result[j] = t;
+    }
+
+    public static void main(String[] args) {
+        int[] aa = {1,5,7};
+        int[] b = {2,9,3};
+        System.out.println(Arrays.toString(合并有序数组(aa,b)));
+//        int[] array = {1,2,4,5,6};
+//        int a = 3;
+//        System.out.println(Arrays.toString(sort2(array,a)));
+////        System.out.println(Arrays.toString(delect(array,2)));
+
+
+    }
+}
