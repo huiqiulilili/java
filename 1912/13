@@ -1,0 +1,104 @@
+package lesson8;
+
+import org.junit.Test;
+
+import java.io.*;
+
+public class CopyTest {
+    @Test
+    public void test1(){
+        File f = new File("C:\\Users\\huiqiuli\\Desktop\\复习");
+        try {
+            FileInputStream fis = null;
+            FileOutputStream fos = null;
+            try {
+                fis =  new FileInputStream(f);
+                File dest = new File("C:\\Users\\huiqiuli\\Desktop\\1.txt");
+                fos = new FileOutputStream(dest);
+                byte[] bytes = new byte[1024];
+                int len = 0;
+                while((len = fis.read(bytes)) != -1){
+                    fos.write(bytes,0,len);
+                }
+            } finally {
+                if(fis != null){
+                    fis.close();
+                }
+                if(fos != null){
+                    fos.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test2(){
+        File f = new File("C:\\Users\\huiqiuli\\Desktop\\复习");
+        try {
+            FileInputStream fis = null;
+            FileOutputStream fos = null;
+            try {
+                fis = new FileInputStream(f);
+                File dest = new File("C:\\Users\\huiqiuli\\Desktop\\1.txt");
+                fos = new FileOutputStream(dest);
+                byte[] bytes = new byte[1024];
+                int len = 0;
+                while((len = fis.read(bytes)) != -1){
+                    fos.write(bytes,0,len);
+                }
+            } finally {
+                if(fis != null){
+                    fis.close();
+                }
+                if(fos != null){
+                    fos.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void test3(){
+        try {
+            FileInputStream fis = null;
+            FileOutputStream fos = null;
+            BufferedInputStream bis = null;
+            BufferedOutputStream bos  = null;
+            try {
+                File f = new File("C:\\Users\\huiqiuli\\Desktop\\复习");
+                fis = new FileInputStream(f);
+                bis = new BufferedInputStream(fis);
+                File dest = new File("C:\\Users\\huiqiuli\\Desktop\\1.txt");
+                fos = new FileOutputStream(dest);
+                bos = new BufferedOutputStream(fos);
+
+                byte[] bytes = new byte[1024];
+                int len = 0;
+                while((len = bis.read(bytes)) != -1){
+                    bos.write(bytes,0,len);
+                }
+                bos.flush();
+            } finally {
+                if(fis != null){
+                    fis.close();
+                }
+                if(fos != null){
+                    fos.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
