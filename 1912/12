@@ -1,0 +1,102 @@
+package lesson8;
+/**
+ * 浅拷贝：
+ * 1.实现Clone able接口
+ * 2.重写Object.clone()方法
+ */
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ClonTest {
+    public static void main(String[] args) {
+        Person p = new Person(1,"张三","1@qq.com");
+        List<Cloth> cloths = new ArrayList<>();
+        cloths.add(new Cloth("A","吊牌"));
+        cloths.add(new Cloth("B","希望"));
+        p.setCloths(cloths);
+        try {
+            Person p2 = (Person) p.clone();
+            p.setName("李四");//先拷贝对简单类型的属性是真正的拷贝
+            p.getCloths().get(0).setName("C");//对复杂对象是修改引用
+            System.out.println(p2);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+class Person implements Cloneable, Serializable {
+
+    private Integer id;
+    private String name;
+    private String email;
+    private List<Cloth> cloths = new ArrayList<>();
+
+    public Person(Integer id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public List<Cloth> getCloths() {
+        return cloths;
+    }
+
+    public void setCloths(List<Cloth> cloths) {
+        this.cloths = cloths;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", cloths=" + cloths +
+                '}';
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public void setName(String name) {
+        this.name  = name;
+    }
+}
+
+class Cloth implements Serializable{
+    String name;
+    String brand;
+
+    public Cloth(String name, String brand) {
+        this.name = name;
+        this.brand = brand;
+    }
+
+    @Override
+    public String toString() {
+        return "Cloth{" +
+                "name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+}
