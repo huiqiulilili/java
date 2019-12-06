@@ -1,0 +1,24 @@
+package lesson8;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()){
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            int result1 = 0;
+            for(int i = num;i>0;i /= 10 ){
+                result1  += i % 10;
+            }
+            int result2 = 0;
+//            System.out.println(result1);
+            int d = (int)Math.pow(num,2);
+            for(int i = d;i>0;i /= 10 ){
+                result2  += i % 10;
+            }
+            System.out.println(result1 + " " + result2);
+        }
+    }
+}
