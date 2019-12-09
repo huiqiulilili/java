@@ -1,0 +1,34 @@
+package lesson3;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class P {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Zi> list = new ArrayList<>();
+        while(scanner.hasNext()){
+            String name = scanner.nextLine();
+            Zi zi = new Zi(name);
+            list.add(zi);
+            int num = 0;
+            if(list.size() >= 2 ){
+                for(int i = 0;i < list.size();i ++){
+                    if((list.get(i).name).equals(zi.name)){
+                        num++;
+                    }
+                }
+                System.out.printf("%.2f",(double)(num*1.0/list.size()*100));
+                System.out.println("%");
+            }
+        }
+    }
+
+}
+class Zi{
+    String name;
+    Zi(String name){
+        this.name = name;
+    }
+}
