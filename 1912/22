@@ -1,0 +1,51 @@
+package lesson5;
+
+import java.util.Arrays;
+
+public class HeapDemo {
+    //在array中，[0.size)的部分是一个堆结构
+    //index从哪个位置开始下沉
+    //以大堆为例
+    //借助向下调整可以创建堆
+    public static void shiftDown(int[] array,int size,int index){
+        int parent = index;
+        int child = 2 *  parent + 1;
+        while (child < size){
+            if(child + 1 < size
+                    && array[child + 1] > array[child]){
+                    child = child + 1;
+            }
+            //if后面，child不知道是做左还是👉，但一定是左右中最大的下表
+            if(array[child] > array[parent]){
+                //不符合大队，交换两个
+                swap(array,child,parent);
+            }else {
+                //满足调整条件，调整就结束了
+                break;
+            }
+            parent = child;
+            child = child * 2;
+        }
+    }
+
+    //要把[0,size)范围中的元素建成堆
+    public static void creatHeap(int[] array,int size){
+        //从最后一个非叶子结点除法，从后往前走，针对每一个结点，进行向下调整
+        //找到最后一个下标size - 1
+        //(size - 1- 1)/2为飞叶子结点
+        for(int i = (size - 1 - 1) / 2;i >= 0;i --){
+            shiftDown(array,size,i);
+        }
+    }
+    private static void swap(int[] array, int child, int parent) {
+        int t = array[child];
+        array[child] = array[parent];
+        array[parent] = t;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1,2,3,4,5,6,7};
+        creatHeap(array,array.length);
+        System.out.println(Arrays.toString(array));
+    }
+}
