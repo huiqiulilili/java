@@ -1,0 +1,22 @@
+package test;
+
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+
+public class ChatDemo {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket dsSend = new DatagramSocket();
+        DatagramSocket dsReceive = new DatagramSocket(12345);
+
+        SendTread  st = new SendTread(dsSend);
+        ReciveTest rt = new ReciveTest(dsReceive);
+
+        Thread t1 = new Thread(st);
+        Thread t2 = new Thread(rt);
+
+        t1.start();
+        t2.start();
+
+    }
+}
