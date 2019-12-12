@@ -1,0 +1,15 @@
+Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()){
+
+            String s = scanner.nextLine();
+            if("886".equals(s)){
+                break;
+            }
+            byte[] bys = s.getBytes();
+            DatagramPacket dp = new DatagramPacket(bys,bys.length,
+                    InetAddress.getByName("192.168.163.1"),12345);
+            ds.send(dp);
+        }
+
+
+        ds.close();
