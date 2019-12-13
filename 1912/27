@@ -1,0 +1,17 @@
+package lesson5;
+import java.io.IOException;
+import java.net.*;
+
+public class SendDemo {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket datagramSocket = new DatagramSocket();
+        byte[] bys = "hello,我来也".getBytes();
+        int length = bys.length;
+        InetAddress address = InetAddress.getByName("192.168.163.1");
+        int port = 10086;
+        DatagramPacket datagramPacket = new DatagramPacket(bys,length,address,port);
+        datagramSocket.send(datagramPacket);
+
+        datagramSocket.close();
+    }
+}
