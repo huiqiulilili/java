@@ -1,0 +1,115 @@
+package lesson9;
+
+//多线程，IO，数据结构
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class HttpDemo {
+    private static final int PORT = 9999;
+    //获取处理器核数
+    private static final int COUNT = Runtime.getRuntime().availableProcessors();
+    //处理的任务量和线程数量、CPU、内存等资源都相关，
+    //一般推荐处理器核数数量的线程
+    private static final ExecutorService EXE = Executors.newFixedThreadPool(COUNT);
+    public static void main(String[] args) throws IOException {
+        ServerSocket server = new ServerSocket(PORT);
+        while (true) {
+            //获取客户端请求socket对象；阻塞式方法
+            Socket socket = server.accept();//accept阻塞式方法
+            EXE.submit(new HttpTast(socket));
+        }
+    }
+}
+//HTTP任务处理类
+class HttpTast implements Runnable{
+
+    private Socket socket;
+//显式构造函数
+    public HttpTast(Socket socket) {
+        this.socket = socket;
+    }
+
+    @Override
+    public void run() {
+        InputStream is = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+        //获取客户端输出流，返回响应数据
+        OutputStream os = null;
+        PrintWriter pw = null;
+            try {
+            try {
+                //获取客户端请求数据：输入流
+                is = socket.getInputStream();
+                isr = new InputStreamReader(is, "UTF-8");
+                br = new BufferedReader(isr);
+                Request0 request = new Request0();
+                //请求数据解析：http协议包的解包
+                //1.解析请求行（第一行）：method url version
+                String requestLine = br.readLine();//readLine是阻塞式方法
+                String[] requesrLines = requestLine.split(" ");
+                request.setMethod(requesrLines[0]);
+                //可能为http://localhost:9999/XXX?username=stu&passwerd=123
+                String url = requesrLines[1];
+                if(url.contains("?")) {
+                    String parameter = url.substring(url.indexOf("?") + 1);
+                    url = url.substring(0, url.indexOf("?"));
+                }
+                request.setUrl(requesrLines[1]);
+                request.setVersion(requesrLines[2]);
+                //2.解析请求头 ：key:value每个换行，最后结尾以空行作为结尾
+                String header;
+                while ((header = br.readLine() )!= null && header.length() != 0) {
+                   String key =  header.substring(0,header.indexOf(":"));
+                   String value = header.substring(header.indexOf(":")+1);
+                   request.addHeader(key,value.trim());
+
+                }
+                //POST请求需要根据请求头Content-lenght获取请求体的长度
+                if("POST".equals(request.getMethod())) {
+                    String len = request.getHeader("Content-Length");
+                    if (len != null) {
+                        int l = Integer.parseInt(len);
+                        char[] chars = new char[l];
+                        br.read(chars,0,l);
+                        //请求参数格式：username=stu&passwerd=123
+                        String requestBody = new String(chars);
+                    }
+                }
+                os = socket.getOutputStream();
+                pw = new PrintWriter(os);
+                //http://localhost:9999/302/111
+
+                if("/302".equals(request.getUrl())) {
+                    pw.println("HTTP/1.0 302 重定向");
+                    pw.println("Location:http://baidu.com");
+
+                }
+            } finally {
+                if (br != null) {
+                    br.close();
+                }
+                if (isr != null) {
+                    isr.close();
+
+                }
+                if (is != null) {
+                    is.close();
+                }
+                if (pw != null) {
+                    pw.close();
+                }
+                if (os != null) {
+                    os.close();
+                    socket.close();
+                }
+
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}
