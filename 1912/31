@@ -1,0 +1,53 @@
+package exam;
+
+import lesson4.P;
+
+public class Pen {
+    int length;
+    String color;
+    double weight;
+    Pen(){
+
+    }
+    public Pen(int length,String color,double weight){
+        this.color = color;
+        this.length = length;
+        this.weight = weight;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public int getLength(){
+        return length;
+    }
+    public double getWeight(){
+        return weight;
+    }
+    public String getColor(){
+        return color;
+    }
+    @Override
+    public String toString(){
+        return "长度为"+length + "颜色为" + color + "重量为" + weight;
+    }
+
+    public static void main(String[] args) {
+        Pen p1 = new Pen(1,"黑色",12.0);
+        System.out.println(p1.toString());
+        Pen p2 = new Pen();
+        p2.setColor("红色");
+        p2.setLength(10);
+        p2.setWeight(13.0);
+        System.out.println(p2.toString());
+    }
+}
