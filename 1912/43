@@ -1,0 +1,53 @@
+package day01;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/*
+    创建数据库的连接
+    创建操作命令Statement
+    执行SQL
+    处理结果集ResultSet
+    释放资源
+ */
+
+public class JdbcDemo {
+    private static final String URL = "jdbc:mysql://localhost:3306/test";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = "";
+
+    private static MysqlDataSource DATASOURCE = new MysqlDataSource();
+    static {
+        DATASOURCE.setUrl(URL);
+        DATASOURCE.setUser(USER_NAME);
+        DATASOURCE.setPassword(PASSWORD);
+    }
+    public static Connection getConnection()  {
+        try {
+            return DATASOURCE.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("数据库连接失败");
+        }
+    }
+    public static void close(Connection connection, PreparedStatement ps, ResultSet resultSet) {
+        try {
+            if(resultSet != null) {
+                resultSet.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException("释放数据库资源失败");
+        }
+    }
+
+}
