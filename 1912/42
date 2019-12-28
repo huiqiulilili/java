@@ -1,0 +1,32 @@
+package day01;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class insert {
+
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = JdbcDemo.getConnection();
+
+            String insert = "insert into student(id,sn,name,qq_mail,classes_id) values (?,?,?,?,?) ";
+            ps = connection.prepareStatement(insert);
+            ps.setInt(1,15);
+            ps.setInt(2,1234);
+            ps.setString(3,"小明");
+            ps.setString(4,"123@qq.com");
+            ps.setInt(5,2);
+            int num = ps.executeUpdate();
+            if(num > 0)
+                System.out.println("插入成功");
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcDemo.close(connection,ps,null);
+        }
+    }
+}
