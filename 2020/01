@@ -1,0 +1,24 @@
+package my;
+
+import java.io.IOException;
+import java.net.*;
+
+public class Clink {
+    public static void main(String[] args) throws IOException {
+        //找码头 创建DatagramSocket对象
+        DatagramSocket ds = new DatagramSocket();
+
+        //打包礼物 创建数据，打包礼物DatagramPacket
+        String s  = "我是大侠";
+        byte[] bytes = s.getBytes();
+        InetAddress inetAddress = InetAddress.getByName("192.168.163.1");
+        int port = 10001;
+        DatagramPacket dp = new DatagramPacket(bytes,bytes.length,inetAddress,port);
+
+        //发送礼物  使用DatagramSocket对象的方法发送数据
+        ds.send(dp);
+
+        //付钱走羊 释放资源
+        ds.close();
+    }
+}
