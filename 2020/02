@@ -1,0 +1,25 @@
+package my;
+
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+import java.util.Arrays;
+
+public class Sever {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket ds  = new DatagramSocket(10089);
+        byte[] bytes = new byte[1024];
+
+        DatagramPacket dp = new DatagramPacket(bytes,bytes.length);
+        System.out.println("=========发送前==================");
+        ds.receive(dp);
+        System.out.println("===========发送后==================");
+        byte[] data = dp.getData();
+        System.out.println(new String(data));
+
+        ds.close();
+
+    }
+}
