@@ -1,0 +1,18 @@
+package Test;
+
+class Mythread extends Thread{
+    @Override
+    public void run() {
+        System.out.println("AAAAAAAAAAAAAAA");
+        System.out.printf("%s再执行",Thread.currentThread().getName());
+
+    }
+}
+public class MuThread_02 {
+    public static void main(String[] args) {
+        Mythread a = new Mythread();
+        a.start();
+        System.out.printf("%s再执行",Thread.currentThread().getName());
+        System.out.println("BBBBBBBBBBBBBBBBBBBB");
+    }
+}
