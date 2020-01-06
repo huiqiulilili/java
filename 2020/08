@@ -1,0 +1,31 @@
+package Test;
+/**
+ * sleep():终止当前线程，进入阻塞状态
+ * yield():  线程的让步，让出CPU给其他线程执行的机会。让运行的线程主动放弃当前CPU处理的机会
+ *          但不是使线程阻止，而是使之转为就绪状态
+ *          会使当前线程由运行状态进入到就绪状态，让其他优先级高线程先执行，
+ *         但是如果是同一优先级的线程，那么谁先执行就不确定了.它不会释放锁。
+ * join():加入线程，这个线程必须运行结束
+ */
+class C extends Thread{//有问题的代码
+    @Override
+    public void run() {
+        for(int i = 0;i < 50 ;i ++) {
+            System.out.printf("%s--->%d\n",Thread.currentThread().getName(),i);
+        }
+    }
+}
+public class MyThread_03 {
+    public static void main(String[] args) {
+        C c = new C();
+        c.start();
+        try {
+            c.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for(int i = 0;i < 50 ;i ++) {
+            System.out.printf("%s--->%d\n" ,Thread.currentThread().getName(),i);
+        }
+    }
+}
