@@ -1,0 +1,32 @@
+package Test;
+
+/**
+ * synchronized:1.修饰方法
+ *              2.修饰方法内部的某个代码块
+ */
+class Ticket extends Thread{
+    private static  int tickets = 100;//static不能省略
+    static String s = "haha";//static不能省略
+    @Override
+    public void run() {
+        synchronized (s) {
+            while (true) {
+                if(tickets > 0) {
+                    System.out.printf("%s线程正在卖第%d张票\n",Thread.currentThread().getName(),tickets);
+                    --tickets;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+}
+public class MyThread_04 {
+    public static void main(String[] args) {
+        Ticket ticket = new Ticket();
+        ticket.start();
+
+        Ticket ticket1 = new Ticket();
+        ticket1.start();
+    }
+}
