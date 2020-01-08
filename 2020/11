@@ -1,0 +1,29 @@
+package Test;
+
+class MyThread05 extends Thread {
+    private static int tickets = 1000;
+    private static String s = "";
+    @Override
+    public void run() {
+            while (true) {
+                synchronized (s) {
+                    if(tickets > 0) {
+                        System.out.printf("%s线程正在卖第%d张票\n",Thread.currentThread().getName(),tickets);
+                        --tickets;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+
+    }
+}
+public class MyThread_05 {
+    public static void main(String[] args) {
+        MyThread05 thread05 = new MyThread05();
+        thread05.start();
+        MyThread05 thread051 = new MyThread05();
+        thread051.start();
+    }
+}
