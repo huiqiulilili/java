@@ -1,0 +1,24 @@
+package my02;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/*
+    集合的遍历
+    把集合转换为数组
+ */
+public class CollectionDemo3 {
+    public static void main(String[] args) {
+        Collection collection = new ArrayList();
+        collection.add("Hello");
+        collection.add("World");
+        collection.add("JAVA");
+
+        Object[] o = collection.toArray();
+
+        for(int i=0; i<o.length; i ++ ) {
+            String s = (String) o[i];
+            System.out.println(s + "---" + s.length());
+        }
+    }
+}
