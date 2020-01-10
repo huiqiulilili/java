@@ -1,0 +1,23 @@
+package my02;
+
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class InteratorDemo {
+    public static void main(String[] args) {
+        Collection collection = new ArrayList();
+        collection.add("Hello");
+        collection.add("World");
+        collection.add("Java");
+
+        Iterator interator = collection.iterator();
+        /*Object o  = interator.next();
+        System.out.println(o);*/
+        while (interator.hasNext()) {
+            String s = (String) interator.next();
+            System.out.println(s);
+        }
+    }
+}
