@@ -1,0 +1,19 @@
+package my02;
+
+import java.util.ArrayList;
+import java.util.*;
+
+public class ListDemo {
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        list.add("Hello");
+        list.add("World");
+        Iterator iterator = list.iterator();
+
+        while (iterator.hasNext()) {
+            String s = (String) iterator.next();
+            System.out.println(s);
+        }
+
+    }
+}
