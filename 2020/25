@@ -1,0 +1,18 @@
+package JDK5新特性;
+
+/*
+ *可变参数
+ */
+public class ArgsDemo {
+    public static void main(String[] args) {
+        System.out.println(sum(12,23,45));
+        System.out.println(sum(1,2,3,4,5,6,6));
+    }
+    public static int sum(int...a) {
+        int s = 0;
+        for(int i : a) {
+            s += i;
+        }
+        return s;
+    }
+}
