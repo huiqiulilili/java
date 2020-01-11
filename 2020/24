@@ -1,0 +1,27 @@
+package arrayList;
+
+import java.util.Enumeration;
+import java.util.Vector;
+
+public class VectorDemo {
+    public static void main(String[] args) {
+        Vector vector = new Vector();
+
+        vector.addElement("h");
+        vector.addElement("j");
+
+        for(int i = 0; i < vector.size(); i ++) {
+            String s = (String) vector.elementAt(i);
+            System.out.println(s);
+        }
+
+        System.out.println("==============");
+
+
+        Enumeration en = vector.elements();
+        while (en.hasMoreElements()) {
+            String s =  (String) en.nextElement();
+            System.out.println(s);
+        }
+    }
+}
