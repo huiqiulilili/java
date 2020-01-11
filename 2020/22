@@ -1,0 +1,20 @@
+package arrayList;
+
+import java.util.LinkedList;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.add("h");
+        linkedList.addLast("Z");
+
+        linkedList.add("j");
+
+        linkedList.addFirst("A");
+
+        System.out.println(linkedList);
+        System.out.println(linkedList.getFirst());
+        System.out.println(linkedList.getLast());
+    }
+}
