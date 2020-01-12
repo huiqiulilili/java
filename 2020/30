@@ -1,0 +1,13 @@
+package cn.itcast.dao;
+
+import cn.itcast.pojo.User;
+
+/**
+ * 这是针对用户操作的接口
+ */
+public interface UserDao {
+    //用户登录功能
+    public abstract boolean isLoing(String userName,String password);
+    //注册功能
+    public abstract void regist(User user);
+}
