@@ -1,0 +1,25 @@
+package list;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/*
+    List集合的特点：有序，可重复
+ */
+public class ListDemo {
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        list.add("a");
+        list.add("b");
+        list.add("C");
+        list.add("D");
+
+        Iterator iterator = list.iterator();
+
+        while (iterator.hasNext()) {
+            String s = (String) iterator.next();
+            System.out.println(s);
+        }
+    }
+}
