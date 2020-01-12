@@ -1,0 +1,24 @@
+package list;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListDemo3 {
+    public static void main(String[] args) {
+        List list  = new ArrayList();
+        list.add("h");
+        list.add("w");
+        list.add("X");
+        list.add(1,"a");
+//        list.add(11,"A");
+        list.add(4,"d");
+
+        System.out.println(list.get(1));
+
+        System.out.println(list.remove(1));
+        System.out.println(list);
+        System.out.println("---------------------------");
+        System.out.println(list.set(1,"JavaEe"));
+        System.out.println(list);
+    }
+}
