@@ -1,0 +1,77 @@
+package cn.itcast.cn.itcast.test;
+
+import cn.itcast.cn.itcast.dao.impl.UserDaoImpl;
+import cn.itcast.dao.UserDao;
+import cn.itcast.game.GuessNumber;
+import cn.itcast.pojo.User;
+
+import java.util.Scanner;
+
+/**
+ * 用户测试类
+ */
+public class Test {
+    public static void main(String[] args) {
+        while (true) {
+            //欢迎界面
+            System.out.println("---------------欢迎光临---------------");
+            System.out.println("1.登录");
+            System.out.println("2.注册");
+            System.out.println("3.退出");
+            System.out.println("请输入你的选择:");
+            //键盘录入
+            Scanner sc = new Scanner(System.in);
+            String choiceString = sc.nextLine();
+            UserDao ud = new UserDaoImpl();
+            switch (choiceString) {
+                case "1":
+                    System.out.println("---------------注册界面---------------");
+                    System.out.println("请输入用户名：");
+                    String userName = sc.nextLine();
+                    System.out.println("请输入密码：");
+                    String password = sc.nextLine();
+
+                    boolean flag = ud.isLoing(userName, password);
+                    if (flag) {
+                        System.out.println("登陆成功，可以开始游戏了");
+                        System.out.println("开始玩游戏吗（y/n）");
+                        while (true) {
+                            String choice = sc.nextLine();
+                            if (choice.equals("y")) {
+                                GuessNumber.start();
+                                System.out.println("你还玩吗");
+
+                            }else {
+                                break;
+                            }
+                        }
+                            System.out.println("欢迎下次再来");
+                            System.exit(0);
+//                        break;
+                    } else {
+                        System.out.println("登录失败，用户名密码有误");
+                    }
+                    break;
+                case "2":
+                    System.out.println("---------------注册界面---------------");
+                    System.out.println("请输入用户名：");
+                    String newUserName = sc.nextLine();
+                    System.out.println("请输入密码：");
+                    String newPassword = sc.nextLine();
+
+                    User user = new User();
+                    user.setUserName(newUserName);
+                    user.setPassword(newPassword);
+
+                    ud.regist(user);
+                    break;
+                case "3":
+                default:
+                    System.out.println("谢谢使用，欢迎下次再来");
+                    System.exit(0);
+                    break;
+
+            }
+        }
+    }
+}
