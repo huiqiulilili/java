@@ -1,0 +1,19 @@
+package list_remove;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class LinkedLisrDemo4 {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.add("h");
+        linkedList.add("w");
+        linkedList.add("j");
+
+        Iterator iterator = linkedList.listIterator();
+        while (iterator.hasNext()) {
+            String s = (String) iterator.next();
+            System.out.println(s);
+        }
+    }
+}
