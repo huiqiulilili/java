@@ -1,0 +1,27 @@
+package list_remove;
+
+/**
+ * public boolean equals(Object obj) {
+ *         return (this == obj);
+ *     }
+ * 此方法比较的是地址值
+ * 重写此番方法：
+ *
+ *
+ *
+ */
+public class ObjectDemo {
+    public static void main(String[] args) {
+        Student s1 = new  Student("王源",19);
+        Student s2 = new  Student("王源",19);
+        System.out.println(s1 == s2);//false
+        Student s3 = s1;
+        System.out.println(s1 == s3);
+        System.out.println("=========================");
+
+        System.out.println(s1.equals(s2));
+
+        System.out.println("====================");
+
+    }
+}
