@@ -1,0 +1,34 @@
+package list_remove;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayDemo {
+    public static void main(String[] args) {
+        ArrayList array = new ArrayList();
+        array.add("hello");
+        array.add("world");
+        array.add("java");
+        array.add("hello");
+        array.add("world");
+
+        ArrayList array2  = new ArrayList();
+
+        Iterator iterator = array.iterator();
+
+        while (iterator.hasNext()) {
+            String s = (String) iterator.next();
+
+            if(!array2.contains(s)) {
+                array2.add(s);
+            }
+        }
+
+        for(int i = 0;i < array2.size() ;i ++) {
+            String s = (String) array2.get(i);
+            System.out.println(s);
+        }
+
+
+    }
+}
