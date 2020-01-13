@@ -1,0 +1,37 @@
+package list_remove;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayListDemo5 {
+    public static void main(String[] args) {
+        ArrayList<Student> arrayList = new ArrayList<>();
+
+        Student s1 = new Student("张三",19);
+        Student s2 = new Student("李四",21);
+        Student s3 = new Student("王麻子",39);
+        Student s4 = new Student("我的天",15);
+        Student s5 = new Student("来来",59);
+
+        arrayList.add(s1);
+        arrayList.add(s2);
+        arrayList.add(s3);
+        arrayList.add(s4);
+        arrayList.add(s5);
+
+        Iterator<Student> iterator = arrayList.iterator();
+
+        while (iterator.hasNext()) {
+            Student s = iterator.next();
+            System.out.println(s.getName() + "---" + s.getAge());
+
+        }
+
+        System.out.println("====================");
+
+        for(int i = 0;i < arrayList.size();i ++ ) {
+            Student s =  arrayList.get(i);
+            System.out.println(s.getName() + "---" + s.getAge());
+        }
+    }
+}
