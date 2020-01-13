@@ -1,0 +1,37 @@
+package list_remove;
+
+/*
+ * LinkedList模拟Stack
+ */
+
+import java.util.LinkedList;
+
+public class MyStack {
+    private LinkedList linkedList;
+
+    public MyStack() {
+        linkedList = new LinkedList();
+    }
+    public void add(Object obj) {
+        linkedList.addFirst(obj);
+    }
+
+    public Object get () {
+        return linkedList.removeFirst();
+    }
+
+    public boolean isEmpty() {
+        return linkedList.isEmpty();
+    }
+    public static void main(String[] args) {
+        MyStack myStack = new MyStack();
+
+        myStack.add("hello");
+        myStack.add("world");
+//        System.out.println(myStack.get());
+//        System.out.println(myStack.get());
+        while (!myStack.isEmpty()) {
+            System.out.println(myStack.get());
+        }
+    }
+}
