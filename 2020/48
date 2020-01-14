@@ -1,0 +1,25 @@
+package list_Son;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Deno2 {
+    public static void main(String[] args) {
+        Random random = new Random();
+
+        ArrayList<Integer> list  = new ArrayList<>();
+        int count =0 ;
+        while (count < 10) {
+            int num = random.nextInt(20) + 1;
+            if(!list.contains(num)) {
+                list.add(num);
+                count++;
+            }
+        }
+
+        //遍历集合
+        for(int i : list) {
+            System.out.println(i);
+        }
+    }
+}
