@@ -1,0 +1,20 @@
+package set;
+
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+
+public class LinkedHashSetDemo
+{
+    public static void main(String[] args) {
+        LinkedHashSet<String> hs = new LinkedHashSet<>();
+
+        hs.add("hello");
+        hs.add("word");
+        hs.add("Java");
+        hs.add("Java");
+
+        for(String s : hs) {
+            System.out.println(s);
+        }
+    }
+}
