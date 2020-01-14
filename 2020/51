@@ -1,0 +1,25 @@
+package set;
+
+import javax.swing.plaf.synth.SynthUI;
+import java.util.HashSet;
+
+public class HashSetDemo2 {
+    public static void main(String[] args) {
+        HashSet<Student> hashSet = new HashSet<>();
+
+        Student s1 = new Student("王源",12);
+        Student s2 = new Student("王俊凯",23);
+        Student s3 = new Student("易烊千玺",24);
+        Student s4 = new Student("王源",12);
+        Student s5 = new Student("王俊凯",12);
+        hashSet.add(s1);
+        hashSet.add(s2);
+        hashSet.add(s3);
+        hashSet.add(s4);
+        hashSet.add(s5);
+
+        for(Student s : hashSet) {
+            System.out.println(s);
+        }
+    }
+}
