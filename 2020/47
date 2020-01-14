@@ -1,0 +1,28 @@
+package list_Son;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Demo3 {
+    public static void main(String[] args) {
+        Scanner scanner  = new Scanner(System.in);
+
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        while (true) {
+            int num = scanner.nextInt();
+            if(num != 0) {
+                arrayList.add(num);
+            }else {
+                break;
+            }
+        }
+
+        //把集合转换为数组
+        Integer[] i = new Integer[arrayList.size()];
+        arrayList.toArray(i);
+        Arrays.sort(i);
+        System.out.println(i[i.length - 1 ]);
+    }
+}
