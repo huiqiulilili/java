@@ -1,0 +1,40 @@
+package list_Son;
+
+import java.util.ArrayList;
+
+public class Demo {
+    public static void main(String[] args) {
+        ArrayList<ArrayList<Student>> bigList = new ArrayList<ArrayList<Student>>();
+
+        //创建一班
+        ArrayList<Student> first = new ArrayList<Student>();
+        first.add(new Student("a",1));
+        first.add(new Student("b",2));
+        first.add(new Student("c",3));
+        first.add(new Student("d",4));
+        first.add(new Student("e",5));
+        bigList.add(first);
+        //创建2班
+        ArrayList<Student> second = new ArrayList<Student>();
+        second.add(new Student("2a",21));
+        second.add(new Student("2b",22));
+        second.add(new Student("2c",23));
+        second.add(new Student("2d",24));
+        bigList.add(second);
+
+        //创建3班
+        ArrayList<Student> third = new ArrayList<Student>();
+        third.add(new Student("3a",31));
+        third.add(new Student("3b",32));
+        third.add(new Student("3c",33));
+        third.add(new Student("3d",34));
+        bigList.add(third);
+
+        //遍历
+        for(ArrayList<Student> arrayList : bigList) {
+            for(Student s : arrayList) {
+                System.out.println(s.getName() + "----" + s.getAge());
+            }
+        }
+    }
+}
