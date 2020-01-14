@@ -1,0 +1,36 @@
+package set;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+/*
+    HashSet:存储字符串并遍历
+ */
+public class HashSetDemo {
+    public static void main(String[] args) {
+        HashSet<String> hs = new HashSet<>();
+
+        hs.add("hello");
+        hs.add("world");
+        hs.add("Java");
+        hs.add("world");
+
+        for(String s: hs) {
+            System.out.println(s);
+        }
+        String s = new String("hello");
+        String ss = new String(("hello"));
+        System.out.println(s.hashCode());
+        System.out.println(ss.hashCode());
+
+
+        String s1 = "hello";
+        String s2 = "hello";
+        System.out.println(s1.hashCode());
+        System.out.println(s2.hashCode());
+        System.out.println("hello".hashCode());
+        System.out.println("hello".hashCode());
+        System.out.println("Hello".hashCode());
+        System.out.println("Hello".hashCode());
+    }
+}
