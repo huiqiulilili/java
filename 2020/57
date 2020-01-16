@@ -1,0 +1,20 @@
+
+public class MyRunnableDemo {
+	public static void main(String[] args) {
+		// 创建MyRunnable类的对象
+		MyRunnable my = new MyRunnable();
+
+		// Thread(Runnable target)
+		// Thread t1 = new Thread(my);
+		// Thread t2 = new Thread(my);
+		// t1.setName("王源");
+		// t2.setName("王俊凯");
+
+		// Thread(Runnable target, String name)
+		Thread t1 = new Thread(my, "王源");
+		Thread t2 = new Thread(my, "王俊凯");
+
+		t1.start();
+		t2.start();
+	}
+}
