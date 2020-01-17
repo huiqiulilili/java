@@ -1,0 +1,40 @@
+package IO流;
+
+import java.io.*;
+
+/*
+ *数据输入流、数据输出流
+ */
+public class DataOutputStraemDemo  {
+    public static void main(String[] args) throws IOException {
+        write();
+        read();
+    }
+
+    private static void read() throws IOException {
+        DataInputStream dis = new DataInputStream(new FileInputStream("a.txt"));
+        byte b = dis.readByte();
+        short s = dis.readShort();
+        dis.close();
+        System.out.println(b);
+        System.out.println(s);
+
+    }
+
+    private static void write() throws IOException{
+        DataOutputStream bos = new DataOutputStream(new FileOutputStream("a.txt"));
+
+        bos.writeByte(12);
+        bos.writeShort(100);
+       /* bos.writeInt(1234);
+        bos.writeLong(123);
+        bos.writeFloat(12.3f);
+        bos.writeDouble(12.4);
+        bos.writeChar('a');
+        bos.writeBoolean(true);*/
+        bos.close();
+
+
+
+    }
+}
