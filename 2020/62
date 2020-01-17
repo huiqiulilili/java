@@ -1,0 +1,17 @@
+package IO流;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MyBufferedReaderTest {
+    public static void main(String[] args) throws IOException {
+        MyBufferedReader mbr = new MyBufferedReader(new FileReader("b.txt"));
+
+        String line = null;
+        while ((line = mbr.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        mbr.close();
+    }
+}
