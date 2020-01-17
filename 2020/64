@@ -1,0 +1,19 @@
+package IO流;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+
+public class MyLineNumberReaderTest {
+    public static void main(String[] args) throws IOException {
+        MyLineNumberReader mlnr = new MyLineNumberReader(new FileReader("b.txt"));
+
+        mlnr.setLineNumber(10);
+        String line = null;
+        while ((line = mlnr.readLine()) != null) {
+            System.out.println(mlnr.getLineNumber() + ":" + line);
+        }
+
+        mlnr.close();
+    }
+}
