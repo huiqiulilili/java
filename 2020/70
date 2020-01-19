@@ -1,0 +1,23 @@
+package 多线程.it.cast;
+
+/*
+ *分析：
+ *      资源类：Student
+ *      设置学生数据：c（生产者）
+ *      获取学生数据：GetThread（消费者）
+ *      测试类：StudentDemo
+ */
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student s = new Student();
+
+        SetThread st = new SetThread(s);
+        GetThread gt = new GetThread(s);
+
+        Thread t1 = new Thread(st);
+        Thread t2 = new Thread(gt);
+
+        t1.start();
+        t2.start();
+    }
+}
