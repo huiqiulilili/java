@@ -1,0 +1,31 @@
+package set.set.test;
+
+
+import java.util.HashSet;
+
+public class DogDemo {
+    public static void main(String[] args) {
+        HashSet<Dod> hs = new HashSet<>();
+
+        Dod d1 = new Dod("秦桧",24,"红色",'男');
+        Dod d2 = new Dod("高俅",25,"红色",'男');
+        Dod d3 = new Dod("秦桧",20,"红色",'女');
+        Dod d4 = new Dod("魏忠贤",22,"白色",'男');
+        Dod d5 = new Dod("李莲英",29,"黄色",'男');
+        Dod d6 = new Dod("李莲英",29,"黄色",'男');
+        Dod d7 = new Dod("李莲英",29,"黄色",'女');
+        hs.add(d1);
+        hs.add(d2);
+        hs.add(d3);
+        hs.add(d4);
+        hs.add(d5);
+        hs.add(d6);
+        hs.add(d7);
+
+        for(Dod d: hs) {
+            System.out.println(d.getName() + "---" + d.getAge() + "---" + d.getColor() + "---" + d.getSex() );
+        }
+
+
+    }
+}
