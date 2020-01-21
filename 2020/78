@@ -1,0 +1,38 @@
+package set.set.test;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class TreeSetDdemo {
+    public static void main(String[] args) {
+        //TreeSet<Student> ts = new TreeSet<>();//
+        //TreeSet<Student> ts = new TreeSet<>(new MyComparator());
+
+        //如果一个方法的参数是接口，那麽真正要的是接口的实现类的对象
+        //而匿名内部类就可以实现这个东西
+        TreeSet<Student> ts = new TreeSet<>(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                int num = o1.getName().length() - o2.getName().length();
+                int num2 = num == 0 ? o1.getName().compareTo(o2.getName()) : num;
+                int num3 = num2 == 0 ? o1.getAge() - o2.getAge() : num2;
+                return num3;
+            }
+        });
+
+        Student s1 = new Student("王源",12);
+        Student s2 = new Student("王俊凯",23);
+        Student s3 = new Student("易烊千玺",24);
+        Student s4 = new Student("王源",12);
+        Student s5 = new Student("王俊凯",12);
+        ts.add(s1);
+        ts.add(s2);
+        ts.add(s3);
+        ts.add(s4);
+        ts.add(s5);
+
+        for(Student s  : ts) {
+            System.out.println(s.getName() +"---" + s.getAge());
+        }
+    }
+}
