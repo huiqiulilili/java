@@ -1,0 +1,27 @@
+package map;
+import java.util.*;
+public class MapDemo2 {
+    public static void main(String[] args) {
+        Map<String,String> map = new HashMap<>();
+
+        map.put("文章","马伊琍");
+        map.put("邓超","孙俪");
+        map.put("黄小明","杨颖");
+        map.put("周杰伦","昆凌");
+
+        /*System.out.println("get:" + map.get("周杰伦"));
+        System.out.println("get:" + map.get("周"));*/
+
+        /*Set<String> set = map.keySet();
+
+        for(String s : set) {
+            System.out.println(s);
+        }*/
+
+        Collection<String> collection = map.values();
+
+        for(String s : collection) {
+            System.out.println(s);
+        }
+    }
+}
