@@ -1,0 +1,22 @@
+package map;
+
+import java.util.HashMap;
+import java.util.Set;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        HashMap<String,String> hs = new HashMap<>();
+
+        hs.put("文章","马伊琍");
+        hs.put("邓超","孙俪");
+        hs.put("黄小明","杨颖");
+        hs.put("周杰伦","昆凌");
+
+        Set<String> set = hs.keySet();
+
+        for(String key : set) {
+            String value = hs.get(key);
+            System.out.println(key + " -- " + value);
+        }
+    }
+}
