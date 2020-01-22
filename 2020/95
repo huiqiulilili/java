@@ -1,0 +1,30 @@
+package map;
+
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TreeMapDemo2 {
+    public static void main(String[] args) {
+        TreeMap<Student,String> tm = new TreeMap<>(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                int num = o1.getAge() - o2.getAge();
+                int num2 = num == 0 ? o1.getName().compareTo(o2.getName()) : num;
+                return num2;
+            }
+        });
+
+        tm.put(new Student("王源",12),"1");
+        tm.put(new Student("王俊凯",22),"2");
+        tm.put(new Student("易烊千玺",32),"3");
+        tm.put(new Student("王源",12),"4");
+
+        Set<Student >  set = tm.keySet();
+
+        for(Student key : set) {
+            String value = tm.get(key);
+            System.out.println(key.getName() + "-" + key.getAge() + "---" + value);
+        }
+    }
+}
