@@ -1,0 +1,21 @@
+package map;
+
+import java.util.LinkedHashMap;
+import java.util.Set;
+
+public class LinkedHashMapDemo {
+    public static void main(String[] args) {
+        LinkedHashMap<String,String> hm = new LinkedHashMap<>();
+        hm.put("文章","马伊琍");
+        hm.put("邓超","孙俪");
+        hm.put("黄小明","杨颖");
+        hm.put("周杰伦","昆凌");
+
+        Set<String > set = hm.keySet();
+
+        for(String key : set) {
+            String value = hm.get(key);
+            System.out.println(key + "--" + value);
+        }
+    }
+}
