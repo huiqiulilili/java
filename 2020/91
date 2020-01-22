@@ -1,0 +1,23 @@
+package map;
+
+import java.util.HashMap;
+import java.util.Set;
+
+public class HashMapDemo4 {
+    public static void main(String[] args) {
+        HashMap<Student,String> hm = new HashMap<>();
+
+        hm.put(new Student("王源",12),"1");
+        hm.put(new Student("王俊凯",22),"2");
+        hm.put(new Student("易烊千玺",32),"3");
+        hm.put(new Student("王源",12),"4");
+
+        Set<Student> set = hm.keySet();
+
+        for(Student key : set) {
+            String value = hm.get(key);
+
+            System.out.println(key.getName() + "-" + key.getAge() + "----->" + value);
+        }
+    }
+}
