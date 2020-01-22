@@ -1,0 +1,30 @@
+package map;
+import java.util.*;
+public class MapDemo {
+    public static void main(String[] args) {
+        Map<String,String> map = new HashMap<>();
+
+        /*System.out.println(map.put("文章","马伊琍"));
+        System.out.println(map.put("文章","姚笛") );*/
+        map.put("文章","马伊琍");
+        map.put("邓超","孙俪");
+        map.put("黄小明","杨颖");
+        map.put("周杰伦","昆凌");
+
+        System.out.println("m:"+map);
+/*
+        map.clear();
+        System.out.println("m:" + map);*/
+
+      /*  System.out.println("remove：" + map.remove("黄小明"));
+        System.out.println("remove：" + map.remove("黄晓"));
+        System.out.println("m:"+map);*/
+
+        System.out.println(map.containsKey("黄小明"));
+        System.out.println(map.containsKey("小明"));
+        System.out.println("m:"+map);
+
+//        System.out.println("isEmpty:" + map.isEmpty());
+
+    }
+}
