@@ -1,0 +1,61 @@
+package 斗地主;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class PokerDemo {
+    public static void main(String[] args) {
+        ArrayList<String> array = new ArrayList<>();
+
+        String[] colors = {"♥","♠","♦","♣"};
+        String[] numbers = {"1","2","3","4","5","6","7","8","9","10","J","Q","K"};
+
+
+        for(String color : colors) {
+            for(String number : numbers) {
+                array.add(color.concat(number));
+            }
+        }
+        array.add("大王");
+        array.add("小王");
+
+        //洗牌
+        Collections.shuffle(array);
+
+        //玩家
+        ArrayList<String> wangyuan = new ArrayList<>();
+        ArrayList<String> wangjunkai = new ArrayList<>();
+        ArrayList<String> yiyangqianxi = new ArrayList<>();
+        ArrayList<String> dipai = new ArrayList<>();
+
+        for(int i = 0; i < array.size(); i ++) {
+            if (i >= array.size() - 3) {
+                dipai.add(array.get(i));
+            }else if (i % 3 == 0) {
+                    wangyuan.add(array.get(i));
+                } else if (i % 3 == 1) {
+                    wangjunkai.add(array.get(i));
+                } else if (i % 3 == 2) {
+                    yiyangqianxi.add(array.get(i));
+                }
+        }
+//        System.out.println(array);
+
+        //看牌
+        lookPoker("王源",wangyuan);
+        lookPoker("王俊凯",wangjunkai);
+        lookPoker("易烊千玺",yiyangqianxi);
+
+        lookPoker("底牌",dipai);
+
+    }
+
+    public static void  lookPoker(String name,ArrayList<String> array){
+        System.out.println(name + "的牌是:");
+
+        for(String s : array) {
+            System.out.print(s + " ");
+        }
+        System.out.println();
+    }
+}
