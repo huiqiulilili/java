@@ -1,0 +1,33 @@
+package Test;
+
+class A extends Thread{
+    @Override
+    public void run() {
+        while (true){
+            System.out.println("AAAAAAAAAA");
+        }
+    }
+}
+public class MyThread {
+    public static void main(String[] args) {
+
+        B b = new B();
+        Thread thread = new Thread(b);
+        thread.start();
+        A a = new A();
+        a.start();
+        while (true){
+            System.out.println("CCCCCCCCCCCC");
+        }
+
+    }
+}
+class B implements Runnable{
+
+    @Override
+    public void run() {
+        while (true){
+            System.out.println("BBBBBBBBBBBB");
+        }
+    }
+}
