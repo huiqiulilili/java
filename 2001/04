@@ -1,0 +1,14 @@
+package 复习;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class OutputStreamWriteDemo {
+    public static void main(String[] args) throws IOException {
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("b.txt"),"GBK");
+        osw.write("怒海");
+        osw.flush();
+        osw.close();
+    }
+}
