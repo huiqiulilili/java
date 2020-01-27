@@ -1,0 +1,18 @@
+package 复习;
+
+import java.io.*;
+
+//GBK---UFF-8
+public class ZhuanHuanDemo {
+    public static void main(String[] args) throws IOException {
+        InputStreamReader isr = new InputStreamReader(new FileInputStream("a.txt"),"GBK");
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("b.txt"),"UTF-8");
+
+        int len = 0;
+        while ((len = isr.read()) != -1) {
+            osw.write(len);
+        }
+        isr.close();
+        osw.close();
+    }
+}
