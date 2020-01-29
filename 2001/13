@@ -1,0 +1,16 @@
+package 单例模式;
+
+public class Student {
+    //构造私有
+    private Student(){
+
+    }
+    //自己造一个
+    private static Student s = new Student();
+
+    //提供公共的访问方法
+    //为了保证外界能够直接使用该方法，加静态
+    public static Student getStudent() {
+        return s;
+    }
+}
