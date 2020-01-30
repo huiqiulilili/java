@@ -1,0 +1,19 @@
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class SendDemo {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket ds = new DatagramSocket();
+
+        byte[] bytes = "hello".getBytes();
+        DatagramPacket dp = new DatagramPacket(bytes,bytes.length,
+                InetAddress.getByName("huiqiuli"),12345);
+
+        ds.send(dp);
+
+        ds.close();
+
+    }
+}
