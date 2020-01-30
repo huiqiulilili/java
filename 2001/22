@@ -1,0 +1,40 @@
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+public class SendThread implements Runnable {
+    private DatagramSocket ds;
+
+    public SendThread(DatagramSocket ds) {
+        this.ds = ds;
+    }
+
+    @Override
+    public void run() {
+        Scanner s = new Scanner(System.in);
+        while (true) {
+            String line = s.nextLine();
+            if(line.equals("886")) {
+                break;
+            }
+            byte[] bytes = line.getBytes();
+            int len = bytes.length;
+            DatagramPacket dp = null;
+            try {
+                dp = new DatagramPacket(bytes, len,
+                        InetAddress.getByName("huiqiuli"), 12345);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+            try {
+                ds.send(dp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        ds.close();
+    }
+}
