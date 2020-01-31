@@ -1,0 +1,37 @@
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerDemo {
+    public static void main(String[] args) throws IOException {
+        ServerSocket ss = new ServerSocket(12345);
+
+        Socket s = ss.accept();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("cpoy.java"));
+
+        String line=  null;
+        while ((line = br.readLine()) != null) {
+//            if("over".equals(line)) {
+//                break;
+//            }
+            bw.write(line);
+            bw.newLine();
+            bw.flush();
+        }
+
+        //给反馈
+        BufferedWriter bwSever = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        bwSever.write("文件上传成功");
+        bwSever.newLine();
+        bwSever.flush();
+
+
+        br.close();
+        bw.close();
+        s.close();
+        ss.close();
+    }
+}
