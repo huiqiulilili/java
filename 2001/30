@@ -1,0 +1,35 @@
+
+import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class ClientDemo {
+    public static void main(String[] args) throws IOException {
+        Socket s = new Socket(InetAddress.getByName("huiqiuli"),12345);
+
+        BufferedReader br = new BufferedReader(new FileReader("F:\\我的学习\\java\\java代码\\2020年1月27日\\src\\网络编程\\InetAddressDemo.java"));
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            bw.write(line);
+            bw.newLine();
+            bw.flush();
+        }
+
+//        //结束判断
+//        bw.write("over");
+//        bw.newLine();
+//        bw.flush();
+        s.shutdownOutput();
+
+
+        //接受反馈
+        BufferedReader brClient = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String client = brClient.readLine();
+        System.out.println(client);
+        br.close();
+        s.close();
+    }
+}
