@@ -1,0 +1,22 @@
+package JDK新特性.枚举;
+/*
+    枚举类
+ */
+public enum Direction2 {
+    FRONT("前"),BEHIND("后"),LEFT("左"),RIGHT("右");
+
+    public String getName() {
+        return name;
+    }
+
+    private String name;
+
+    Direction2(String name) {
+        this.name = name;
+    }
+
+   /* @Override
+    public String toString() {
+        return "王源怎么这么帅";
+    }*/
+}
