@@ -1,0 +1,7 @@
+package JDK新特性.枚举;
+/*
+    枚举类
+ */
+public enum Direction {
+    FRONT,BEHIND,LEFT,RIGHT;
+}
