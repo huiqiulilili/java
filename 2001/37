@@ -1,0 +1,41 @@
+package JDK新特性.枚举;
+
+public class EnumMethodDemo {
+    public static void main(String[] args) {
+        Direction2 d21 = Direction2.FRONT;
+        Direction2 d22 = Direction2.BEHIND;
+        Direction2 d23 = Direction2.LEFT;
+        Direction2 d24 = Direction2.RIGHT;
+        System.out.println(d21.compareTo(d21));
+        System.out.println(d21.compareTo(d24));
+        System.out.println(d24.compareTo(d21));
+        System.out.println("--------------------------------");
+
+        System.out.println(d21.name());
+        System.out.println(d22.name());
+        System.out.println(d23.name());
+        System.out.println(d24.name());
+        System.out.println("--------------------------------");
+
+        System.out.println(d21.ordinal());
+        System.out.println(d22.ordinal());
+        System.out.println(d23.ordinal());
+        System.out.println(d24.ordinal());
+        System.out.println("--------------------------------");
+
+        System.out.println(d21.toString());
+        System.out.println(d22.toString());
+        System.out.println(d23.toString());
+        System.out.println(d24.toString());
+        System.out.println("--------------------------------");
+
+        Direction2 d = Enum.valueOf(Direction2.class,"FRONT");
+        System.out.println(d.getName());
+        System.out.println("--------------------------------");
+
+        Direction2[] dirs =  Direction2.values();
+        for(Direction2 d2 : dirs) {
+            System.out.println(d2);
+        }
+    }
+}
