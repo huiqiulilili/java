@@ -1,0 +1,23 @@
+package JDK新特性;
+
+public class Direction {
+    //常见几个实例
+    public static final Direction FRONT = new Direction("前");
+    public static final Direction BHIND = new Direction("后");
+    public static final Direction LEFT = new Direction("左");
+    public static final Direction RIGHT = new Direction("右");
+    //构造私有化
+    /*private Direction() {
+
+    }*/
+
+    private String name;
+
+    private Direction(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
