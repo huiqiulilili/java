@@ -1,0 +1,23 @@
+
+public class ReflectDemo {
+    public static void main(String[] args) throws ClassNotFoundException {
+        //方式一
+        Person p = new Person();
+        Class c = p.getClass();
+
+        Person p2 = new Person();
+        Class c2 = p2.getClass();
+
+        System.out.println(p == p2);//false
+        System.out.println(c == c2);//true
+
+        //方式二
+        Class c3 = Person.class;
+        System.out.println(c == c3);
+
+        //方式三
+        Class c4 = Class.forName("反射.Person");
+        System.out.println(c == c4);
+
+    }
+}
