@@ -1,0 +1,29 @@
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class ReflectDemo_02 {
+    public static void main(String[] args) throws Exception {
+        //获取字节码文件对象
+        Class c = Class.forName("反射.Person");
+
+        //获取构造方法
+//        Constructor[] cons = c.getConstructors();
+//
+//        for(Constructor con : cons) {
+//            System.out.println(con);
+//        }
+
+       /* Constructor[] cons = c.getDeclaredConstructors();
+        for(Constructor con : cons) {
+            System.out.println(con);
+        }*/
+
+       Constructor con = c.getConstructor();//返回的是构造方法对象
+       Object obj = con.newInstance();
+       System.out.println(obj);
+
+      /*Person p = (Person) obj;
+       p.show();*/
+    }
+}
