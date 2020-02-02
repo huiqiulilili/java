@@ -1,0 +1,14 @@
+
+import java.lang.reflect.Constructor;
+
+public class ReflectDemo_03 {
+    public static void main(String[] args) throws Exception {
+        Class c = Class.forName("反射.Person");
+
+        Constructor con = c.getConstructor(String.class, int.class, String.class);
+
+        Object obj = con.newInstance("王源",18,"我家");
+
+        System.out.println(obj);
+    }
+}
