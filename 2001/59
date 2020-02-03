@@ -1,0 +1,19 @@
+
+public class UserDaoDemo {
+    public static void main(String[] args) throws Exception {
+        //基本用户操作
+        UserDao ud =  new UserDaoImpl();
+        ud.add();
+        ud.delete();
+        ud.updatde();
+        ud.find();
+
+        //真实需求
+        UserDao ud2 = new UserDaoImpl2();
+        ud2.add();
+        ud2.delete();
+        ud2.updatde();
+        ud2.find();
+
+    }
+}
