@@ -1,0 +1,22 @@
+
+public class ToolDemo {
+    public static void main(String[] args) throws Exception {
+        Per p = new Per();
+        Tool tool= new Tool();
+        tool.setProperty(p,"name","王俊凯");
+        tool.setProperty(p,"age",18);
+        System.out.println(p);
+    }
+}
+class Per{
+    private String name;
+    public int age;
+
+    @Override
+    public String toString() {
+        return "Per{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
