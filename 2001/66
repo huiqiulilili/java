@@ -1,0 +1,7 @@
+
+public class CatFactory implements Factory {
+    @Override
+    public Animal creatAnimal() {
+        return new Cat();
+    }
+}
