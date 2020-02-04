@@ -1,0 +1,15 @@
+
+public class Demo {
+    public static void main(String[] args) {
+        Animal a = AnimalFactory.creatAnimal("dog");
+        a.eat();
+        a = AnimalFactory.creatAnimal("cat");
+        a.eat();
+        a = AnimalFactory.creatAnimal("pig");
+        if(a != null) {
+            a.eat();
+        }else {
+            System.out.println("暂时没有此动物");
+        }
+    }
+}
