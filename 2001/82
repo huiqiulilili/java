@@ -1,0 +1,12 @@
+
+public class AnimalFactory {
+    public static Animal creatAnimal(String type) {
+        if("dog".equals(type)) {
+            return new Dog();
+        }else if("cat".equals(type)) {
+            return new Cat();
+        } else {
+            return null;
+        }
+    }
+}
