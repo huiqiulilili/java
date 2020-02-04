@@ -1,0 +1,14 @@
+package 工厂方法模式;
+
+public class AnimalDemo {
+    public static void main(String[] args) {
+        Factory f = new DogFactory();
+        Animal a = f.creatAnimal();
+        a.eat();
+        System.out.println("-------------");
+
+        Factory ff = new CatFactory();
+        Animal aa = ff.creatAnimal();
+        aa.eat();
+    }
+}
