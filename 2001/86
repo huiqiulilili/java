@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class PhoneDemo {
+    public static void main(String[] args) {
+        Phone p = new IPhone();
+        p.call();
+        System.out.println("--------------");
+
+        PhoneDecorate pd = new RingPhoneDecorate(p);
+        pd.call();
+        System.out.println("-----------------");
+
+        pd = new MusicPhoneDecorate(p);
+        pd.call();
+        System.out.println("-------------------");
+
+        pd = new RingPhoneDecorate(new MusicPhoneDecorate(p));
+        pd.call();
+        System.out.println("------------");
+
+       /* InputStream is = System.in;
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);*/
+
+    }
+}
