@@ -1,0 +1,7 @@
+
+public class GetTimeODemo {
+    public static void main(String[] args) {
+        GetTimeO gto = new ForDemo();
+        System.out.println(gto.getTime()+"毫秒");
+    }
+}
