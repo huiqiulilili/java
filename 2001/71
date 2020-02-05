@@ -1,0 +1,13 @@
+public class GetTime {
+    public static long getTime() {
+        long start = System.currentTimeMillis();
+        for(int i = 0;i < 10000;i ++) {
+            System.out.println(i);
+        }
+        long end = System.currentTimeMillis();
+        return end - start;
+    }
+    public static void main(String[] args) {
+        System.out.println(getTime()+"毫秒");
+    }
+}
