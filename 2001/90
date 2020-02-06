@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <b>道可道，</b>
+    <u>非常道；</u>
+    <i>名可名，</i>
+    <s>非常名。</s>
+    <hr>
+    <pre>
+        道可道，非常道；名可名，非常名。
+        无名，天地之始；有名，万物之母。
+        故常无欲，以观其妙；常有欲，以观其徼。
+        此两者同出而异名，同谓之玄。
+        玄之又玄，众妙之门。
+    </pre>
+    <hr>
+    3<sub>100</sub>
+    <br>
+    4<sup>200</sup>
+    <hr>
+    <span>这是span1</span>
+    <span>这是span2</span>
+    <span>这是span3</span>
+
+    <hr>
+    <div>这是div1</div>
+    <div>这是div2</div>
+    <div>这是div3</div>
+
+</body>
+</html>
