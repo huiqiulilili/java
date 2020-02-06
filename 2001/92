@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <frameset rows="100,*">
+        <frame name="top" src="a.html">
+        <frameset cols = "80,*">
+            <frame name="bottom" src="表格.html">
+            <frame name="bottom" src="表格.html">
+        </frameset>
+
+    </frameset>
+</html>
