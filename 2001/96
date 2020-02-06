@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:200px;
+            height:150px;
+            border:2px solid red;
+        }
+        #div51{
+
+            position:absolute;
+            background-color:red;
+
+            top:50px;
+            left:80px;
+
+        }
+
+        #div52{
+
+            width:250px;
+            height:150px;
+            background-color:blue;
+        }
+        #div53{
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="div51">aaaaaaaaa</div>
+    <div id="div52">bbbbbbbbb</div>
+    <div id="div53">ccccccccc</div>
+</body>
+</html>
