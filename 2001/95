@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" bordercolor = "blue" cellspacing="0" width="200" height = "150" >
+        <caption>人员信息</caption>
+        <tr align="center">
+            <td >姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+        </tr>
+        <tr>
+            <td align="right">王俊凯</td>
+            <td>男</td>
+            <td>18</td>
+
+        </tr>
+        <tr>
+            <th>王源</th>
+            <th>男</th>
+            <th>17</th>
+
+        </tr>
+    </table>
+</body>
+</html>
