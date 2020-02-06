@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action = "a.html" method="get">
+        手机号码：<input type="text" name = "phone"><br>
+        密码：<input type="password" name = "pwd"><br>
+        性别：<input type="radio" name="sex" value="nv" checked = "checked">女<input type="radio" name="sex" value="nan">男<br>
+        爱好：<input type="checkbox" name="love" value="p" checked = "checked">乒乓<input type="checkbox" name="a" value="l">篮球<input type="checkbox" name="a" value="pp">排球<br>
+        文件：<input type="file"><br>
+        生日：<select name = "birth">
+                    <option value="0">请选择</option>
+                    <option value="1997" selected = "selected">1997</option>
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+              </select><br>
+        自我描述：<textarea cols="10" rows="10" name = "tex"></textarea><br>
+        隐藏项：<input type="hidden" name = "hidden"><br>
+        提交：<input type="submit" value="提交"><br>
+<!--        提交：<input type="image" src="a.jpg">    -->
+        <input type="reset" value="重置按钮">
+    </form>
+</body>
+</html>
