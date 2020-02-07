@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       div p{
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            道可道，非常道。名可名，非常名
+        </p>
+    </div>
+    <p>
+        天下皆知美之为美，斯恶矣，皆知善之为善
+    </p>
+</body>
+</html>
