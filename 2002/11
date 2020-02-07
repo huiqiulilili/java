@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border:2px solid red;
+        }
+    #div32{
+        margin:30px;
+    }
+    #div33{
+        margin-left:30px;
+    }
+    </style>
+</head>
+<body>
+    <div id="div31">aaaaaaaaa</div>
+    <div id="div32">bbbbbbbbbbbbbbbbbbbbbbbb</div>
+    <div id="div33">ccccccccc</div>
+</body>
+</html>
