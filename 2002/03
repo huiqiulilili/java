@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:200px;
+            height:150px;
+            border:2px solid red;
+        }
+        #div41{
+            float:left;
+        }
+
+        #div42{
+            float:left;
+        }
+
+        #div43{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div id="div41">aaaaaaaaa</div>
+    <div id="div42">bbbbbbbbb</div>
+    <div id="div43">ccccccccc</div>
+</body>
+</html>
