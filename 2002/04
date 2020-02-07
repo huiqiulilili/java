@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a:link{
+            background-color:red;
+        }
+        a:hover{
+            background-color:yellow;
+        }
+        a:active{
+            background-color:blue;
+        }
+        a:visited{
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.zxuew.cn/daodejing/" target="_blank">超链接</a>
+</body>
+</html>
