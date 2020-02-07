@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div.haha{
+            background-color:yellow;
+            color:white;
+        }
+        p.haha{
+            background-color:blue;
+            color:white;
+        }
+
+<!--    .haha{-->
+<!--        background-color:orange;-->
+<!--        color:white;-->
+<!--    }-->
+    </style>
+</head>
+<body>
+    <div class="haha">道可道，非常道。名可名，非常名</div>
+    <p class="haha"> 天下皆知美之为美，斯恶矣，皆知善之为善</p>
+</body>
+</html>
