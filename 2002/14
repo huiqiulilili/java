@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #text21{
+            position:absolute;
+            top:30px;
+            left:30px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div id="img21"><img src="a.jpg" width="350px" height="350px"></div>
+    <div id="text21">道可道，非常道。名可名，非常名</div>
+</body>
+</html>
