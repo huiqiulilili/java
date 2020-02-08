@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        @import url(div.css);
+    </style>
+</head>
+<body>
+    <div>
+        道可道，非常道。名可名，非常名
+    </div>
+</body>
+</html>
