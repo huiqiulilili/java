@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #imgtext11{
+            width:400px ;
+            height:300px;
+
+            border:3px dashed orange;
+        }
+        #img11{
+            float:left;
+        }
+        #text11{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="imgtext11">
+        <div id="img11" ><img src="a.jpg" width="250px" height="200px"></div>
+        <div id="text11">《道德经》，又称《道德真经》是老子的著作，
+            也是中国文化从古至今的精髓，书中所讲，寓意深刻，本站所提供的解释仅限参考，
+            《道德经》文化不是用语言就能表达清楚的，需要自己专心的去领悟。
+            境界不同看到的深浅也不同，希望大家在学习的过程中都能保持一种谦卑的心态不断地开发自己的智慧，
+            使自己得到升华。提供此网站希望能方便学者…
+        </div>
+    </div>
+</body>
+</html>
