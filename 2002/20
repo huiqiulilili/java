@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+<!--        function test(){-->
+<!--            alert("qqqq");-->
+<!--        }-->
+
+<!--        test();-->
+
+<!--        function add(a, b) {-->
+<!--            var sum = a+b;-->
+<!--            alert(sum);-->
+<!--        }-->
+<!--        add(1,2);-->
+
+        function add2(a,b,c){
+            var sum1 = a+b+c;
+            return sum1;
+        }
+        alert(add2(1,2,3));
+    </script>
+</body>
+
+</html>
