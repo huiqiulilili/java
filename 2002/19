@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+<!--        var add3 =  function(m,n){-->
+<!--            alert(m+n);-->
+<!--        }-->
+<!--        add3(5,6);-->
+
+    var add = new Function("x,y","var sum = x+y;return sum;")
+    alert(add(1,2));
+    </script>
+</body>
+
+</html>
