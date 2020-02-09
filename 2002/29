@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+<!--    if 语句 -->
+<!--        var a = 5;-->
+<!--        if(a == 5){-->
+<!--            alert("5");-->
+<!--        }else{-->
+<!--            alert("6");-->
+<!--        }-->
+
+
+<!--switch语句-->
+<!--    var b = 60;-->
+<!--    switch(b){-->
+<!--        case 3 :-->
+<!--            alert("3");-->
+<!--            break;-->
+<!--        case 6 :-->
+<!--            alert("6");-->
+<!--            break;-->
+<!--        default :-->
+<!--            alert("other");-->
+<!--    }-->
+
+
+<!--while循环-->
+<!--    var i = 5;-->
+<!--    while(i > 1){-->
+<!--        alert(i);-->
+<!--        i&#45;&#45;;-->
+<!--    }-->
+
+<!--for循环-->
+    for(var i = 0;i <= 10;i ++) {
+        alert(i);
+    }
+
+    </script>
+</body>
+</html>
