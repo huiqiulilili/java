@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+<!--        var j = 123;-->
+<!--        alert(j/1000*1000);-->
+
+<!--    var str = "123";-->
+<!--    alert(str+1);-->
+<!--    alert(str-1);-->
+
+<!--    var str = "abc";-->
+<!--    alert(str - 1);-->
+    </script>
+</body>
+</html>
