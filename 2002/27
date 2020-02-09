@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function test11(){
+            var nn = 10;
+            alert("在方法内部使用"+nn);
+        }
+        test11();
+        alert("在方法外部使用"+nn)
+    </script>
+</body>
+</html>
