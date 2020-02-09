@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var aa = 10;
+        alert("在方法外部调用aa:" + aa);
+        function test1(){
+            alert("在方法内部调用aa:" + aa);
+        }
+        test1();
+    </script>
+    <script>
+        alert("在另外一个标签调用aa:" + aa);
+    </script>
+</body>
+</html>
