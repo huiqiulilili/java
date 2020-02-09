@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+<!--        var flag = true;-->
+<!--        alert(flag+1);-->
+
+<!--        var flag1 = false;-->
+<!--        alert(flag1+1);-->
+
+<!--    var aa = "5";-->
+<!--    if(aa===5){-->
+<!--        alert("5");-->
+<!--    }else{-->
+<!--        alert("other");-->
+<!--    }-->
+
+    document.write("aaa");
+    document.write("<br>");
+    document.write("bbb");
+    document.write("<hr>");
+
+    </script>
+
+</body>
+</html>
