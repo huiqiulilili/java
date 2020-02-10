@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="open" onclick="open1()">
+
+    <script>
+        function open1(){
+            window.open("../Html/a.html","","width = 200,height = 100");
+        }
+        window.close();
+<!--        var flag =  confirm("删除");-->
+<!--        alert(flag);-->
+
+<!--        var flag = confirm("是否删除");-->
+<!--        if(flag == true){-->
+<!--            alert("删除成功");-->
+<!--        }else {-->
+<!--            alert("删除失败");-->
+<!--        }-->
+<!--        window.prompt("请输入","0");-->
+
+
+    </script>
+</body>
+</html>
