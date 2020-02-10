@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" name="name1" value="WWW"><br>
+    <br>
+    <script>
+<!--        var inputs =  document.getElementsByName("name1")[0];-->
+<!--        alert(inputs.name);-->
+
+    var inputs =  document.getElementsByTagName("input")[0];
+    alert(inputs.value);
+    </script>
+</body>
+</html>
