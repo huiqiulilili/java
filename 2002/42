@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="nameid" name="name1">
+    <br>
+    <script>
+        var str = "asd";
+        document.write(str);
+        document.write("<hr>");
+        var input1 =  document.getElementById("nameid");
+        alert(input1.name);
+        input1.value = "bbbb";
+
+    </script>
+</body>
+</html>
