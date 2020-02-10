@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="tiaozhuan" onclick="href1()">
+    <script>
+        function href1(){
+            location.href = "../Html/a.html";
+        }
+
+
+        document.write(navigator.appName);
+
+        document.write("<hr>");
+        document.write(screen.width);
+        document.write("<br>");
+        document.write(screen.height);
+
+        document.write("<hr>");
+        document.write(location.href);
+    </script>
+</body>
+</html>
