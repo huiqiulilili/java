@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" name="name1" value="AAA"><br>
+    <input type="text" name="name1" value="BBB"><br>
+    <input type="text" name="name1" value="CCC"><br>
+    <input type="text" name="name1" value="DDD"><br>
+    <br>
+    <script>
+        var inputs =  document.getElementsByTagName("input");
+<!--        alert(inputs.length);-->
+
+        for(var i = 0;i < inputs.length;i ++) {
+            var input = inputs[i];
+            alert(input.value);
+        }
+    </script>
+</body>
+</html>
