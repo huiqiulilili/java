@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr1 = [1,2,3];
+        document.write(arr1.length);
+        document.write("<hr>");
+
+        var arr11 = [1,2,3];
+        var arr12 = [4,5,6];
+        document.write(arr11.concat(arr12));
+        document.write("<hr>");
+
+        var arr13 = new Array(3);
+        arr13[0] = "a";
+        arr13[1] = "b";
+        arr13[2] = "c";
+        document.write(arr13);
+        document.write("<br>");
+        document.write(arr13.join("-"));
+        document.write("<hr>");
+
+        var arr14 = new Array(3);
+        arr14[0] = "a";
+        arr14[1] = "b";
+        arr14[2] = "c";
+        document.write("原始数组：" + arr14);
+        document.write("<br>");
+        document.write("原始长度："+arr14.length);
+        document.write("<br>");
+        document.write("新的长度："+arr14.push("d"));
+        document.write("<br>");
+        document.write("新数组：" + arr14);
+        document.write("<hr>");
+
+
+        var arr15 = ["aaa","bbb","ccc"];
+        var arr16 = ["www","zzz"];
+        document.write("原始数组：" + arr15);
+        document.write("<br>");
+        document.write("原始长度："+arr15.length);
+        document.write("<br>");
+        document.write("新的长度："+arr15.push(arr16));
+        document.write("<br>");
+        document.write("新数组：" + arr15);
+        document.write("<hr>");
+
+<!--        for(var i = 0;i < arr15.length;i ++){-->
+<!--            alert(arr15[i]);-->
+<!--        }-->
+
+        var arr17 = ["张三","李素","万给"];
+        document.write("原始数组：" + arr17);
+        document.write("<br>");
+        document.write("return:"+arr17.pop());
+        document.write("<br>");
+        document.write("新数组：" + arr17);
+        document.write("<hr>");
+
+
+        var arr18 = ["a","b","c","d"];
+        document.write("原始数组：" + arr18);
+        document.write("<br>");
+        document.write("新数组：" + arr18.reverse());
+
+
+
+    </script>
+</body>
+</html>
