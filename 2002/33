@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var date = new Date();
+        document.write(date);
+        document.write("<br>");
+        document.write(date.toLocaleString());
+
+        document.write("<hr>");
+        document.write("year:" + date.getFullYear());
+
+
+        document.write("<hr>");
+        var month = date.getMonth()+1
+        document.write("month:" + month);
+
+        document.write("<hr>");
+        document.write("week:" + date.getDay());
+
+        document.write("<hr>");
+        document.write("day:" + date.getDate());
+
+        document.write("<hr>");
+        document.write("hours:" + date.getHours());
+
+        document.write("<hr>");
+        document.write("hours:" + date.getHours());
+
+        document.write("<hr>");
+        document.write("minutes:" + date.getMinutes());
+
+        document.write("<hr>");
+        document.write("second:" + date.getSeconds());
+
+        document.write("<hr>");
+        document.write("time:" + date.getTime());
+
+    </script>
+
+</body>
+</html>
