@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div11{
+            width:200px;
+            height:150px;
+            border:2px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <span id="sid">哈哈</span>
+    <div id="div11"></div>
+    <script>
+<!--        var sid = document.getElementById("sid");-->
+<!--        alert(sid.innerHTML);-->
+        var div11 = document.getElementById("div11");
+<!--        div11.innerHTML = "<h1>AAAAA</h1>";-->
+
+<!--           var tab = "<table border = '1'><tr><td>第一个</td><td>第二个</td></tr><td>AAA</td><td>BBB</td><tr><td>CCC</td><td>DDD</td></tr></table>"-->
+            var tab = "<table>";
+            tab+= "</table>";
+           div11.innerHTML = tab;
+    </script>
+</body>
+</html>
