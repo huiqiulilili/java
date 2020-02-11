@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" bordercolor = "blue" cellspacing="0">
+        <tr>
+            <td>操作</td>
+            <td>编号</td>
+            <td>姓名</td>
+        </tr>
+        <tr>
+            <td><input type="button" value="选择" onclick="s1('100','王俊凯')"></td>
+            <td>100</td>
+            <td>王俊凯</td>
+        </tr>
+        <tr>
+            <td><input type="button" value="选择" onclick="s1('101','王源')"></td>
+            <td>101</td>
+            <td>王源</td>
+        </tr>
+        <tr>
+            <td><input type="button" value="选择" onclick="s1('102','易烊千玺')"></td>
+            <td>102</td>
+            <td>易烊千玺</td>
+        </tr>
+    </table>
+    <script>
+        function s1(num1,name1){
+            var p = window.opener;
+            p.document.getElementsById("numid").var = num1;
+            p.document.getElementsById("nameid").value = name1;
+            window.close();
+        }
+    </script>
+</body>
+</html>
