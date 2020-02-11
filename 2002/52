@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    编号：<input type="text" id = "numid"><br>
+    姓名：<input type="text" id="nameid"><br>
+    <input type="button" value="选择" onclick="open1()">
+    <script>
+        function open1(){
+            window.open("user.html","","width = 250,height = 150");
+        }
+
+    </script>
+</body>
+</html>
