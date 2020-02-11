@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var str = "abc";
+        document.write(str.length);
+
+        document.write("<hr>");
+
+        var str1 = "abcd";
+        document.write(str1.bold());
+        document.write("<hr>");
+
+        var str2 = "www";
+        document.write(str2.fontcolor("red"));
+        document.write("<hr>");
+
+        var str3 = "qqq";
+        document.write(str3.fontsize(5));
+        document.write("<hr>");
+
+        var str4 = "eeee";
+        document.write(str4.link("../Html/a.html"));
+        document.write("<hr>");
+
+        var s1 = "100";
+        var s2 = "200";
+        document.write(s1.sub());
+        var s3 = "300";
+        document.write(s3);
+        document.write(s2.sup());
+    </script>
+</body>
+</html>
