@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="ulid1">
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+    <script>
+       var ul11 =  document.getElementById("ulid1");
+        <!-- 获取ul下的 子标签 -->
+<!--        var lis = ul11.childNodes;-->
+<!--        alert(lis.length);-->
+        var lis =  ul11.getElementsByTagName("li");
+        alert(lis.length);
+    </script>
+</body>
+</html>
