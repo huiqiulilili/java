@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span id="spanid">哈哈</span>
+    <script>
+        var span1 = document.getElementById("spanid");
+        <!--获取标签对象-->
+<!--        alert(span1.nodeName);-->
+<!--        alert(span1.nodeType);-->
+<!--        alert(span1.nodeValue);-->
+
+        <!--属性-->
+        var id1 =  span1.getAttributeNode("id");
+<!--        alert(id1.nodeName);-->
+<!--        alert(id1.nodeType);-->
+<!--        alert(id1.nodeValue);-->
+
+        <!--获取文本-->
+        var text1 =  span1.firstChild;
+        alert(text1.nodeName);
+        alert(text1.nodeType);
+        alert(text1.nodeValue);
+    </script>
+</body>
+
+</html>
