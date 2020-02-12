@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var str1 = "aaa";
+        var str2 = "bbb";
+        document.write(str1.concat(str2));
+        document.write("<hr>");
+
+        var str3 = "abcdefg";
+        document.write(str3.charAt(2));
+        document.write("<hr>");
+
+        var str4 = "qwerty";
+        document.write(str4.indexOf("x"));
+        document.write("<hr>");
+
+        var str5 = "a-b-c-d";
+        var arr1 =  str5.split("-");
+        document.write("len:" + arr1.length)
+        document.write("<hr>");
+
+        var str6 = "abcd";
+        document.write(str6);
+        document.write("<br>");
+        document.write(str6.replace("a","q"));
+        document.write("<hr>");
+
+        var str7 = "qwertyuioasdfghjkl";
+        document.write(str7.substr(5,3));
+        document.write("<br>");
+        document.write(str7.substring(5,3));
+
+
+    </script>
+</body>
+</html>
