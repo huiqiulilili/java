@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="ulid">
+        <li id="li1">苹果</li>
+        <li id="li2">橘子</li>
+        <li id="li3">香蕉</li>
+    </ul>
+    <script>
+<!--        var li1 =  document.getElementById("li1");-->
+<!--        var ul1 =  li1.parentNode;-->
+<!--        alert(ul1.id);-->
+
+<!--        var ul1 = document.getElementById("ulid");-->
+<!--        var li1 =  ul1.firstChild;-->
+<!--        alert(li1.id);-->
+<!--        var ul1 = document.getElementById("ulid");-->
+<!--        var li1 =  ul1.lastChild;-->
+<!--        alert(li1.id);-->
+
+<!--        var li2 = document.getElementById("li2");-->
+<!--        alert(li2.nextSibling);-->
+
+        var li2 = document.getElementById("li2");
+        alert(li2.previousSibling);
+    </script>
+</body>
+
+</html>
