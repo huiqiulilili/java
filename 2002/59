@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var str = "alert('123')";
+<!--        alert(str);-->
+<!--        eval(str);-->
+
+        document.write("<hr>");
+        var str1 = "测试中文aaa1234";
+        var encode =  encodeURI(str1);
+        document.write(encode);
+        document.write("<hr>");
+
+        var decode1 =  decodeURI(encode);
+        document.write(decode1);
+        document.write("<hr>");
+
+        var str2 = "aaa";
+        alert(isNaN(str2));
+        document.write("<hr>");
+
+        var str3 = "123";
+        document.write(parseInt(str3)+1);
+
+
+
+    </script>
+</body>
+</html>
