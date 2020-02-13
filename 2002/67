@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select id="country" onchange="add1(this.value)">
+        <option value="0">--请选择--</option>
+        <option value="中国">中国</option>
+        <option value="美国">美国</option>
+        <option value="德国">德国</option>
+        <option value="日本">日本</option>
+    </select>
+    <select id="city">
+        <option value=""></option>
+    </select>
+</body>
+    <script>
+        var arr = new Array(4);
+        arr[0] = ["中国","西安","南京","抚州","黄州","临洮","哈密"];
+        arr[1] = ["美国","华盛顿","底特律","休斯顿","纽约"];
+        arr[2] = ["德国","慕尼黑","柏林","法兰克福","狼堡"];
+        arr[3] = ["日本","北海道","东京","大阪","广岛","长崎"];
+
+
+        function add1(val){
+            <!--每次添加之前判断一下city里面是否有option，如果有，删除-->
+            var city1 =  document.getElementById("city");
+            var options1 = city.getElementsByTagName("option");
+            for(var i = 0;i < options1.length;i ++) {
+                var option1 = options1[i];
+                city1.removeChild(option1);
+                i--;
+            }
+            for(var i = 0;i < arr.length;i ++) {
+                var arr1 = arr[i];
+                var firstvalue =  arr1[0];
+                if(firstvalue == val) {
+                    for(var j = 1;j < arr1.length;j ++) {
+                        var value1 = arr1[j];
+                        var option1 = document.createElement("option");
+                        var text1 = document.createTextNode(value1);
+                        option1.appendChild(text1);
+                        city1.appendChild(option1);
+                    }
+                }
+            }
+        }
+    </script>
+</html>
