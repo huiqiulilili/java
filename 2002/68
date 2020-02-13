@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="s1" style="float:left">
+        <div>
+            <select multiple = "multiple" id="select1" style="width:100px;height:100px">
+                <option>AAA</option>
+                <option>BBB</option>
+                <option>CCC</option>
+                <option>DDD</option>
+                <option>EEE</option>
+            </select>
+        </div>
+        <div>
+            <input type="button" value="选中添加到右边" onclick="selToRight()"><br>
+            <input type="button" value="全部添加到右边" onclick="allToRight()">
+        </div>
+    </div>
+    <div id="s2">
+        <div>
+            <select multiple = "multiple" id="select2" style="width:100px;height:100px">
+                <option>QQQ</option>
+            </select>
+        </div>
+        <div>
+            <input type="button" value="选中添加到左边" onclick="selToLeft()"><br>
+            <input type="button" value="全部添加到左边" onclick="allToLeft()">
+        </div>
+    </div>
+
+    <script>
+        function selToRight() {
+            var select2 = document.getElementById("select2");
+            var select1 =  document.getElementById("select1");
+            var options1  = select1.getElementsByTagName("option");
+            for(var i = 0;i < options1.length;i ++) {
+                var option1 = options1[i];
+                if(option1.selected == true) {
+                    select2.appendChild(option1);
+                    i--;
+                }
+            }
+        }
+
+        function allToRight(){
+            var select1 = document.getElementById("select1");
+            var select2 = document.getElementById("select2");
+
+            var options = select1.getElementsByTagName("option");
+
+            for(var i = 0;i < options.length;i ++) {
+                var option = options[i];
+                select2.appendChild(option);
+                i--;
+            }
+        }
+
+        function selToLeft(){
+            var select1 = document.getElementById("select1");
+            var select2 = document.getElementById("select2");
+
+            var options = select2.getElementsByTagName("option");
+            for(var i = 0;i < options.length;i ++) {
+                var option = options[i];
+                if(option.selected == true) {
+                    select1.appendChild(option);
+                    i--;
+                }
+            }
+        }
+
+        function allToLeft(){
+            var s1 = document.getElementById("select1");
+            var s2 = document.getElementById("select2");
+
+            var options = s2.getElementsByTagName("option");
+            for(var i = 0;i < options.length;i ++) {
+                var option = options[i];
+                s1.appendChild(option);
+                i--;
+            }
+        }
+    </script>
+</body>
+</html>
