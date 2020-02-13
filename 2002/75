@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:150px;
+            border:2px solid red;
+        }
+        #div2{
+            width:250px;
+            height:150px;
+            border:5px dashed green;
+        }
+    </style>
+</head>
+<body>
+
+        <ul id="ulid21">
+            <li id="li11">王俊凯</li>
+            <li id="li12">王源</li>
+            <li id="li13">易烊千玺</li>
+        </ul>
+
+    <input type="button" value="insert" onclick="insert1()">
+    <script>
+        function insert1(){
+            var li13 =  document.getElementById("li13");
+            var li14 =  document.createElement("li");
+            var text14 =  document.createTextNode("鹿晗");
+            li14.appendChild(text14);
+            var ul1 = document.getElementById("ulid21");
+            ul1.insertBefore(li14,li13);
+        }
+    </script>
+</body>
+</html>
