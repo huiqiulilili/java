@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+</head>
+<body>
+
+        <ul id="ulid51">
+            <li id="li41">王俊凯</li>
+            <li id="li42">王源</li>
+            <li id="li43">易烊千玺</li>
+        </ul>
+        <div id="divv"></div>
+    <input type="button" value="copy" onclick="copy1()">
+    <script>
+    function copy1(){
+        var ulid51 =  document.getElementById("ulid51");
+        var ulcopy =  ulid51.cloneNode(true);
+        var divv = document.getElementById("divv");
+        divv.appendChild(ulcopy);
+     }
+    </script>
+</body>
+</html>
