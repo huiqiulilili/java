@@ -1,0 +1,20 @@
+package cn.itcast.IO;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileWriterTest {
+    public static void main(String[] args) throws IOException {
+        // 如果文件不存在，创建文件
+        // 如果文件存在，覆盖源文件
+        // 创建一个字符输出流对象
+        FileWriter fr = new FileWriter("demo.txt");
+        // 调用Writer对象中的write(String) 方法，写数据
+        // 这个数据写在了临时缓冲区中了，并没有写在文件中
+        fr.write("abc");
+        // 进行刷新，将数据写在文件中
+        fr.flush();
+        // 关闭流，关闭资源
+        fr.close();
+    }
+}
