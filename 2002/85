@@ -1,0 +1,42 @@
+package cn.itcast.IO;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CopyTextDemo2 {
+    public static void main(String[] args) throws IOException {
+        FileReader fr = null;
+        FileWriter fw = null;
+        try {
+            fr = new FileReader("demo.txt");
+            fw = new FileWriter("1.txt");
+            char[] chars = new char[1024];
+            int num = 0;
+            while ((num = fr.read(chars)) != -1) {
+                fw.write(chars,0,num);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(fw != null)
+                fw.close();
+        }
+
+        /*// 3、频繁的读写操作
+        int ch = 0;
+        while ((ch = fr.read()) != -1) {
+            fw.write((char)ch);
+        }
+        // 4、关闭流
+        fr.close();
+        fw.close();*/
+    }
+}
