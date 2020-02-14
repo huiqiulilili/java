@@ -1,0 +1,16 @@
+package cn.itcast.键盘;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class ReadKey {
+    public static void main(String[] args) throws IOException {
+        raedkey();
+    }
+
+    private static void raedkey() throws IOException {
+        InputStream in = System.in;
+        int ch = in.read();
+        System.out.println(ch);
+    }
+}
