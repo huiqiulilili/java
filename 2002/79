@@ -1,0 +1,26 @@
+package cn.itcast.Buffer;
+
+import java.io.*;
+
+public class CopyTextDemo {
+    public static void main(String[] args) throws IOException {
+        FileReader fr = new FileReader("demo.txt");
+        BufferedReader br = new BufferedReader(fr);
+        FileWriter fw = new FileWriter("demo_copy.txt");
+        BufferedWriter bw = new BufferedWriter(fw);
+        /*int ch = 0;
+        while ((ch = br.read()) != -1) {
+            bw.write(ch);
+        }*/
+
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            bw.write(line);
+            bw.newLine();
+        }
+
+        br.close();
+        bw.close();
+
+    }
+}
