@@ -1,0 +1,31 @@
+package cn.itcast.cn.itcast.Stream;
+
+import java.io.*;
+
+public class CopyMp3Demo {
+    public static void main(String[] args) throws IOException {
+        /*FileInputStream fis = new FileInputStream("F:\\喜欢的电影\\1.mp3");
+        FileOutputStream fos = new FileOutputStream("1.mp3");
+        byte[] bytes = new byte[1024];
+        int len = 0;
+        while ((len = fis.read(bytes)) != -1) {
+            fos.write(bytes,0,len);
+        }
+        fis.close();
+        fos.close();*/
+
+        FileInputStream fis = new FileInputStream("F:\\喜欢的电影\\1.mp3");
+        FileOutputStream fos = new FileOutputStream("2.mp3");
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+        int len = 0;
+        byte[] bytes = new byte[1024];
+        while ((len = bis.read(bytes)) != -1) {
+            bos.write(bytes,0,len);
+            bos.flush();
+        }
+        bis.close();
+        bos.close();
+    }
+}
