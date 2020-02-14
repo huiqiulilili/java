@@ -1,0 +1,26 @@
+package cn.itcast.IO;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderDemo {
+    public static void main(String[] args) throws IOException {
+        /*// 创建读取字符数据流的流对象
+        FileReader fr = new FileReader("demo.txt");
+        // 用Reader中的read方法读取字符
+        int ch =  0;
+        while ((ch = fr.read()) != -1) {
+            System.out.println((char)ch);
+        }
+        fr.close();*/
+
+
+        FileReader fr = new FileReader("demo.txt");
+        char[] chars = new char[1024];
+        int num = 0;
+        while((num = fr.read(chars)) != -1) {
+            System.out.println(new String(chars,0,num));
+        }
+    }
+}
