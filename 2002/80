@@ -1,0 +1,19 @@
+package cn.itcast.Buffer;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferWriteDemo {
+    public static void main(String[] args) throws IOException {
+        FileWriter fr = new FileWriter("1.txt");
+        // 创建缓冲区对象
+        BufferedWriter br = new BufferedWriter(fr);
+        // 把数据写到缓冲区中
+        br.write("wertyui");
+        // 把缓存区的东西刷新到目的地
+        br.flush();
+        // 关闭缓冲区
+        br.close();
+    }
+}
