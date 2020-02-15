@@ -1,0 +1,87 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Select {
+    public List<Student> selectStudent(String mail, Integer classesId){
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        List<Student> students = new ArrayList<>();
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "select id,sn,name,qq_mail,classes_id from student where qq_mail like ? and classes_id = ?";
+            System.out.println(sql);
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,"%" + mail);
+            ps.setInt(2,classesId);
+            resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                Student student = new Student();
+                student.setId(resultSet.getInt("id"));
+                student.setSn(resultSet.getInt("sn"));
+                student.setName(resultSet.getString("name"));
+                student.setQqMail(resultSet.getString("qq_mail"));
+                student.setClassesId(resultSet.getInt("classes_id"));
+                students.add(student);
+
+                System.out.println(student);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //finaly里面始终会执行，如果放在try中可能执行不到
+            DBUtil.close(connection,ps,resultSet);
+        }
+        return students;
+    }
+
+    public List<Score> selectScore(Integer score,Integer classes){
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        List<Score> students = new ArrayList<>();
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "SELECT stu.id,stu.name student_name ,cou.name course_name from student stu " +
+                    " join  score sco " +
+                    " on sco.student_id = sco.id" +
+                    " join classes cla " +
+                    " on cla.id = stu.classes_id" +
+                    " join course cou on cou.id = sco.course_id" +
+                    " where sco.score>? and cla.id = ?;";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1,score);
+            ps.setInt(2,classes);
+            resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                Score score0 = new Score();
+
+                score0.setId(resultSet.getInt("id"));
+                score0.setStudentName(resultSet.getString("student_name"));
+                score0.setCourseName(resultSet.getString("course_name"));
+
+                students.add(score0);
+
+                System.out.println(score0);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //finaly里面始终会执行，如果放在try中可能执行不到
+            DBUtil.close(connection,ps,resultSet);
+        }
+        return students;
+    }
+
+
+    public static void main(String[] args) {
+        List<Score> students = new Select().selectScore(60,1);
+        System.out.println(students);
+    }
+}
