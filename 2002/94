@@ -1,0 +1,27 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Update {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+             connection = DBUtil.getConnection();
+            String update = "update student set qq_mail = ? where name = ? ";
+             ps = connection.prepareStatement(update);
+            ps.setString(1,"a@qq.com");
+            ps.setString(2,"张三");
+            int num = ps.executeUpdate();
+            if(num > 0){
+                System.out.println("更新成功");
+            }else{
+                throw new RuntimeException("更新失败");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,null);
+        }
+    }
+}
