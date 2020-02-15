@@ -1,0 +1,40 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SelectMul {
+    public List<Student> selectStudent(String mail,String classesId){
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        List<Student> students = new ArrayList<>();
+        try {
+
+
+            connection = DBUtil.getConnection();
+            String sql = "select id,sn,name,qq_mail,classes_id from student where qq_mail like ? and classes_id = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,"%" + mail);
+            ps.setInt(2,1);
+            resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                Student student = new Student();
+                student.setId(resultSet.getInt("id"));
+                student.setSn(resultSet.getInt("sn"));
+                student.setName(resultSet.getString("name"));
+                student.setQqMail(resultSet.getString("qq_mail"));
+                student.setClassesId(resultSet.getInt(5));
+                students.add(student);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,resultSet);
+        }
+        return students;
+    }
+}
