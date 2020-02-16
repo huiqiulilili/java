@@ -1,0 +1,69 @@
+import java.util.List;
+
+public class Student {
+    Integer id;
+    Integer sn;
+    String name;
+    String qq_mail;
+    Integer classes_id;
+    List<Score> scores;
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", sn=" + sn +
+                ", name='" + name + '\'' +
+                ", qq_mail='" + qq_mail + '\'' +
+                ", classes_id=" + classes_id +
+                '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getSn() {
+        return sn;
+    }
+
+    public void setSn(Integer sn) {
+        this.sn = sn;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getQq_mail() {
+        return qq_mail;
+    }
+
+    public void setQq_mail(String qq_mail) {
+        this.qq_mail = qq_mail;
+    }
+
+    public Integer getClasses_id() {
+        return classes_id;
+    }
+
+    public void setClasses_id(Integer classes_id) {
+        this.classes_id = classes_id;
+    }
+}
