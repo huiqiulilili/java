@@ -1,0 +1,181 @@
+import com.mysql.jdbc.StringUtils;
+import java.math.*;
+import java.lang.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class Select {
+
+    public static List<Student> selectStudent(String mail,Integer classes){
+        List<Student> studentList = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "select id,sn,name,qq_mail,classes_id from student where qq_mail like ? and classes_id = ?";;
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,"%" + mail);
+            ps.setInt(2,classes);
+            resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                Student student = new Student();
+                student.setId(resultSet.getInt("id"));
+                student.setSn(resultSet.getInt("sn"));
+                student.setName(resultSet.getString("name"));
+                student.setQq_mail(resultSet.getString("qq_mail"));
+                student.setClasses_id(resultSet.getInt("classes_id"));
+                studentList.add(student);
+                System.out.println(student);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,resultSet);
+        }
+        return studentList;
+    }
+
+    public static void main(String[] args) {
+//        List<Student> list = Select.selectStudent("@qq.com" ,1);
+
+//        List<Score> scoreList = Select.getScore(60,1);
+//        System.out.println(scoreList);
+        List<Student> list = Select.selectScore2(60,1);
+
+    }
+
+    public static List<Score> getScore1(Integer score,Integer classes){
+        List<Score> scoreList = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "select * from student stu " +
+                    " join score sco on sco.student_id = stu.id " +
+                    " join classes cla on cla.id = stu.classes_id" +
+                    " join course cou on cou.id = sco.course_id " +
+                    " where sco.score > ? and cla.id = ?;" ;
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1,score);
+            ps.setInt(2,classes);
+            resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                Score score0 = new Score();
+                score0.setId(resultSet.getInt("id"));
+                score0.setScore(resultSet.getBigDecimal("score"));
+                score0.setClasses_id(resultSet.getInt("classes_id"));
+                score0.setStudent_id(resultSet.getInt("student_id"));
+                scoreList.add(score0);
+                System.out.println(score0);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,resultSet);
+        }
+        return scoreList;
+    }
+
+
+
+
+    /*public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+
+        try {
+            //建立连接
+            connection = DBUtil.getConnection();
+            //创建执行对象
+            String sql = "select * from student where name = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,"许仙");
+            //处理结果集
+            resultSet  = ps.executeQuery();
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                Integer sn = resultSet.getInt("sn");
+                String name = resultSet.getString("name");
+                String qqMail = resultSet.getString("qq_mail");
+                Integer classes = resultSet.getInt("classes_id");
+                System.out.println(String.format("id=%s,sn=%s,name=%s,qqMail=%s,classes=%s",id,sn,name,qqMail,classes));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,resultSet);
+        }
+    }*/
+
+
+    public static List<Student> selectScore2(Integer score,
+                                      Integer classesId) {
+        Connection        connection = null;
+        PreparedStatement ps         = null;
+        ResultSet         rs         = null;
+        List<Student>     students   = new ArrayList<>();
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "SELECT" +
+                    " stu.id," +
+                    " stu.NAME student_name," +
+                    " cou.NAME course_name," +
+                    " sco.score " +
+                    " FROM" +
+                    " score sco" +
+                    " JOIN student stu ON sco.student_id = stu.id" +
+                    " JOIN course cou ON sco.course_id = cou.id " +
+                    " WHERE" +
+                    " sco.score >= ? " +
+                    " AND stu.classes_id =?";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, score);
+            ps.setInt(2, classesId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Integer id       = rs.getInt("id");
+                Student student0 = new Student();
+                Score   score0   = new Score();
+                boolean isExists = false;
+                score0.setScore(rs.getBigDecimal("score"));
+                score0.setCourseName(rs.getString("course_name"));
+                for (Student student : students) {
+                    if (Integer.compare(id, student.getId()) == 0) {
+                        student0 = student;
+                        isExists =true;
+                    }
+                }
+                student0.setId(rs.getInt("id"));
+                student0.setName(rs.getString("student_name"));
+                List<Score> existsScores = student0.getScores();
+                if (existsScores == null) {
+                    existsScores = new ArrayList<>();
+                }
+                existsScores.add(score0);
+                if(!isExists){
+                    students.add(student0);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // finally始终会执行，如果放try里边，
+            // 即便放在最后，也可能执行不到
+            DBUtil.close(connection, ps, rs);
+        }
+        return students;
+    }
+}
