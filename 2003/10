@@ -1,0 +1,221 @@
+Map集合
+
+1、Map结合和Collection集合的区别
+	Map集合存储元素是成对出现的，Map集合的键是惟一的，值是可重复的。
+	Collection集合存储元素是单独出现的，Collection的儿子Set是唯一的，List是可重复的
+	注意：
+		Map集合的数据结构只针对键有效，与值无关
+		Collection集合的数据结构是针对元素有效的
+2、	HashMap、TreeMap
+3、Map集合的功能：
+	添加：
+		V put(K key, V value)：添加功能  
+			如果键是第一次存储，就直接存储元素，返回null;
+			如果键不是第一次存储，就把原来的值替换掉，返回以前的值
+			
+	删除：
+		void clear():移除所有的键值对元素
+		V remove(Object key)：根据键删除键值对元素，并且把值返回
+	判断：
+		boolean containsKey(Object key)：判断是否包含指定的键
+		boolean containsValue(Object value)：判断是否包含指定的值 
+		boolean isEmpty()：判断集合是否为空
+	获取：
+		Set<Map.Entry<K,V>> entrySet()  
+		V get(Object key)：根据键获取值
+		Set<K> keySet()：获取集合中所有键的集合
+		Collection<V> values()：获取集合中所有值的集合
+	长度：
+		int size()：返回集合的长度
+
+4、Map集合获取所有键或者获取所有值
+		举例子：
+			- 代码：
+				Map<String,String> map = new HashMap<>();
+				map.put("a","1");
+				map.put("b","2");
+				map.put("c","3");
+				map.put("d","4");
+				Set<String> set = map.keySet();
+				// 获取所有键
+				for(String key : set) {
+					System.out.println(key);
+				}
+				// 获取所有值
+				Collection<String> collection = map.values();
+				for(String value : collection) {
+					System.out.println(value);
+				}
+		
+5、Map集合的遍历：
+	方式一：根据键找值
+		-思路：
+			1、获取所有的键
+			2、遍历键的集合，获取的到每一个键
+			3、根据键去找值
+		
+		- 代码：
+			Map<String,String> map = new HashMap<>();
+			map.put("a","1");
+			map.put("b","2");
+			map.put("c","3");
+			map.put("d","4");
+
+			Set<String> set = map.keySet();
+			for(String key : set) {
+				String value = map.get(key);
+				System.out.println(key + "--->" + value);
+			}
+			
+	方式二：根据键值对对象找键和值
+	
+		- 思路：
+			1、获取所有键值对对象的集合 Set<Map.Entry<k,v>> entrySet()：返回的是键值对对象的集合
+			2、遍历键值对的集合对象，得到每一个键值对对象
+			3、根据键值对对象获取键和值
+		- 代码：
+			Map<String,String> map = new HashMap<>();
+			map.put("a","1");
+			map.put("b","2");
+			map.put("c","3");
+			map.put("d","4");
+
+			Set<Map.Entry<String,String>> set = map.entrySet();
+
+			for(Map.Entry<String,String> me : set) {
+				String key = me.getKey();
+				String value = me.getValue();
+				System.out.println(key + "--->" + value);
+			}
+		
+6、HashMap：
+	是基于哈希表的Map接口实现
+	哈希表的作用是保证见得唯一性
+7、	1、例子：遍历自定义对象
+	- 代码：
+		Map<Student,String> map = new HashMap<>();
+        map.put(new Student("王源",17),"Tf");
+        map.put(new Student("王俊凯",18),"Tf");
+        map.put(new Student("易烊千玺",19),"Tf");
+
+        Set<Student> set = map.keySet();
+        for(Student key : set) {
+            String student =  map.get(key);
+
+            System.out.println(key+"--->"+student);
+
+        }
+	2、例子：遍历自定义对象，如果key值相同就覆盖
+		HashMap<Student,String> hm = new HashMap<>();
+        Student s1 = new Student("王俊凯",18);
+        Student s2 = new Student("王源",19);
+        Student s3 = new Student("易烊千玺",17);
+        Student s4 = new Student("王俊凯",18);
+        hm.put(s1,"1");
+        hm.put(s2,"2");
+        hm.put(s3,"3");
+        hm.put(s4,"11");
+        Set<Student> set = hm.keySet();
+        for(Student key : set) {
+            String student =  hm.get(key);
+            System.out.println(key+"--->"+student);
+        }
+		必须重写Student累的hashCode()和equals()方法
+		int hashCode()方法：返回这个对象的哈希值
+			注意：哈希值是根据哈希算法算出来的一个值，这个值与地址有关，但不是实际的地址值
+			public int hashCode() {
+				return Objects.hash(name, age);
+			}
+		boolean equlas():判断其他随想是否与此对象相等
+			//重写equlas()方法
+			public boolean equlas(Object obj) {
+				//为了提高效率
+				if(this == obj) {
+					return true;
+				}
+				
+				// 为了提高程序的健壮性
+				// 先判断一下这个类是不是学生类的一个对象，如果是，向下转型，如果不是，直接返回false
+				//记住下面的格式：对象名 instanceof 类名：判断一个对象是否是该类名的有个对象
+				
+				if(!(obj instanceof Student)) {
+					return false;
+				}
+				Student s = (Student)obj;
+				return  this.name.equlas(s.name) && this.age == obj.age;
+				
+			}
+			
+8、TreeMap：适用于按自然顺序或自定义顺序遍历
+是基于红黑树的Map接口实现
+	自定义对象：
+		-代码：	
+			TreeMap<Student,String> treeMap = new TreeMap<>(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                // 主要条件
+                int num = o1.getAge() - o2.getAge();//从低到高
+                //次要条件
+                int num2 = num == 0 ? o1.getName().compareTo(o2.getName()) : num;
+                return num2;
+            }
+			});
+			Student s1 = new Student("王俊凯",18);
+			Student s2 = new Student("王源",19);
+			Student s3 = new Student("易烊千玺",17);
+			Student s4 = new Student("王俊凯",18);
+
+			treeMap.put(s1,"1");
+			treeMap.put(s2,"2");
+			treeMap.put(s3,"3");
+			treeMap.put(s4,"11");
+
+			Set<Student> set = treeMap.keySet();
+			for(Student s : set) {
+				String value = treeMap.get(s);
+				System.out.println(s+"--->"+value);
+			}
+			
+9、需求：获取字符串中每一个字母出现的次数 例如：a(2)b(3)
+		Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一个字符串：");
+        String line = sc.nextLine();
+        TreeMap<Character,Integer> treeMap = new TreeMap<>();
+        char[] chars = line.toCharArray();
+
+        for (char ch : chars) {
+            Integer i = treeMap.get(ch);
+            if (i == null) {
+                treeMap.put(ch,1);
+            }else {
+                i++;
+                treeMap.put(ch,i);
+            }
+        }
+        StringBuffer sb = new StringBuffer();
+        Set<Character> set = treeMap.keySet();
+        for(Character key: set){
+            Integer value = treeMap.get(key);
+            sb.append(key).append("(").append(value).append(")");
+        }
+        String result = sb.toString();
+        System.out.println(result);
+			
+10、总结：
+HashMap通常比TreeMap快一点(树和哈希表的数据结构使然)，建议多使用HashMap，在需要排序的Map时候才用TreeMap。		
+1、HashMap是通过hashcode()对其内容进行快速查找的；HashMap中的元素是没有顺序的；
+
+    TreeMap中所有的元素都是有某一固定顺序的，如果需要得到一个有序的结果，就应该使用TreeMap；
+
+2、HashMap和TreeMap都不是线程安全的；
+
+3、HashMap继承AbstractMap类；覆盖了hashcode() 和equals() 方法，以确保两个相等的映射返回相同的哈希值；
+
+     TreeMap继承SortedMap类；他保持键的有序顺序；
+
+4、HashMap：基于hash表实现的；使用HashMap要求添加的键类明确定义了hashcode() 和equals() （可以重写该方法）；为了优化HashMap的空间使用，可以调优初始容量和负载因子；
+
+     TreeMap：基于红黑树实现的；TreeMap就没有调优选项，因为红黑树总是处于平衡的状态；
+
+5、HashMap：适用于Map插入，删除，定位元素；			
+		
