@@ -1,0 +1,32 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Insert {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        //1.建立连接
+        try {
+             connection = DBUtil.getConnection();
+            String insert = "insert into student (sn,name,qq_mail,classes_id) vaules (?,?,?,?)";
+            //2.创建执行对象
+             ps = connection.prepareStatement(insert);
+            ps.setInt(1,33);
+            ps.setString(2,"李四");
+            ps.setString(3,"lisi@qq.com");
+            ps.setInt(4,1);
+            System.out.println(ps);
+            int num = ps.executeUpdate();
+            if(num > 0){
+                System.out.println("插入成功" + num);
+            }else{
+                throw new RuntimeException("插入失败");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,null);
+        }
+    }
+}
