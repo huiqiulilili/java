@@ -1,0 +1,89 @@
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import javax.sql.DataSource;
+import java.sql.*;
+
+public class DBUtil {
+    private static final String URL = "jdbc:mysql://localhost:3306/test";
+    private static final String URSE_NAME = "root";
+    private static final String PASSWORD = "";
+
+
+    private static DataSource DATASOURSE = new MysqlDataSource();
+    static {
+        ((MysqlDataSource) DATASOURSE).setUrl(URL);
+        ((MysqlDataSource) DATASOURSE).setUser(URSE_NAME);
+        ((MysqlDataSource) DATASOURSE).setPassword(PASSWORD);
+    }
+    public static Connection getConnection(){
+        try {
+            return DATASOURSE.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("数据库连接失败");
+        }
+    }
+    public  static  void close(Connection connection,Statement statement,ResultSet resultSet){
+        try {
+            if(resultSet != null)
+                resultSet.close();
+            if(statement != null)
+                statement.close();
+            if(connection != null)
+                connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args) {
+
+
+
+
+
+
+
+
+
+
+        /*Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        //1.加载驱动
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //2.建立连接
+             connection = DriverManager.getConnection(URL,URSE_NAME,PASSWORD);
+            //3.创建执行对象
+             statement = connection.createStatement();
+            String sql  = "select * from student";
+             resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                Integer id =  resultSet.getInt("id");
+                Integer sn = resultSet.getInt("sn");
+                String name = resultSet.getString(3);
+                String qq = resultSet.getString(4);
+                Integer classes = resultSet.getInt(5);
+                System.out.println(String.format("id=%s,sn=%s,name=%s,qq=%s,classes=%s",id,sn,name,qq,classes));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                if(statement != null){
+                    statement.close();
+                }
+                if(connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }*/
+    }
+}
