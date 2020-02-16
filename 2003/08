@@ -1,0 +1,28 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Query {
+    public static void main(String[] args) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        try {
+             connection = DBUtil.getConnection();
+            String sql = "select * from student where id = ?";
+             ps = connection.prepareStatement(sql);
+            ps.setInt(1,3);
+             resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                Integer id =  resultSet.getInt("id");
+                Integer sn = resultSet.getInt("sn");
+                System.out.println(String.format("id=%s,sn=%s",id,sn));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection,ps,resultSet);
+        }
+    }
+}
