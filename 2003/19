@@ -1,0 +1,10 @@
+package pratice;
+
+public class Test {
+    public static void main(String[] args) {
+        String s = "abc";
+        String ss = "aaaabc";
+        int index = ss.indexOf(s);
+        System.out.println(index);
+    }
+}
