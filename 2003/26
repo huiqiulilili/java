@@ -1,0 +1,15 @@
+package test;
+
+public class Test29 {
+    public int divide(int dividend, int divisor) {
+        int result = 0;
+        while (true) {
+            if(dividend - divisor > divisor) {
+                result++;
+            }else {
+                break;
+            }
+        }
+        return result;
+    }
+}
