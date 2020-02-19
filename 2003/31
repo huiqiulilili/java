@@ -1,0 +1,39 @@
+package cn.itcast.zhaunhuan;
+
+import java.io.*;
+
+public class ZifuZhuanZijie {
+    public static void main(String[] args) throws IOException {
+        /*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("2.txt")));
+        String line = null;
+        while((line = br.readLine()) != null) {
+            bw.write(line);
+            bw.newLine();
+            bw.flush();
+        }
+        br.close();
+        bw.close();*/
+
+        /*BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("2.txt")));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String line = null;
+        while((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
+        bw.close();*/
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("2.txt")));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("4.txt")));
+        String line = null;
+        while((line = br.readLine()) != null) {
+            bw.write(line);
+            bw.newLine();
+            bw.flush();
+        }
+        br.close();
+        bw.close();
+
+    }
+}
