@@ -1,0 +1,33 @@
+
+
+import java.util.Arrays;
+
+public class InsertSearch {
+    public static void main(String[] args) {
+        int[] array = new int[] {24,69,80,57,13};
+        //外层定义循环轮次
+        for(int i = 1;i < array.length;i++) {
+            //里层循环进行比较插入
+            int j = i;
+            while (j > 0 && array[j] < array[j - 1]) {
+                int t = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = t;
+                j--;
+            }
+        }
+
+        for (int i = 1; i < array.length; i++) {
+            for(int j = i;j > 0;j --) {
+                if(array[j] < array[j - 1]) {
+                    int t = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = t;
+                }
+            }
+
+        }
+
+        System.out.println(Arrays.toString(array));
+    }
+}
