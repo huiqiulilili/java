@@ -1,0 +1,73 @@
+package 排序;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class GuibingSearch {
+    public static void main(String[] args) {
+        //原始数组
+         int[] array = new int[]{10,30,2,1,0,8,7,5,19,29};
+        // 我们先给一个左右两边是一个有序的一个数组，先进行归并操作
+        //int[] array = new int[]{4,5,7,8,1,2,3,6};
+
+        // 拆分
+        chaifen(array,0,array.length - 1);
+
+        // 归并
+        //guibing(array,0,array.length/2-1,array.length - 1);
+
+        //输出原数组
+        System.out.println(Arrays.toString(array));
+
+    }
+
+    private static void chaifen(int[] array, int startIndex, int endIndex) {
+        //计算中间索引
+        int centerIndex = (startIndex+endIndex)/2;
+        if(startIndex < endIndex) {
+            chaifen(array,startIndex,centerIndex);
+            chaifen(array,centerIndex+1,endIndex);
+            guibing(array,startIndex,centerIndex,endIndex);
+        }
+    }
+
+    private static void guibing(int[] array, int startIndex, int centerIndex, int endIndex) {
+        //定义一个临时数组
+        int[] tempArray = new int[endIndex - startIndex +1];
+        //定义左边数组的临时起始索引
+        int i = startIndex;
+        // 定义右边数组的临时起始索引
+        int j = centerIndex +1;
+        //定义临时数组的起始索引
+        int index = 0;
+
+        //比较左右两个数组的元素大小，往临时数组里面放
+        while (i <= centerIndex && j <= endIndex) {
+            if(array[i] <= array[j]) {
+                tempArray[index] = array[i];
+                i++;
+            }else {
+                tempArray[index] = array[j];
+                j++;
+            }
+            index++;
+        }
+        //处理剩余元素
+        while (i <= centerIndex) {
+            tempArray[index] = array[i];
+            index++;
+            i++;
+        }
+        while (j <= endIndex) {
+            tempArray[index] = array[j];
+            index++;
+            j++;
+        }
+
+        //System.out.println(Arrays.toString(tempArray));
+        //将临时数组中的元素取到原数组中
+        for (int k = 0; k < tempArray.length; k++) {
+            array[k + startIndex] = tempArray[k];
+        }
+    }
+}
