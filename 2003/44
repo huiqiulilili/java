@@ -1,0 +1,57 @@
+package 排序;
+
+import java.util.Arrays;
+
+public class DuiPaiSearch {
+    public static void main(String[] args) {
+        int[] array = new int[] {24,69,80,57,13};
+        // 调整成大顶堆的方法
+        // 定义开始调整的位置
+        int startIndex = (array.length - 1) /2;
+        // 循环开始调整
+        for(int i = startIndex; i >= 0;i --) {
+            toMaxHeap(array,array.length,i);
+        }
+
+        // 经过上面的操作，已经把数组变成了一个大顶堆，把根元素和最后一个元素进行交换
+        for(int i = array.length - 1;i > 0;i --) {
+            // 进行调换
+            int t = array[0];
+            array[0] = array[i];
+            array[i] = t;
+            //换完之后，我们在把剩余元素调成大顶堆
+            toMaxHeap(array,i,0);
+        }
+        System.out.println(Arrays.toString(array));
+
+    }
+
+    /**
+     *
+     * @param array 要排序的数组
+     * @param size  调整的个数
+     * @param index 从哪里开始调整
+     */
+    private static void toMaxHeap(int[] array, int size, int index) {
+        // 获取左右子节点的索引
+        int leftNodeIndex =  index * 2 + 1;
+        int rightNodeIndex =  index * 2 + 2;
+        // 查找最大节点对应的索引
+        int maxIndex = index;
+        if(leftNodeIndex <size && array[leftNodeIndex] > array[maxIndex]) {
+            maxIndex = leftNodeIndex;
+        }
+        if(rightNodeIndex < size && array[rightNodeIndex] > array[maxIndex]) {
+            maxIndex = rightNodeIndex;
+        }
+        // 调换位置
+        if(maxIndex != index) {
+            int t = array[maxIndex];
+            array[maxIndex] = array[index];
+            array[index] = t;
+            // 调换完之后，可能会影响到下面的子树，不是大顶堆了，我们还需要再次调换
+            toMaxHeap(array,size,maxIndex);
+        }
+
+    }
+}
