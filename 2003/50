@@ -1,0 +1,53 @@
+package 排序;
+
+import java.util.Arrays;
+
+public class JishuSearch {
+    public static void main(String[] args) {
+        int[] array = new int[] {24,69,80,57,13};
+        // 获取数组的最大值
+//        int max = getMax(array);
+        // 基数排序
+        sortArray(array);
+        System.out.println(Arrays.toString(array));
+    }
+
+    private static void sortArray(int[] array) {
+        // 定义二维数组，放10个桶
+        int[][] tempArray = new int[10][array.length];
+        // 定义统计数组
+        int[] counts = new int[10];
+        int max = getMax(array);
+        int len = String.valueOf(max).length();
+
+        // 循环轮次
+        for (int i = 0,n = 1; i < len; i++,n *= 10) {
+            for (int j = 0; j < array.length; j++) {
+                int ys = array[j]/n%10;
+                tempArray[ys][counts[ys]++] = array[j];
+            }
+            // 取出桶中的元素
+            int index = 0;
+            for (int k = 0; k < counts.length; k++) {
+                if(counts[k] != 0) {
+                    for (int h = 0;h < counts[k] ;h ++) {
+                        // 从桶中取出元素放回原数组
+                        array[index] = tempArray[k][h];
+                        index++;
+                    }
+                    counts[k] = 0;// 清除上一次统计的个数
+                }
+            }
+        }
+    }
+
+    private static int getMax(int[] array) {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if(array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+}
