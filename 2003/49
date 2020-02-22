@@ -1,0 +1,47 @@
+package 排序;
+
+import java.util.Arrays;
+
+public class QuickSearch {
+    public static void main(String[] args) {
+        int[] array = new int[]{24,69,80,57,13};
+        quickSort(array,0,array.length - 1);
+        System.out.println(Arrays.toString(array));
+    }
+
+    private static void quickSort(int[] array, int start, int end) {
+        if(start < end) {
+            int index = getIndex(array,start,end);
+            quickSort(array,start,index - 1);
+            quickSort(array,index+1,end);
+        }
+    }
+
+    //挖坑填数
+    private static int getIndex(int[] array, int start, int end) {
+        int i = start;
+        int j = end;
+        int x = array[i];//基准数
+        while (i < j) {
+            //由后向前找比他小的数，找到后挖出此数填到前一个坑中
+            while (i < j && array[j] >= x) {
+                j--;
+            }
+            if(i < j) {
+                array[i] = array[j];
+                i++;
+            }
+
+            //由前向后找比他大的数，找到了也挖出此数填到前一个坑中
+            while (i < j && array[i] <= x) {
+                i++;
+            }
+            if(i < j) {
+                array[j] = array[i];
+                j--;
+            }
+        }
+        array[i] = x;
+        return i;
+    }
+}
