@@ -1,0 +1,18 @@
+package com_01;
+
+import java.lang.reflect.Constructor;
+
+public class ReflectDemo03 {
+    public static void main(String[] args) throws Exception {
+       Class c = Class.forName("com_01.Person");
+       // 获取私有构造方法对象
+        // NoSuchMethodException
+        Constructor constructor = c.getDeclaredConstructor(String.class);
+        // 用该私有构造方法创建对象
+        // IllegalAccessException
+        //暴力访问
+        constructor.setAccessible(true);// 值为true，则指示反射的对象在使用时应该取消Java语言访问检查
+        Object obj = constructor.newInstance("王俊凯");
+        System.out.println(obj);
+    }
+}
