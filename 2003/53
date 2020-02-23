@@ -1,0 +1,30 @@
+package com_01;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+
+public class ReflectDemo04 {
+    public static void main(String[] args) throws Exception {
+       Class c = Class.forName("com_01.Person");
+      // 获取所有的成员变量
+//        Field[] fields = c.getFields();
+        /*Field[] fields = c.getDeclaredFields();
+        for(Field field : fields) {
+            System.out.println(field);
+        }*/
+
+        // 通过无参构造方法创建对象
+        Constructor constructor = c.getConstructor();
+        Object obj = constructor.newInstance();
+        System.out.println(obj);
+
+        // 获取单个的成员变量
+        // 获取name并对其赋值
+        Field field = c.getDeclaredField("name");
+        field.setAccessible(true);
+        //public void set(Object obj,Object value);
+        //将指定对象上此Field对象表示的字段设置为指定的新值
+        field.set(obj,"王俊凯");// 给obj对象的field字段设置值为“王俊凯”
+        System.out.println(obj);
+    }
+}
