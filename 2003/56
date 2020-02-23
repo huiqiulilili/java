@@ -1,0 +1,24 @@
+package com_01;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class ReflectDemo {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        // 获取字节码文件
+        Class c = Class.forName("com_01.ReflectDemo");
+        /*// 获取构造方法
+            // public Constructor[] getConstructors()：所有公共的构造方法
+        // public Constructor[] getDeclaredConstructors()：所有的构造方法
+        Constructor[] constructors = c.getDeclaredConstructors();
+        for(Constructor con : constructors) {
+            System.out.println(con);
+        }*/
+        // 获取单个的构造参数
+        // public Constructor getConstructor(Class ......) ;
+        // 参数代表的是：你要获取的构造方法的构造参数个数及数据类型的class字节码对象
+        Constructor constructor = c.getConstructor();// 返回的是构造方法对象
+        Object obj = constructor.newInstance();// 创造新对象
+        System.out.println(obj);
+    }
+}
