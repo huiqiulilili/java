@@ -1,0 +1,17 @@
+public class MyObject {
+    public static void main(String[] args) {
+        Object o = new Object();
+        System.out.println(o.getClass().getClassLoader());//null
+
+        Student studnet = new Student();
+        System.out.println(studnet.getClass().getClassLoader());//sun.misc.Launcher$AppClassLoader@18b4aac2
+        System.out.println(studnet.getClass().getClassLoader().getParent().getParent());
+        System.out.println(studnet.getClass().getClassLoader().getParent());
+        System.out.println(studnet.getClass().getClassLoader());
+
+    }
+}
+
+class Student{
+
+}
