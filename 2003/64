@@ -1,0 +1,24 @@
+package volatileDemo;
+
+public class Test03 {
+    int a = 0;
+    boolean flag = false;
+
+    public void fun1() {
+        a = 1;
+        flag = true;
+    }
+    //多线程环境中，由于编译器的优化重排的存在，
+    //两个线程中使用的变量能否保证一致性是无法确定的，结果无法预测
+    public void fun2() {
+        if(flag) {
+            a += 5;
+            System.out.println(a);
+        }
+    }
+}
+/**
+ * 本来 先 a = 0;flag=false;
+ * 可能出现
+ * flag=flase之后没有执行a=0的时候直接进入到了fun2()
+ */
