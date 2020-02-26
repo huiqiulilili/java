@@ -1,0 +1,33 @@
+package demo1;
+@FunctionalInterface
+interface Foo{
+//      void say();
+      int add(int x,int y);
+}
+
+/**
+ * 拷贝大括号，写死右箭头，落地大括号
+ */
+public class LambdaDemo {
+    public static void main(String[] args) {
+        /*Foo f = new Foo() {
+            @Override
+            public void say() {
+                System.out.println("hello");
+            }
+        };
+        f.say();*/
+
+        //前面简写为如下
+       /* Foo f = () ->{
+            System.out.println("hello");
+        };
+        f.say();*/
+
+       Foo f = (int x,int y) -> {
+           System.out.println("add");
+         return x+y;
+       };
+        System.out.println(f.add(3,5));
+    }
+}
