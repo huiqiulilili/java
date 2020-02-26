@@ -1,0 +1,41 @@
+package demo02;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+/**
+ * 线程就是一个单独的资源类，没有任何附属的操作
+ * 1、属性、方法
+ */
+public class Test {
+    public static void main(String[] args) {
+        Ticket ticket = new Ticket();
+        new Thread(() ->{for (int i = 0; i < 40; i++) ticket.sell();},"A").start();
+        new Thread(() ->{for (int i = 0; i < 40; i++) ticket.sell();},"B").start();
+        new Thread(() ->{for (int i = 0; i < 40; i++) ticket.sell();},"C").start();
+
+    }
+}
+
+// Lock三部曲
+// 1、new ReentrantLock();
+// 2、lock.lock();
+// 3、lock.unlock();
+class Ticket{
+    private int number = 50;
+    Lock lock = new ReentrantLock();
+    public void sell() {
+        lock.lock();
+        try {
+            //业务代码
+            if(number > 0) {
+                System.out.println(Thread.currentThread().getName()+"正在卖"+(number--) +"张票，剩余" + number);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            lock.unlock();
+        }
+
+    }
+}
