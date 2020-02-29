@@ -1,0 +1,16 @@
+package 链表面试题;
+
+public class ReverseDemo {
+    public static ListNode main(ListNode head) {
+        ListNode result = null;
+        ListNode cur = head;
+        while(cur != null) {
+            ListNode next = cur.next;
+            cur.next = result;
+            result = cur;
+            cur = next;
+        }
+        return head;
+    }
+
+}
