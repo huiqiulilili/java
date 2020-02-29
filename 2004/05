@@ -1,0 +1,75 @@
+package 链表面试题;
+
+/**
+ * 总结：
+ * 1、如果想找倒数第一个元素
+ * while (cur.next != null) {
+ *  cur = cur.next;
+ * }//cur指向最后一个元素
+ * 2、遍历链表
+ * for(ListNode cur = head;cur != null;cur = cur.next) {
+ *     sout("Node(%d)",val)
+ * }
+ * 3、找倒数第二个元素
+ * while (cur.next.next != null) {
+ *  cur = cur.next;
+ * }//cur指向倒数第二个元素
+ */
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) { this.val = val; }
+
+    public String toString() {
+        return String.format("Node(%d)", val);
+    }
+}
+public class Practice {
+    public static ListNode pushFront(ListNode head,int val) {
+        ListNode node = new ListNode(val);
+        node.next = head;
+        return node;
+
+    }
+
+    public static ListNode popFront(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        if(head.next == null) {
+            return null;
+        }
+        head = head.next;
+        return head;
+    }
+
+    public static ListNode popBack(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        if(head.next == null) {
+            return null;
+        }
+        ListNode c = head;
+        while (c.next.next != null) {
+            c = c.next;
+        }
+        c.next = null;
+        return head;
+    }
+
+    public static ListNode pushBack(ListNode head,int val) {
+        ListNode node=  new ListNode(val);
+        if(head == null) {
+            return node;
+        }
+        ListNode c = head;
+        while (c.next != null) {
+            c = c.next;
+        }
+        c.next = node;
+        return head;
+    }
+
+}
