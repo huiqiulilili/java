@@ -1,0 +1,18 @@
+package 链表面试题;
+
+public class MiddleNodeDemo {
+    public ListNode middleNode(ListNode head) {
+        ListNode f = head;
+        ListNode s = head;
+
+        while(f != null) {
+            f = f.next;
+            if(f == null) {
+                break;
+            }
+            s = s.next;
+            f = f.next;
+        }
+        return s;
+    }
+}
