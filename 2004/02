@@ -1,0 +1,20 @@
+package 链表面试题;
+
+public class FindKthToTail {
+    public ListNode FindKthToTail(ListNode head,int k) {
+        int length = 0;
+        for(ListNode cur = head;cur != null;cur = cur.next) {
+            length++;
+        }
+        if(length < k) {
+            return null;
+        }
+
+        int n = length - k;
+        ListNode kth = head;
+        for(int i = 0;i < n ;i ++) {
+            kth = kth.next;
+        }
+        return kth;
+    }
+}
