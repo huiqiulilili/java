@@ -1,0 +1,29 @@
+package test;
+
+public class Test07 {
+    public static void main(String[] args) {
+        System.out.println(98765432);
+    }
+    public static int reverse(int x) {
+        if(x == 0) {
+            return 0;
+        }
+        boolean flag = false;
+        StringBuilder s = new StringBuilder();
+
+        if(x < 0) {
+            s.append("-");
+        }
+        x = Math.abs(x);
+        while (x > 0) {
+            s.append(x%10);
+            x /= 10;
+        }
+        try {
+            return Integer.parseInt(s.toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+}
