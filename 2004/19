@@ -1,0 +1,22 @@
+package pratice;
+
+class Base {
+    public Base(String s) {
+        System.out.println("B");
+    }
+}
+
+public class Test03 extends Base {
+
+    public Test03(String s) {
+        // 这行代码必须有，不然就默认调用super():无参数的父类构造方法，然而父类中，已经有了有残的构造方法，但是没有无构造的方法
+        // 记住：一个类有默认的构造方法的前提是这个类没有带参数的构造方法，
+        // 一旦有了带参数的构造方法并且还想调用无参数的构造方法，就必须写上不带参数的构造方法
+        super(s);
+        System.out.println("D");
+    }
+
+    public static void main(String[] args) {
+        new Test03("C");
+    }
+}
