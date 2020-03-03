@@ -1,0 +1,23 @@
+package test;
+
+
+public class Test19 {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        //虚拟的头结点
+        ListNode pre = new ListNode(0);
+        pre.next = head;
+        ListNode s = pre.next;
+        ListNode e = pre.next;
+        while(n != 0) {
+            s = s.next;
+            n--;
+        }
+        while (s.next != null) {
+            s = s.next;
+            e = e.next;
+        }
+        e.next = e.next.next;
+        return pre;
+    }
+}
