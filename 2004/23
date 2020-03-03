@@ -1,0 +1,15 @@
+package pratice;
+
+public class Test02 {
+
+    public static void main(String[] args) {
+        A a = null;
+        a.hello();
+    }
+}
+
+class A {
+    public static void hello() {
+        System.out.println("hello");
+    }
+}
